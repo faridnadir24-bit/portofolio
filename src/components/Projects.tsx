@@ -171,18 +171,31 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="px-6 py-3.5 bg-stone-50/70 border-t border-stone-100 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#7C7C92] flex items-center gap-1">
-                    <Activity className="w-3 h-3 text-[#6C7CE0]" />
-                    Interactive Sim
-                  </span>
+                <div className="px-6 py-3.5 bg-stone-50/70 border-t border-stone-100 flex items-center justify-between gap-2">
+                  {project.liveDemoUrl ? (
+                    <a
+                      href={project.liveDemoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-stone-600 hover:text-[#5865F2] transition-colors"
+                      title="Buka Website Demo Eksternal"
+                    >
+                      <ExternalLink className="w-3 h-3 text-[#5865F2]" />
+                      <span>Live App</span>
+                    </a>
+                  ) : (
+                    <span className="text-[11px] font-mono text-[#7C7C92] flex items-center gap-1">
+                      <Activity className="w-3 h-3 text-[#6C7CE0]" />
+                      Interactive Sim
+                    </span>
+                  )}
 
                   <button
                     id={`btn-prototype-${project.id}`}
                     onClick={() => onOpenProject(project.id)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6C7CE0] hover:text-[#4A5AC5] group/btn transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#5865F2] hover:text-[#3C49C5] group/btn transition-colors"
                   >
-                    <span>Lihat Prototype</span>
+                    <span>Coba Simulator</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                   </button>
                 </div>

@@ -47,16 +47,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
 
             {/* Main Name Heading with Serif and Italic Emphasis */}
             <div className="space-y-2">
-              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#2A2A3C] leading-[1.12]">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#1E232A] leading-[1.12]">
                 Farid Nadir <br />
-                <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6C7CE0] via-[#8E7FE8] to-[#B48CE0]">
+                <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#4F5BD5] via-[#6366F1] to-[#7C6BB5]">
                   Amrulloh
                 </span>
               </h1>
-              <p className="text-xs sm:text-sm font-mono font-semibold text-[#6C7CE0] uppercase tracking-wider">
-                {PERSONAL_INFO.title}
+              <p className="text-xs sm:text-sm font-mono font-semibold text-[#4F5BD5] uppercase tracking-wider">
+                Mahasiswa Teknik Informatika • Leadership & Social Impact
               </p>
-              <p className="text-base sm:text-lg font-normal text-[#4A4A62] max-w-2xl leading-relaxed pt-1">
+              <p className="text-base sm:text-lg font-normal text-[#4A5260] max-w-2xl leading-relaxed pt-1">
                 "{PERSONAL_INFO.tagline}"
               </p>
             </div>
@@ -194,20 +194,20 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
                   </p>
 
                   <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[11px] font-mono font-medium text-[#2A2A3C] border border-stone-200/90 shadow-2xs">
-                    <span>Eks Ketua Komisi A MPK SMA</span>
+                    <span>Wakil Ketua Bidang Sospol GMNI</span>
                   </div>
 
                 </div>
 
                 {/* Card Quick Metrics */}
                 <div className="grid grid-cols-2 gap-3 mt-4">
-                  <div className="p-3 rounded-xl bg-[#FDF9F3] border border-stone-200/70 text-left">
+                  <div className="p-3 rounded-xl bg-[#FAF7F2] border border-stone-200/70 text-left">
                     <p className="text-[11px] font-mono text-[#6A6A82]">Prestasi Utama</p>
-                    <p className="text-xs font-bold text-[#2A2A3C] mt-0.5">Juara 1 KNEC 2026</p>
+                    <p className="text-xs font-bold text-[#1E232A] mt-0.5">Juara 1 KNEC 2026</p>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#FDF9F3] border border-stone-200/70 text-left">
-                    <p className="text-[11px] font-mono text-[#6A6A82]">Fokus Riset</p>
-                    <p className="text-xs font-bold text-[#2A2A3C] mt-0.5">IoT, AI & Energi</p>
+                  <div className="p-3 rounded-xl bg-[#FAF7F2] border border-stone-200/70 text-left">
+                    <p className="text-[11px] font-mono text-[#6A6A82]">Kepemimpinan</p>
+                    <p className="text-xs font-bold text-[#1E232A] mt-0.5">GMNI, MPK & PMR</p>
                   </div>
                 </div>
 

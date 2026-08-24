@@ -23,6 +23,7 @@ export interface Project {
   features: string[];
   architectureSummary: string;
   demoLink: string;
+  liveDemoUrl?: string;
   githubPlaceholder?: string;
   gradient: {
     from: string;
