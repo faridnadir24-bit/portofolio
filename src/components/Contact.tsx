@@ -7,10 +7,7 @@ import {
   Github, 
   Copy, 
   Check, 
-  MessageSquare, 
-  ArrowUpRight,
-  ExternalLink,
-  Sparkles
+  ArrowUpRight
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ContactFormData } from '../types';
@@ -85,19 +82,19 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="kontak" className="py-24 relative border-t border-white/5 bg-[#0A0A0A]">
+    <section id="kontak" className="py-24 relative border-t border-slate-200/80 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Giant Statement Header (Benjamin Creative Style) */}
+        {/* Giant Statement Header */}
         <div className="text-left mb-16 space-y-4">
-          <div className="text-xs font-mono text-stone-400 uppercase tracking-widest">
+          <div className="text-xs font-mono text-indigo-600 font-bold uppercase tracking-widest">
             [ 05 • GET IN TOUCH ]
           </div>
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter text-white uppercase leading-[0.95]">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter text-slate-900 uppercase leading-[0.95]">
             LET'S WORK <br />
-            <span className="text-stone-400 font-light">TOGETHER.</span>
+            <span className="text-slate-500 font-light">TOGETHER.</span>
           </h2>
-          <p className="text-base sm:text-lg text-stone-300 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed">
             Terbuka untuk kolaborasi riset kecerdasan buatan, telemetri IoT, kompetisi inovasi sains, serta kesempatan magang teknologi.
           </p>
         </div>
@@ -108,35 +105,35 @@ export const Contact: React.FC = () => {
           <div className="md:col-span-5 space-y-4 text-left">
             
             {/* Email Box */}
-            <div className="dark-card rounded-3xl p-6 sm:p-7 space-y-3">
+            <div className="bright-card rounded-3xl p-6 sm:p-7 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-stone-400 uppercase">Direct Email</span>
+                <span className="text-xs font-mono text-slate-500 uppercase font-semibold">Direct Email</span>
                 <button
                   id="copy-email-btn"
                   onClick={handleCopyEmail}
-                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-stone-300 hover:text-white transition-colors"
+                  className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
                   title="Salin Email"
                 >
-                  {isCopiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                  {isCopiedEmail ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
 
               <a 
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className="text-lg sm:text-xl font-bold font-mono text-white hover:text-stone-300 transition-colors block break-all"
+                className="text-lg sm:text-xl font-bold font-mono text-slate-900 hover:text-indigo-600 transition-colors block break-all"
               >
                 {PERSONAL_INFO.email}
               </a>
               {isCopiedEmail && (
-                <p className="text-xs font-mono text-emerald-400">✓ Email address copied to clipboard</p>
+                <p className="text-xs font-mono text-emerald-600">✓ Alamat email disalin ke clipboard</p>
               )}
             </div>
 
             {/* WhatsApp Box */}
-            <div className="dark-card rounded-3xl p-6 sm:p-7 flex items-center justify-between">
+            <div className="bright-card rounded-3xl p-6 sm:p-7 flex items-center justify-between">
               <div>
-                <span className="text-xs font-mono text-stone-400 uppercase block">WhatsApp</span>
-                <span className="text-lg font-bold font-mono text-white mt-1 block">
+                <span className="text-xs font-mono text-slate-500 uppercase font-semibold block">WhatsApp</span>
+                <span className="text-lg font-bold font-mono text-slate-900 mt-1 block">
                   {PERSONAL_INFO.whatsappDisplay}
                 </span>
               </div>
@@ -146,7 +143,7 @@ export const Contact: React.FC = () => {
                 href={generateWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-2xl bg-white text-black text-xs font-bold hover:bg-stone-200 transition-all active:scale-95 shadow-md flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 transition-all active:scale-95 shadow-md shadow-emerald-600/20 flex items-center gap-1.5"
               >
                 <span>Chat WA</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -160,10 +157,10 @@ export const Contact: React.FC = () => {
                 href={PERSONAL_INFO.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark-card rounded-2xl p-4 flex items-center justify-between text-stone-300 hover:text-white"
+                className="bright-card rounded-2xl p-4 flex items-center justify-between text-slate-800 hover:text-indigo-600 hover:border-indigo-200"
               >
                 <div className="flex items-center gap-2">
-                  <Linkedin className="w-4 h-4" />
+                  <Linkedin className="w-4 h-4 text-blue-600" />
                   <span className="text-xs font-bold">LinkedIn</span>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
@@ -174,10 +171,10 @@ export const Contact: React.FC = () => {
                 href={PERSONAL_INFO.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark-card rounded-2xl p-4 flex items-center justify-between text-stone-300 hover:text-white"
+                className="bright-card rounded-2xl p-4 flex items-center justify-between text-slate-800 hover:text-slate-900 hover:border-slate-400"
               >
                 <div className="flex items-center gap-2">
-                  <Github className="w-4 h-4" />
+                  <Github className="w-4 h-4 text-slate-800" />
                   <span className="text-xs font-bold">GitHub</span>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
@@ -187,9 +184,9 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Contact Message Form (7 cols) */}
-          <div className="md:col-span-7 dark-card rounded-3xl p-6 sm:p-8 text-left">
-            <h3 className="text-xl font-bold text-white mb-6">
-              Send a Direct Message
+          <div className="md:col-span-7 bright-card rounded-3xl p-6 sm:p-8 text-left">
+            <h3 className="text-xl font-bold text-slate-900 mb-6">
+              Kirim Pesan Langsung
             </h3>
 
             <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -206,67 +203,67 @@ export const Contact: React.FC = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-name" className="text-xs font-mono text-stone-400 block">
-                    NAME *
+                  <label htmlFor="contact-name" className="text-xs font-mono text-slate-600 block font-semibold">
+                    NAMA *
                   </label>
                   <input
                     id="contact-name"
                     type="text"
                     required
-                    placeholder="Your name / Organization"
+                    placeholder="Nama / Instansi Anda"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 text-sm rounded-2xl bg-[#0C0C0C] border border-white/10 text-white placeholder:text-stone-600 focus:outline-none focus:border-white transition-colors"
+                    className="w-full px-4 py-3 text-sm rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-email" className="text-xs font-mono text-stone-400 block">
+                  <label htmlFor="contact-email" className="text-xs font-mono text-slate-600 block font-semibold">
                     EMAIL *
                   </label>
                   <input
                     id="contact-email"
                     type="email"
                     required
-                    placeholder="you@domain.com"
+                    placeholder="nama@domain.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 text-sm rounded-2xl bg-[#0C0C0C] border border-white/10 text-white placeholder:text-stone-600 focus:outline-none focus:border-white transition-colors"
+                    className="w-full px-4 py-3 text-sm rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="contact-subject" className="text-xs font-mono text-stone-400 block">
-                  SUBJECT
+                <label htmlFor="contact-subject" className="text-xs font-mono text-slate-600 block font-semibold">
+                  SUBJEK
                 </label>
                 <input
                   id="contact-subject"
                   type="text"
-                  placeholder="e.g. Research Collaboration / Project Inquiry"
+                  placeholder="cth. Kolaborasi Riset / Pertanyaan Proyek"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-3 text-sm rounded-2xl bg-[#0C0C0C] border border-white/10 text-white placeholder:text-stone-600 focus:outline-none focus:border-white transition-colors"
+                  className="w-full px-4 py-3 text-sm rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label htmlFor="contact-message" className="text-xs font-mono text-stone-400 block">
-                  MESSAGE *
+                <label htmlFor="contact-message" className="text-xs font-mono text-slate-600 block font-semibold">
+                  PESAN *
                 </label>
                 <textarea
                   id="contact-message"
                   required
                   rows={4}
-                  placeholder="Describe your project, ideas, or inquiry..."
+                  placeholder="Tuliskan pesan, ide proyek, atau pertanyaan Anda..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 text-sm rounded-2xl bg-[#0C0C0C] border border-white/10 text-white placeholder:text-stone-600 focus:outline-none focus:border-white transition-colors resize-none"
+                  className="w-full px-4 py-3 text-sm rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-colors resize-none"
                 />
               </div>
 
               {submitFeedback && (
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-mono text-stone-300">
+                <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-200 text-xs font-mono text-indigo-900">
                   {submitFeedback}
                 </div>
               )}
@@ -274,10 +271,10 @@ export const Contact: React.FC = () => {
               <button
                 id="submit-contact-form-btn"
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl text-sm font-bold bg-white text-black hover:bg-stone-200 transition-all duration-200 active:scale-95 shadow-lg"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-700 transition-all duration-200 active:scale-95 shadow-lg shadow-indigo-600/25"
               >
                 <Send className="w-4 h-4" />
-                <span>Send Message</span>
+                <span>Kirim Pesan</span>
               </button>
             </form>
           </div>
