@@ -25,6 +25,8 @@ export const Contact: React.FC = () => {
   const [isCopiedEmail, setIsCopiedEmail] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitFeedback, setSubmitFeedback] = useState<string | null>(null);
+  const [submitAttempts, setSubmitAttempts] = useState<number>(0);
+  const [formLoadTime] = useState<number>(Date.now());
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
@@ -32,21 +34,53 @@ export const Contact: React.FC = () => {
     setTimeout(() => setIsCopiedEmail(false), 2500);
   };
 
+  // Deep sanitization: strip HTML tags, script injections, event handlers, and dangerous patterns
   const sanitizeInput = (text: string): string => {
-    return text.replace(/[<>]/g, '').trim();
+    return text
+      .replace(/<[^>]*>/gi, '')                     // Strip all HTML tags
+      .replace(/javascript\s*:/gi, '')              // Remove javascript: URIs
+      .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '') // Remove event handlers (onclick=, onerror=, etc.)
+      .replace(/data\s*:\s*text\/html/gi, '')       // Block data:text/html payloads
+      .replace(/&#?x?[0-9a-f]+;/gi, '')            // Strip HTML entities used for encoding attacks
+      .replace(/\0/g, '')                           // Remove null bytes
+      .trim()
+      .slice(0, 2000);                              // Hard cap at 2000 chars
+  };
+
+  // Strict email format validation (RFC 5322 simplified)
+  const isValidEmail = (email: string): boolean => {
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    return emailRegex.test(email) && email.length <= 254;
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Honeypot bot trap
     if (honeypot.length > 0) {
-      console.warn('Bot submission blocked.');
+      console.warn('[Security] Honeypot triggered — bot submission blocked.');
       return;
     }
 
+    // Behavioral timing check: form filled too fast → likely automated
+    if (Date.now() - formLoadTime < 3000) {
+      console.warn('[Security] Form submitted suspiciously fast — blocked.');
+      setSubmitFeedback('Mohon isi formulir dengan wajar dan tidak terburu-buru.');
+      return;
+    }
+
+    // Progressive rate limiting: 4s → 8s → 16s cooldown
     const now = Date.now();
-    if (now - lastSubmitTime < 4000) {
-      setSubmitFeedback('Mohon tunggu beberapa detik sebelum mengirim pesan kembali.');
+    const cooldown = Math.min(4000 * Math.pow(2, Math.max(0, submitAttempts - 1)), 60000);
+    if (now - lastSubmitTime < cooldown) {
+      const remainSec = Math.ceil((cooldown - (now - lastSubmitTime)) / 1000);
+      setSubmitFeedback(`Mohon tunggu ${remainSec} detik sebelum mengirim pesan kembali.`);
+      return;
+    }
+
+    // Input length enforcement
+    if (formData.name.length > 100 || formData.email.length > 254 || formData.subject.length > 200 || formData.message.length > 2000) {
+      setSubmitFeedback('Input terlalu panjang. Mohon periksa kembali formulir Anda.');
       return;
     }
 
@@ -56,11 +90,17 @@ export const Contact: React.FC = () => {
     const cleanMessage = sanitizeInput(formData.message);
 
     if (!cleanName || !cleanEmail || !cleanMessage) {
-      setSubmitFeedback('Mohon lengkapi formulir dengan teks yang valid.');
+      setSubmitFeedback('Mohon lengkapi formulir dengan teks yang valid (tanpa kode HTML/script).');
+      return;
+    }
+
+    if (!isValidEmail(cleanEmail)) {
+      setSubmitFeedback('Format email tidak valid. Mohon masukkan alamat email yang benar.');
       return;
     }
 
     setLastSubmitTime(now);
+    setSubmitAttempts(prev => prev + 1);
 
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(cleanSubject || 'Pesan Kolaborasi Portofolio')}&body=${encodeURIComponent(
       `Halo Farid Nadir,\n\nNama: ${cleanName}\nEmail: ${cleanEmail}\n\nPesan:\n${cleanMessage}`
@@ -210,6 +250,8 @@ export const Contact: React.FC = () => {
                     id="contact-name"
                     type="text"
                     required
+                    maxLength={100}
+                    autoComplete="name"
                     placeholder="Nama / Instansi Anda"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -225,6 +267,8 @@ export const Contact: React.FC = () => {
                     id="contact-email"
                     type="email"
                     required
+                    maxLength={254}
+                    autoComplete="email"
                     placeholder="nama@domain.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -240,6 +284,8 @@ export const Contact: React.FC = () => {
                 <input
                   id="contact-subject"
                   type="text"
+                  maxLength={200}
+                  autoComplete="off"
                   placeholder="cth. Kolaborasi Riset / Pertanyaan Proyek"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -255,6 +301,8 @@ export const Contact: React.FC = () => {
                   id="contact-message"
                   required
                   rows={4}
+                  maxLength={2000}
+                  autoComplete="off"
                   placeholder="Tuliskan pesan, ide proyek, atau pertanyaan Anda..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}

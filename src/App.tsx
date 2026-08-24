@@ -40,16 +40,23 @@ export default function App() {
 
   // Handle URL hash changes for deep linking to project prototypes (e.g. #avo-bio-demo)
   useEffect(() => {
+    const ALLOWED_SECTION_IDS = new Set(['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'kontak']);
+
     const handleHashChange = () => {
       const rawHash = window.location.hash.replace('#', '');
-      // Strict regex sanitization against DOM-based XSS
-      const cleanHash = rawHash.replace(/[^a-zA-Z0-9-_]/g, '');
+      // Strict sanitization: only alphanumeric, hyphens, underscores; max 64 chars
+      const cleanHash = rawHash.replace(/[^a-zA-Z0-9-_]/g, '').slice(0, 64);
       if (!cleanHash) return;
 
+      // Priority 1: Match against known project slugs/IDs (safe whitelist)
       const matchedProject = PROJECTS.find(p => p.slug === cleanHash || p.id === cleanHash);
       if (matchedProject) {
         setSelectedProject(matchedProject);
-      } else {
+        return;
+      }
+
+      // Priority 2: Only scroll to whitelisted section IDs (prevents arbitrary DOM targeting)
+      if (ALLOWED_SECTION_IDS.has(cleanHash)) {
         const element = document.getElementById(cleanHash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });

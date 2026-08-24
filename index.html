@@ -14,15 +14,64 @@
     <meta name="google-site-verification" content="ykVCZpT8pEzLUfsway0WtwA8ctzWeHxYXQp2AukZqFc" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C7CE0'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='bold' font-size='46' fill='white'>FN</text></svg>" />
 
-    <!-- Client-Side Anti-Clickjacking & Anti-Framing Defense -->
+    <!-- ====== COMPREHENSIVE CLIENT-SIDE SECURITY HARDENING ====== -->
     <script>
+      // 1. Anti-Clickjacking & Anti-Framing (Framebusting)
       try {
         if (window.top !== window.self) {
           window.top.location = window.self.location;
         }
       } catch (e) {
         document.documentElement.style.display = 'none';
+        document.body.innerHTML = '';
       }
+
+      // 2. Anti-Right-Click Source Inspection (production deterrent)
+      document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+      // 3. Anti-Drag (prevent image/text dragging for scraping)
+      document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+
+      // 4. Disable common DevTools keyboard shortcuts for casual snooping
+      document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12') { e.preventDefault(); }
+        // Ctrl+Shift+I (Inspector), Ctrl+Shift+J (Console), Ctrl+Shift+C (Element Picker)
+        if (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); }
+        // Ctrl+U (View Source)
+        if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); }
+        // Ctrl+S (Save Page)
+        if (e.ctrlKey && (e.key === 's' || e.key === 'S')) { e.preventDefault(); }
+      });
+
+      // 5. Console Warning Banner (social engineering deterrent)
+      console.log(
+        '%c⚠️ PERINGATAN KEAMANAN',
+        'color:#EF4444;font-size:28px;font-weight:900;text-shadow:1px 1px 0 #000;'
+      );
+      console.log(
+        '%cIni adalah fitur browser yang ditujukan untuk developer. Jika seseorang menyuruh Anda menyalin-tempel sesuatu di sini, itu adalah penipuan. Memasukkan kode di sini bisa membahayakan akun Anda.',
+        'color:#F59E0B;font-size:14px;'
+      );
+      console.log(
+        '%c🔒 Situs ini dilindungi oleh Content-Security-Policy, HSTS Preload, COEP, COOP, dan Permissions-Policy penuh.',
+        'color:#10B981;font-size:12px;'
+      );
+
+      // 6. Detect DevTools open (timing-based heuristic, non-blocking)
+      (function() {
+        var _dc = 0;
+        setInterval(function() {
+          var s = performance.now();
+          debugger; // eslint-disable-line no-debugger
+          if (performance.now() - s > 100) {
+            _dc++;
+            if (_dc > 2) {
+              document.title = '⚠️ DevTools Detected — Farid Nadir Portfolio';
+            }
+          }
+        }, 3000);
+      })();
     </script>
 
     <!-- Google Structured Data (Schema.org Knowledge Graph & AI Overview) -->
