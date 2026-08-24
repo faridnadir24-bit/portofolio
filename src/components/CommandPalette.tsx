@@ -30,7 +30,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const [search, setSearch] = useState('');
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
-  // Close on Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -52,12 +51,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   };
 
   const sections = [
-    { id: 'hero', name: 'Beranda / Hero', category: 'Navigasi' },
-    { id: 'tentang', name: 'Tentang & Profil', category: 'Navigasi' },
-    { id: 'proyek', name: 'Daftar 5 Proyek Rekayasa', category: 'Navigasi' },
-    { id: 'keahlian', name: 'Keahlian Teknis & Tech Stack', category: 'Navigasi' },
-    { id: 'pengalaman', name: 'Pendidikan, Organisasi & Prestasi', category: 'Navigasi' },
-    { id: 'kontak', name: 'Kontak & Kolaborasi', category: 'Navigasi' },
+    { id: 'hero', name: 'Hero / Introduction', category: 'Navigation' },
+    { id: 'tentang', name: 'About & Background', category: 'Navigation' },
+    { id: 'proyek', name: 'Selected Work [05 Projects]', category: 'Navigation' },
+    { id: 'keahlian', name: 'Capabilities & Stack', category: 'Navigation' },
+    { id: 'pengalaman', name: 'Experience & Education', category: 'Navigation' },
+    { id: 'kontak', name: 'Contact & Collaboration', category: 'Navigation' },
   ];
 
   const filteredSections = sections.filter(s => 
@@ -71,37 +70,37 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 px-4 bg-stone-950/60 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-28 px-4 bg-black/80 backdrop-blur-md animate-fade-in">
       <div 
-        className="w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col max-h-[75vh]"
+        className="w-full max-w-xl bg-[#141414] rounded-3xl shadow-2xl border border-white/10 overflow-hidden flex flex-col max-h-[75vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Header */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-stone-100 bg-stone-50/50">
-          <Search className="w-5 h-5 text-stone-500" />
+        <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-[#161616]">
+          <Search className="w-5 h-5 text-stone-400" />
           <input
             type="text"
             autoFocus
-            placeholder="Ketik untuk mencari proyek, navigasi, atau kontak (misal: AVO-BIO, CV)..."
+            placeholder="Type a command, project, or section..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 text-sm bg-transparent border-none outline-none text-stone-900 placeholder:text-stone-400 font-sans"
+            className="flex-1 text-sm bg-transparent border-none outline-none text-white placeholder:text-stone-500 font-mono"
           />
           <button 
             onClick={onClose}
-            className="p-1 rounded-lg hover:bg-stone-200/60 text-stone-400 hover:text-stone-600 transition-colors"
+            className="p-1 rounded-xl hover:bg-white/10 text-stone-400 hover:text-white transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Action Results */}
-        <div className="overflow-y-auto p-2 space-y-4 text-left">
+        <div className="overflow-y-auto p-3 space-y-4 text-left">
           
           {/* Quick Actions */}
           <div>
-            <div className="text-[11px] font-mono font-semibold uppercase tracking-wider text-stone-400 px-3 py-1">
-              Aksi Cepat
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-500 px-3 py-1">
+              Quick Actions
             </div>
             <div className="space-y-1">
               <button
@@ -109,33 +108,33 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                   onClose();
                   onOpenCv();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 hover:text-stone-900 transition-colors group text-sm font-medium"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl hover:bg-white/5 text-stone-300 hover:text-white transition-colors group text-sm font-medium"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
+                  <div className="p-1.5 rounded-xl bg-white/5 text-stone-300">
                     <FileText className="w-4 h-4" />
                   </div>
-                  <span>Lihat & Unduh Ringkasan CV (Curriculum Vitae)</span>
+                  <span>View Official Curriculum Vitae (CV)</span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-stone-700 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-stone-600 group-hover:text-white transition-colors" />
               </button>
 
               <button
                 onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 transition-colors group text-sm font-medium"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl hover:bg-white/5 text-stone-300 hover:text-white transition-colors group text-sm font-medium"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
+                  <div className="p-1.5 rounded-xl bg-white/5 text-stone-300">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>Salin Email ({PERSONAL_INFO.email})</span>
+                  <span>Copy Email ({PERSONAL_INFO.email})</span>
                 </div>
                 {copiedText === 'email' ? (
-                  <span className="text-xs font-mono text-emerald-600 flex items-center gap-1">
-                    <Check className="w-3.5 h-3.5" /> Tersalin!
+                  <span className="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5" /> Copied!
                   </span>
                 ) : (
-                  <span className="text-xs text-stone-400 font-mono">Salin</span>
+                  <span className="text-xs text-stone-500 font-mono">Copy</span>
                 )}
               </button>
 
@@ -143,15 +142,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 href="https://medium.com/@faridnadir24"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 transition-colors group text-sm font-medium"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl hover:bg-white/5 text-stone-300 hover:text-white transition-colors group text-sm font-medium"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
+                  <div className="p-1.5 rounded-xl bg-white/5 text-stone-300">
                     <BookOpen className="w-4 h-4" />
                   </div>
-                  <span>Baca Artikel Riset AVO-BIO di Medium</span>
+                  <span>Read AVO-BIO Technical Article on Medium</span>
                 </div>
-                <ExternalLink className="w-3 h-3 text-stone-400 group-hover:text-stone-700" />
+                <ExternalLink className="w-3.5 h-3.5 text-stone-600 group-hover:text-white" />
               </a>
             </div>
           </div>
@@ -159,8 +158,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           {/* Projects */}
           {filteredProjects.length > 0 && (
             <div>
-              <div className="text-[11px] font-mono font-semibold uppercase tracking-wider text-stone-400 px-3 py-1">
-                5 Proyek & Simulator
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-500 px-3 py-1">
+                Selected Work
               </div>
               <div className="space-y-1">
                 {filteredProjects.map((proj) => (
@@ -170,25 +169,25 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                       onClose();
                       onOpenProject(proj.id);
                     }}
-                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 hover:text-stone-900 transition-colors group text-sm text-left"
+                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-2xl hover:bg-white/5 text-stone-300 hover:text-white transition-colors group text-sm text-left"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
+                      <div className="p-1.5 rounded-xl bg-white/5 text-stone-300">
                         <Sparkles className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="font-semibold text-stone-900 flex items-center gap-2">
+                        <div className="font-bold text-white flex items-center gap-2">
                           <span>{proj.title}</span>
                           {proj.awardBadge?.isChampion && (
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 font-mono font-bold">
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono font-bold">
                               Juara 1
                             </span>
                           )}
                         </div>
-                        <p className="text-xs text-stone-500 line-clamp-1">{proj.tagline}</p>
+                        <p className="text-xs text-stone-400 line-clamp-1">{proj.tagline}</p>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-stone-700 shrink-0" />
+                    <ArrowRight className="w-4 h-4 text-stone-600 group-hover:text-white shrink-0" />
                   </button>
                 ))}
               </div>
@@ -198,8 +197,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           {/* Navigation */}
           {filteredSections.length > 0 && (
             <div>
-              <div className="text-[11px] font-mono font-semibold uppercase tracking-wider text-stone-400 px-3 py-1">
-                Halaman & Navigasi
+              <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-500 px-3 py-1">
+                Jump to Section
               </div>
               <div className="space-y-1">
                 {filteredSections.map((sec) => (
@@ -209,10 +208,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                       onClose();
                       onNavigate(sec.id);
                     }}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-stone-100 text-stone-700 transition-colors text-sm"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-2xl hover:bg-white/5 text-stone-300 hover:text-white transition-colors text-sm font-mono"
                   >
                     <span>{sec.name}</span>
-                    <span className="text-[11px] font-mono text-stone-400">Lompat</span>
+                    <span className="text-[11px] text-stone-500">Jump ↵</span>
                   </button>
                 ))}
               </div>
@@ -222,9 +221,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         </div>
 
         {/* Footer info */}
-        <div className="px-4 py-2.5 bg-stone-50 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-400 font-mono">
-          <span>Tips: Tekan <kbd className="px-1 py-0.5 rounded bg-stone-200 text-stone-600">Esc</kbd> untuk menutup</span>
-          <span>Farid Nadir Amrulloh • Portfolio</span>
+        <div className="px-5 py-3 bg-[#0C0C0C] border-t border-white/5 flex items-center justify-between text-[11px] text-stone-500 font-mono">
+          <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-stone-300">Esc</kbd> to close</span>
+          <span>FN • Portfolio</span>
         </div>
       </div>
     </div>

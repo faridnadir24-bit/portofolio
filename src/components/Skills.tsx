@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 
-// Map icon string name to Lucide components
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Layout,
   Code2,
@@ -36,7 +35,7 @@ export const Skills: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const categories = [
-    { id: 'all', label: 'Semua Bidang' },
+    { id: 'all', label: 'All Disciplines' },
     ...SKILL_CATEGORIES.map(c => ({ id: c.id, label: c.title })),
   ];
 
@@ -45,33 +44,33 @@ export const Skills: React.FC = () => {
     : SKILL_CATEGORIES.filter(c => c.id === activeCategory);
 
   return (
-    <section id="keahlian" className="py-20 bg-white/70 border-b border-stone-200/60 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="keahlian" className="py-24 relative border-b border-white/5 bg-[#0A0A0A]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-12 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 text-stone-700 border border-stone-200 mb-3">
-            <span className="text-xs font-mono font-medium tracking-wider uppercase">03 • Kompetensi & Toolset</span>
+        <div className="max-w-3xl mb-16 text-left">
+          <div className="text-xs font-mono text-stone-400 uppercase tracking-widest mb-3">
+            [ 03 • CAPABILITIES & TOOLSET ]
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
-            Keahlian <span className="font-serif-italic font-normal text-stone-600">Teknis</span>
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
+            Technical <span className="text-stone-400 font-light">Proficiency.</span>
           </h2>
-          <p className="text-base text-stone-600 mt-3 leading-relaxed">
-            Kombinasi kemampuan rekayasa perangkat lunak modern, pemodelan data prediktif, serta integrasi hardware mikroelektronika.
+          <p className="text-sm sm:text-base text-stone-300 mt-3 leading-relaxed">
+            Perpaduan keahlian rekayasa sistem perangkat lunak modern, integrasi perangkat keras telemetri IoT, serta pemodelan AI.
           </p>
         </div>
 
-        {/* Skill Category Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-10 pb-2 border-b border-stone-200">
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap gap-2 mb-12 pb-2 border-b border-white/5">
           {categories.map((cat) => (
             <button
               key={cat.id}
               id={`skill-filter-${cat.id}`}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-2xl text-xs font-mono transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-stone-900 text-white shadow-xs font-semibold'
-                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200/80 hover:text-stone-900'
+                  ? 'bg-white text-black font-bold shadow-md'
+                  : 'bg-[#141414] text-stone-400 hover:text-white hover:bg-white/5 border border-white/5'
               }`}
             >
               {cat.label}
@@ -79,56 +78,51 @@ export const Skills: React.FC = () => {
           ))}
         </div>
 
-        {/* Categories & Skills Grid */}
+        {/* Skills Cards Grid */}
         <div className="space-y-12">
           {displayedCategories.map((category) => (
             <div key={category.id} className="text-left space-y-4">
               
-              {/* Category Subhead */}
-              <div className="flex items-center justify-between border-l-2 border-stone-900 pl-3">
+              <div className="flex items-center justify-between pl-3 border-l-2 border-white">
                 <div>
-                  <h3 className="font-serif font-bold text-lg text-stone-900">{category.title}</h3>
-                  <p className="text-xs text-stone-500">{category.description}</p>
+                  <h3 className="font-bold text-lg text-white">{category.title}</h3>
+                  <p className="text-xs font-mono text-stone-400">{category.description}</p>
                 </div>
               </div>
 
-              {/* Skills Card Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.skills.map((skill, sIdx) => {
                   const Icon = iconMap[skill.iconName] || Code2;
 
                   return (
                     <div
                       key={sIdx}
-                      className="bg-white rounded-2xl p-6 border border-stone-200 shadow-xs card-hover-lift flex flex-col justify-between"
+                      className="dark-card rounded-3xl p-6 flex flex-col justify-between"
                     >
                       <div>
-                        {/* Card Header: Icon & Proficiency Level */}
                         <div className="flex items-center justify-between mb-4">
-                          <div className="w-10 h-10 rounded-xl bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-800">
+                          <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white">
                             <Icon className="w-5 h-5" />
                           </div>
 
-                          <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-stone-100 text-stone-700 border border-stone-200">
+                          <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 text-stone-300 border border-white/10">
                             {skill.level}
                           </span>
                         </div>
 
-                        {/* Skill Title & Description */}
-                        <h4 className="font-serif font-bold text-base text-stone-900">
+                        <h4 className="font-bold text-base text-white">
                           {skill.name}
                         </h4>
-                        <p className="text-xs text-stone-600 mt-2 leading-relaxed">
+                        <p className="text-xs text-stone-400 mt-2 leading-relaxed font-sans">
                           {skill.description}
                         </p>
                       </div>
 
-                      {/* Tag Chips */}
-                      <div className="mt-5 pt-3 border-t border-stone-100 flex flex-wrap gap-1.5">
+                      <div className="mt-5 pt-3 border-t border-white/5 flex flex-wrap gap-1.5">
                         {skill.tags.map((tag, tIdx) => (
                           <span
                             key={tIdx}
-                            className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-stone-50 text-stone-600 border border-stone-200"
+                            className="px-2 py-0.5 rounded-lg text-[10px] font-mono bg-white/5 text-stone-400 border border-white/5"
                           >
                             {tag}
                           </span>
@@ -144,12 +138,12 @@ export const Skills: React.FC = () => {
           ))}
         </div>
 
-        {/* Competency Matrix Quick Summary Table */}
-        <div className="mt-14 p-6 rounded-2xl bg-white border border-stone-200 text-left shadow-xs">
-          <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-4 h-4 text-stone-700" />
-            <h4 className="font-serif font-bold text-sm sm:text-base text-stone-900">
-              Ringkasan Matriks Penguasaan Teknologi
+        {/* Quick Matrix Summary (Benjamin Creative Style) */}
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl dark-card text-left">
+          <div className="flex items-center gap-2 mb-6">
+            <Sparkles className="w-4 h-4 text-white" />
+            <h4 className="font-bold text-sm sm:text-base text-white font-mono uppercase tracking-wider">
+              Proficiency Benchmark
             </h4>
           </div>
 
@@ -162,11 +156,11 @@ export const Skills: React.FC = () => {
               { label: 'Database', tech: 'Supabase / SQL', grade: '90%' },
               { label: 'Data Visual', tech: 'D3 & Recharts', grade: '91%' },
             ].map((item, idx) => (
-              <div key={idx} className="bg-stone-50 p-3 rounded-xl border border-stone-200">
-                <span className="text-[10px] font-mono text-stone-500 block">{item.label}</span>
-                <span className="text-xs font-semibold text-stone-900 block mt-0.5">{item.tech}</span>
-                <div className="w-full bg-stone-200 h-1.5 rounded-full mt-2 overflow-hidden">
-                  <div className="bg-stone-800 h-full rounded-full" style={{ width: item.grade }}></div>
+              <div key={idx} className="bg-[#0C0C0C] p-3.5 rounded-2xl border border-white/5">
+                <span className="text-[10px] font-mono text-stone-400 block">{item.label}</span>
+                <span className="text-xs font-bold text-white block mt-0.5 font-mono">{item.tech}</span>
+                <div className="w-full bg-white/10 h-1 rounded-full mt-2.5 overflow-hidden">
+                  <div className="bg-white h-full rounded-full" style={{ width: item.grade }}></div>
                 </div>
               </div>
             ))}
