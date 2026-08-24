@@ -41,14 +41,16 @@ export default function App() {
   // Handle URL hash changes for deep linking to project prototypes (e.g. #avo-bio-demo)
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (!hash) return;
+      const rawHash = window.location.hash.replace('#', '');
+      // Strict regex sanitization against DOM-based XSS
+      const cleanHash = rawHash.replace(/[^a-zA-Z0-9-_]/g, '');
+      if (!cleanHash) return;
 
-      const matchedProject = PROJECTS.find(p => p.slug === hash || p.id === hash);
+      const matchedProject = PROJECTS.find(p => p.slug === cleanHash || p.id === cleanHash);
       if (matchedProject) {
         setSelectedProject(matchedProject);
       } else {
-        const element = document.getElementById(hash);
+        const element = document.getElementById(cleanHash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }

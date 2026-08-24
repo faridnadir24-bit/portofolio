@@ -1,6 +1,6 @@
 import { Project, SkillCategory, TimelineItem } from '../types';
 
-export const PERSONAL_INFO = {
+export const PERSONAL_INFO = Object.freeze({
   name: 'Farid Nadir Amrulloh',
   shortName: 'Farid Nadir',
   title: 'Mahasiswa Teknik Informatika, STT Wastukancana Purwakarta',
@@ -18,7 +18,7 @@ export const PERSONAL_INFO = {
   bio: 'Mahasiswa Teknik Informatika di STT Wastukancana yang berdedikasi merancang dan mengembangkan sistem komputasi terapan — memadukan rekayasa perangkat lunak dengan kecerdasan buatan (AI) dan IoT untuk isu energi terbarukan, pangan, dan lingkungan. Aktif di organisasi kemahasiswaan (GMNI) dan kegiatan sosial kemasyarakatan.',
   status: 'Terbuka untuk Kolaborasi Riset & Proyek Teknologi',
   profilePhotoUrl: '/farid-nadir.jpg',
-};
+});
 
 export const PROJECTS: Project[] = [
   {
