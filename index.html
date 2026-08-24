@@ -14,14 +14,61 @@
     <meta name="google-site-verification" content="ykVCZpT8pEzLUfsway0WtwA8ctzWeHxYXQp2AukZqFc" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C7CE0'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='bold' font-size='46' fill='white'>FN</text></svg>" />
 
-    <!-- Google Structured Data (Schema.org) for Site Name in Search Results -->
+    <!-- Google Structured Data (Schema.org Knowledge Graph & AI Overview) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Farid Nadir Amrulloh",
-      "alternateName": ["Portfolio Farid Nadir", "Farid Nadir Amrulloh Portfolio"],
-      "url": "https://portofolio-gvgr.vercel.app/"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://portofolio-gvgr.vercel.app/#website",
+          "name": "Farid Nadir Amrulloh",
+          "alternateName": ["Portfolio Farid Nadir", "Farid Nadir Amrulloh Portfolio"],
+          "url": "https://portofolio-gvgr.vercel.app/"
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://portofolio-gvgr.vercel.app/#profilepage",
+          "url": "https://portofolio-gvgr.vercel.app/",
+          "name": "Farid Nadir Amrulloh — Portfolio & Profil",
+          "mainEntity": {
+            "@type": "Person",
+            "@id": "https://portofolio-gvgr.vercel.app/#person",
+            "name": "Farid Nadir Amrulloh",
+            "alternateName": "Farid Nadir",
+            "jobTitle": "Mahasiswa Teknik Informatika",
+            "description": "Mahasiswa Teknik Informatika di STT Wastukancana Purwakarta yang berfokus pada rekayasa perangkat lunak, kecerdasan buatan (AI), Internet of Things (IoT), dan sistem komputasi terapan untuk energi terbarukan dan pangan. Juara 1 Nasional KNEC 2026.",
+            "image": "https://portofolio-gvgr.vercel.app/farid-nadir.jpg",
+            "url": "https://portofolio-gvgr.vercel.app/",
+            "sameAs": [
+              "https://www.linkedin.com/in/farid-nadir-amrulloh-149290360/",
+              "https://github.com/faridnadir24-bit"
+            ],
+            "alumniOf": {
+              "@type": "EducationalOrganization",
+              "name": "STT Wastukancana Purwakarta",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Purwakarta",
+                "addressRegion": "Jawa Barat",
+                "addressCountry": "ID"
+              }
+            },
+            "award": [
+              "Juara 1 Nasional Kilat National Essay Competition (KNEC) 2026 Subtema Ketahanan Pangan & Energi",
+              "Top 10 Besar Lomba Esai Online Nasional (LEON) 2026 Bidang Rekayasa Teknologi"
+            ],
+            "knowsAbout": [
+              "Artificial Intelligence (AI)",
+              "Internet of Things (IoT)",
+              "Full-Stack Web Development",
+              "Machine Learning & LSTM Time-Series",
+              "ESP32 & Sensor Telemetry",
+              "Smart Agriculture & Renewable Energy"
+            ]
+          }
+        }
+      ]
     }
     </script>
     
