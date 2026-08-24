@@ -1,0 +1,7 @@
+# Robots.txt for Farid Nadir Amrulloh Portfolio
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+Sitemap: https://portofolio-gvgr.vercel.app/sitemap.xml

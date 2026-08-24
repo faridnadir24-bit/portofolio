@@ -17,9 +17,10 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 interface HeroProps {
   onNavigate: (id: string) => void;
   onOpenProject: (projectId: string) => void;
+  onOpenCv: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject }) => {
+export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv }) => {
   return (
     <section 
       id="hero" 
@@ -77,23 +78,32 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject }) => {
             </div>
 
             {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 id="hero-cta-projects"
                 onClick={() => onNavigate('proyek')}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-[#6C7CE0] text-white hover:bg-[#5868CA] shadow-sm hover:shadow-md transition-all duration-200 active:scale-98 group"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-[#6C7CE0] text-white hover:bg-[#5868CA] shadow-xs hover:shadow-md transition-all duration-200 active:scale-98 group"
               >
-                <span>Lihat Proyek Unggulan</span>
+                <span>Lihat 5 Proyek</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+
+              <button
+                id="hero-cta-cv"
+                onClick={onOpenCv}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-white text-[#2A2A3C] hover:bg-stone-50 border border-stone-200/90 shadow-2xs hover:shadow-xs transition-all duration-200"
+              >
+                <Sparkles className="w-4 h-4 text-[#6C7CE0]" />
+                <span>Lihat Resume / CV</span>
               </button>
 
               <button
                 id="hero-cta-contact"
                 onClick={() => onNavigate('kontak')}
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-white text-[#2A2A3C] hover:bg-stone-50 border border-stone-200/90 shadow-2xs hover:shadow-xs transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-transparent text-[#5A5A72] hover:text-[#2A2A3C] hover:bg-stone-100/70 transition-all duration-200"
               >
                 <Mail className="w-4 h-4 text-[#6C7CE0]" />
-                <span>Hubungi Saya</span>
+                <span>Hubungi</span>
               </button>
             </div>
 

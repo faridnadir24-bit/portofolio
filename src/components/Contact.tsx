@@ -25,6 +25,9 @@ export const Contact: React.FC = () => {
     message: '',
   });
 
+  // Security honeypot trap to capture malicious automated spambots
+  const [honeypot, setHoneypot] = useState('');
+  const [lastSubmitTime, setLastSubmitTime] = useState<number>(0);
   const [isCopiedEmail, setIsCopiedEmail] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitFeedback, setSubmitFeedback] = useState<string | null>(null);
@@ -35,16 +38,42 @@ export const Contact: React.FC = () => {
     setTimeout(() => setIsCopiedEmail(false), 2500);
   };
 
+  // Sanitize input to prevent XSS / malicious code injection
+  const sanitizeInput = (text: string): string => {
+    return text.replace(/[<>]/g, '').trim();
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setSubmitFeedback('Mohon lengkapi formulir sebelum mengirim pesan.');
+
+    // 1. Security Bot Trap Check (Honeypot)
+    if (honeypot.length > 0) {
+      console.warn('Bot submission blocked.');
       return;
     }
 
-    // Prepare direct mailto link as fallback/action
-    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject || 'Pesan Kolaborasi Portofolio')}&body=${encodeURIComponent(
-      `Halo Farid Nadir,\n\nNama: ${formData.name}\nEmail: ${formData.email}\n\nPesan:\n${formData.message}`
+    // 2. Client-side Rate Limiting (Prevent spam flooding)
+    const now = Date.now();
+    if (now - lastSubmitTime < 4000) {
+      setSubmitFeedback('Mohon tunggu beberapa detik sebelum mengirim pesan kembali.');
+      return;
+    }
+
+    const cleanName = sanitizeInput(formData.name);
+    const cleanEmail = sanitizeInput(formData.email);
+    const cleanSubject = sanitizeInput(formData.subject);
+    const cleanMessage = sanitizeInput(formData.message);
+
+    if (!cleanName || !cleanEmail || !cleanMessage) {
+      setSubmitFeedback('Mohon lengkapi formulir dengan teks yang valid.');
+      return;
+    }
+
+    setLastSubmitTime(now);
+
+    // Prepare direct mailto link as secure fallback
+    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(cleanSubject || 'Pesan Kolaborasi Portofolio')}&body=${encodeURIComponent(
+      `Halo Farid Nadir,\n\nNama: ${cleanName}\nEmail: ${cleanEmail}\n\nPesan:\n${cleanMessage}`
     )}`;
 
     setIsSubmitted(true);
@@ -213,6 +242,18 @@ export const Contact: React.FC = () => {
             </p>
 
             <form onSubmit={handleFormSubmit} className="space-y-4">
+              {/* Invisible Honeypot Field for Bot Detection */}
+              <div className="hidden" aria-hidden="true">
+                <input
+                  type="text"
+                  name="_gotcha_honeypot"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label htmlFor="contact-name" className="text-xs font-mono font-medium text-[#4A4A62] block">
