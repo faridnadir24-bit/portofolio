@@ -138,7 +138,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 href={project.liveDemoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-[#5865F2] text-white hover:bg-[#4351DB] transition-all shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-stone-900 text-white hover:bg-stone-800 transition-all shadow-2xs"
               >
                 <span>Buka Web Live</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -162,34 +162,34 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           {/* Key Metrics Banner */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {project.metrics.map((m, idx) => (
-              <div key={idx} className="p-4 rounded-2xl bg-[#FDF9F3] border border-stone-200/80 text-left">
-                <span className="text-[11px] font-mono text-[#6A6A82] block">{m.label}</span>
-                <span className="text-xl font-serif font-bold text-[#2A2A3C] mt-1 block">{m.value}</span>
+              <div key={idx} className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-left">
+                <span className="text-[11px] font-mono text-stone-500 block">{m.label}</span>
+                <span className="text-xl font-serif font-bold text-stone-900 mt-1 block">{m.value}</span>
               </div>
             ))}
-            <div className="p-4 rounded-2xl bg-[#FDF9F3] border border-stone-200/80 text-left">
-              <span className="text-[11px] font-mono text-[#6A6A82] block">Kategori</span>
-              <span className="text-sm font-semibold text-[#6C7CE0] mt-1 block">{project.categoryLabel}</span>
+            <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-left">
+              <span className="text-[11px] font-mono text-stone-500 block">Kategori</span>
+              <span className="text-sm font-semibold text-stone-800 mt-1 block">{project.categoryLabel}</span>
             </div>
-            <div className="p-4 rounded-2xl bg-[#FDF9F3] border border-stone-200/80 text-left">
-              <span className="text-[11px] font-mono text-[#6A6A82] block">Status Sistem</span>
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 mt-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-left">
+              <span className="text-[11px] font-mono text-stone-500 block">Status Sistem</span>
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-800 mt-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                 Prototipe Teruji
               </span>
             </div>
           </div>
 
           {/* Interactive Live Prototype Sandbox / Simulation Area */}
-          <div className="rounded-2xl border-2 border-[#6C7CE0]/30 bg-gradient-to-b from-stone-50 to-stone-100/50 p-5 overflow-hidden">
+          <div className="rounded-2xl border border-stone-200 bg-stone-50/70 p-5 overflow-hidden">
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-stone-200">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#6C7CE0]" />
-                <span className="text-xs font-mono font-bold text-[#2A2A3C] uppercase tracking-wider">
+                <Sparkles className="w-4 h-4 text-stone-700" />
+                <span className="text-xs font-mono font-bold text-stone-900 uppercase tracking-wider">
                   Interactive Prototype Simulator
                 </span>
               </div>
-              <span className="text-[11px] font-mono bg-white px-2.5 py-0.5 rounded-md border border-stone-200 text-[#5A5A72]">
+              <span className="text-[11px] font-mono bg-white px-2.5 py-0.5 rounded-md border border-stone-200 text-stone-600">
                 Live Interactive Mode
               </span>
             </div>

@@ -4,14 +4,10 @@ import {
   Sparkles, 
   FileText, 
   Mail, 
-  Phone, 
-  Github, 
-  Linkedin, 
   BookOpen, 
   ArrowRight, 
   X, 
   ExternalLink,
-  Flame,
   Check
 } from 'lucide-react';
 import { PERSONAL_INFO, PROJECTS } from '../data/portfolioData';
@@ -82,14 +78,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       >
         {/* Search Header */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-stone-100 bg-stone-50/50">
-          <Search className="w-5 h-5 text-[#6C7CE0]" />
+          <Search className="w-5 h-5 text-stone-500" />
           <input
             type="text"
             autoFocus
             placeholder="Ketik untuk mencari proyek, navigasi, atau kontak (misal: AVO-BIO, CV)..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 text-sm bg-transparent border-none outline-none text-[#2A2A3C] placeholder:text-stone-400 font-sans"
+            className="flex-1 text-sm bg-transparent border-none outline-none text-stone-900 placeholder:text-stone-400 font-sans"
           />
           <button 
             onClick={onClose}
@@ -113,15 +109,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                   onClose();
                   onOpenCv();
                 }}
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-[#6C7CE0]/10 text-stone-700 hover:text-[#5868CA] transition-colors group text-sm font-medium"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 hover:text-stone-900 transition-colors group text-sm font-medium"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-[#6C7CE0]/15 text-[#6C7CE0]">
+                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
                     <FileText className="w-4 h-4" />
                   </div>
                   <span>Lihat & Unduh Ringkasan CV (Curriculum Vitae)</span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#6C7CE0] transition-colors" />
+                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-stone-700 transition-colors" />
               </button>
 
               <button
@@ -129,7 +125,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 transition-colors group text-sm font-medium"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-600">
+                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
                     <Mail className="w-4 h-4" />
                   </div>
                   <span>Salin Email ({PERSONAL_INFO.email})</span>
@@ -150,12 +146,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 transition-colors group text-sm font-medium"
               >
                 <div className="flex items-center gap-3">
-                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-600">
+                  <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
                     <BookOpen className="w-4 h-4" />
                   </div>
                   <span>Baca Artikel Riset AVO-BIO di Medium</span>
                 </div>
-                <ExternalLink className="w-4 h-4 text-stone-400 group-hover:text-stone-700" />
+                <ExternalLink className="w-3 h-3 text-stone-400 group-hover:text-stone-700" />
               </a>
             </div>
           </div>
@@ -174,17 +170,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                       onClose();
                       onOpenProject(proj.id);
                     }}
-                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-[#6C7CE0]/10 text-stone-700 hover:text-[#5868CA] transition-colors group text-sm text-left"
+                    className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-stone-100 text-stone-700 hover:text-stone-900 transition-colors group text-sm text-left"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-1.5 rounded-lg bg-stone-100 group-hover:bg-[#6C7CE0]/20 text-[#6C7CE0]">
+                      <div className="p-1.5 rounded-lg bg-stone-100 text-stone-700">
                         <Sparkles className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="font-semibold text-stone-800 flex items-center gap-2">
+                        <div className="font-semibold text-stone-900 flex items-center gap-2">
                           <span>{proj.title}</span>
                           {proj.awardBadge?.isChampion && (
-                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-mono font-bold">
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200 font-mono font-bold">
                               Juara 1
                             </span>
                           )}
@@ -192,7 +188,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                         <p className="text-xs text-stone-500 line-clamp-1">{proj.tagline}</p>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#6C7CE0] shrink-0" />
+                    <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-stone-700 shrink-0" />
                   </button>
                 ))}
               </div>

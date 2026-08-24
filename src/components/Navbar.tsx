@@ -70,26 +70,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => handleLinkClick('hero')} 
             className="flex items-center gap-3 text-left group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#6C7CE0] to-[#B48CE0] flex items-center justify-center text-white font-serif font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 rounded-xl bg-stone-900 flex items-center justify-center text-white font-serif font-bold text-base shadow-xs group-hover:scale-105 transition-transform">
               FN
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif font-bold text-lg tracking-tight text-[#2A2A3C] group-hover:text-[#6C7CE0] transition-colors">
+                <span className="font-serif font-bold text-base tracking-tight text-stone-900 group-hover:text-stone-700 transition-colors">
                   Farid Nadir Amrulloh
                 </span>
-                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-mono font-medium bg-[#6C7CE0]/10 text-[#6C7CE0] border border-[#6C7CE0]/20">
-                  TI STT Wastukancana
+                <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-medium bg-stone-100 text-stone-600 border border-stone-200">
+                  TI Wastukancana
                 </span>
               </div>
-              <p className="text-xs text-[#5A5A72] hidden md:block">
-                AI, IoT & Data-Driven Systems
+              <p className="text-xs text-stone-500 hidden md:block">
+                AI, IoT & Systems Engineer
               </p>
             </div>
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-stone-100/70 p-1.5 rounded-full border border-stone-200/60 backdrop-blur-xs">
+          <nav className="hidden lg:flex items-center gap-1 bg-stone-100 p-1.5 rounded-full border border-stone-200 backdrop-blur-xs">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               const Icon = link.icon;
@@ -100,11 +100,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleLinkClick(link.id)}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                     isActive
-                      ? 'bg-white text-[#2A2A3C] font-semibold shadow-xs border border-stone-200/80'
-                      : 'text-[#5A5A72] hover:text-[#2A2A3C] hover:bg-white/50'
+                      ? 'bg-white text-stone-900 font-semibold shadow-xs border border-stone-200'
+                      : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#6C7CE0]' : 'text-[#7C7C92]'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-stone-900' : 'text-stone-400'}`} />
                   <span>{link.label}</span>
                 </button>
               );
@@ -116,28 +116,28 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Quick Command Trigger */}
             <button
               onClick={onOpenCommandPalette}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-stone-100/90 hover:bg-stone-200/80 text-stone-600 border border-stone-200/80 transition-colors shadow-2xs group"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-stone-100 hover:bg-stone-200/80 text-stone-600 border border-stone-200 transition-colors shadow-2xs group"
               title="Cari & Aksi Cepat (Ctrl + K)"
             >
-              <Command className="w-3.5 h-3.5 text-stone-500 group-hover:text-[#6C7CE0]" />
+              <Command className="w-3.5 h-3.5 text-stone-500 group-hover:text-stone-900" />
               <span className="hidden xl:inline text-[11px] font-mono text-stone-400">Ctrl K</span>
             </button>
 
             {/* Resume / CV Button */}
             <button
               onClick={onOpenCv}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-stone-50 text-stone-700 border border-stone-200/90 shadow-2xs hover:shadow-xs transition-all active:scale-98"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 shadow-2xs hover:shadow-xs transition-all active:scale-98"
             >
-              <FileText className="w-3.5 h-3.5 text-[#6C7CE0]" />
+              <FileText className="w-3.5 h-3.5 text-stone-600" />
               <span>Lihat CV</span>
             </button>
 
             <button
               id="nav-contact-cta"
               onClick={() => handleLinkClick('kontak')}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-[#6C7CE0] text-white hover:bg-[#5A6ACB] shadow-xs hover:shadow-md transition-all duration-200 active:scale-98"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-stone-900 text-white hover:bg-stone-800 shadow-xs hover:shadow-sm transition-all duration-200 active:scale-98"
             >
-              <span>Hubungi Saya</span>
+              <span>Hubungi</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -180,12 +180,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleLinkClick(link.id)}
                   className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium text-left transition-colors ${
                     isActive
-                      ? 'bg-[#6C7CE0]/10 text-[#6C7CE0] font-semibold'
-                      : 'text-[#2A2A3C] hover:bg-stone-50'
+                      ? 'bg-stone-100 text-stone-900 font-semibold'
+                      : 'text-stone-700 hover:bg-stone-50'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 text-[#6C7CE0]" />
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-stone-900' : 'text-stone-400'}`} />
                     <span>{link.label}</span>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-stone-400" />
@@ -199,18 +199,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   onOpenCv();
                 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold bg-stone-100 text-stone-700 hover:bg-stone-200 transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold bg-white text-stone-800 border border-stone-300 hover:bg-stone-50 transition-colors"
               >
-                <FileText className="w-4 h-4 text-[#6C7CE0]" />
+                <FileText className="w-4 h-4 text-stone-600" />
                 <span>Lihat & Unduh CV</span>
               </button>
 
               <button
                 id="mobile-cta-btn"
                 onClick={() => handleLinkClick('kontak')}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold bg-[#6C7CE0] text-white hover:bg-[#5A6ACB] transition-colors"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold bg-stone-900 text-white hover:bg-stone-800 transition-colors"
               >
-                <span>Hubungi Saya Sekarang</span>
+                <span>Hubungi Saya</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>

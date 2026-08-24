@@ -6,7 +6,6 @@ import {
   Phone, 
   MapPin, 
   Award, 
-  Briefcase, 
   GraduationCap, 
   Code2, 
   Users, 
@@ -35,10 +34,10 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Action Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-stone-50/90 sticky top-0 z-10 print:hidden">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-stone-50 sticky top-0 z-10 print:hidden">
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#6C7CE0] animate-pulse" />
-            <span className="text-xs font-mono font-bold text-stone-700 uppercase tracking-wider">
+            <div className="w-2.5 h-2.5 rounded-full bg-stone-900" />
+            <span className="text-xs font-mono font-bold text-stone-800 uppercase tracking-wider">
               Curriculum Vitae (CV) Resmi • Farid Nadir Amrulloh
             </span>
           </div>
@@ -46,7 +45,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-[#2A2A3C] hover:bg-stone-900 text-white shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white shadow-xs transition-colors"
               title="Cetak atau Simpan PDF"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -62,37 +61,37 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Scrollable CV Document Body (Exact matching structure with user's official PDF) */}
+        {/* Scrollable CV Document Body */}
         <div className="p-8 sm:p-12 overflow-y-auto space-y-8 bg-white print:p-0">
           
           {/* Header CV */}
           <div className="border-b border-stone-200 pb-6 text-center sm:text-left">
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#1E232A] tracking-tight uppercase">
+            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight uppercase">
               {PERSONAL_INFO.name}
             </h1>
-            <p className="text-sm sm:text-base text-[#5865F2] font-semibold mt-1">
+            <p className="text-sm sm:text-base text-stone-600 font-semibold mt-1 font-mono">
               Mahasiswa Teknik Informatika | Leadership, Technology & Social Impact
             </p>
             
             {/* Contact Strip */}
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1.5 text-xs font-mono text-stone-600 mt-3 pt-3 border-t border-stone-100">
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-[#5865F2]" /> Purwakarta, Indonesia
+                <MapPin className="w-3.5 h-3.5 text-stone-500" /> Purwakarta, Indonesia
               </span>
               <span>•</span>
-              <a href={`tel:${PERSONAL_INFO.whatsappNumber}`} className="flex items-center gap-1 hover:text-[#5865F2]">
-                <Phone className="w-3.5 h-3.5 text-[#5865F2]" /> 081902716562
+              <a href={`tel:${PERSONAL_INFO.whatsappNumber}`} className="flex items-center gap-1 hover:text-stone-900">
+                <Phone className="w-3.5 h-3.5 text-stone-500" /> 081902716562
               </a>
               <span>•</span>
-              <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-1 hover:text-[#5865F2]">
-                <Mail className="w-3.5 h-3.5 text-[#5865F2]" /> {PERSONAL_INFO.email}
+              <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-1 hover:text-stone-900">
+                <Mail className="w-3.5 h-3.5 text-stone-500" /> {PERSONAL_INFO.email}
               </a>
               <span>•</span>
-              <a href={PERSONAL_INFO.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] text-[#0077B5] font-semibold">
+              <a href={PERSONAL_INFO.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 text-stone-800 font-semibold underline">
                 LinkedIn
               </a>
               <span>•</span>
-              <a href={PERSONAL_INFO.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#5865F2] text-stone-800 font-semibold">
+              <a href={PERSONAL_INFO.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 text-stone-800 font-semibold underline">
                 GitHub
               </a>
             </div>
@@ -100,7 +99,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 1. PROFIL */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#5865F2] border-b-2 border-[#5865F2]/30 pb-1 mb-2.5">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-900 border-b border-stone-800 pb-1 mb-2.5">
               PROFIL
             </h2>
             <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-sans">
@@ -110,7 +109,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 2. PENDIDIKAN */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#5865F2] border-b-2 border-[#5865F2]/30 pb-1 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-900 border-b border-stone-800 pb-1 mb-3 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4" /> PENDIDIKAN
             </h2>
             <div className="space-y-3 text-xs sm:text-sm">
@@ -134,7 +133,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 3. PENGALAMAN ORGANISASI & KEPEMIMPINAN */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#5865F2] border-b-2 border-[#5865F2]/30 pb-1 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-900 border-b border-stone-800 pb-1 mb-3 flex items-center gap-1.5">
               <Users className="w-4 h-4" /> PENGALAMAN ORGANISASI & KEPEMIMPINAN
             </h2>
             <div className="space-y-4 text-xs sm:text-sm">
@@ -192,7 +191,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 4. PENGALAMAN KEGIATAN & VOLUNTEER */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#5865F2] border-b-2 border-[#5865F2]/30 pb-1 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-900 border-b border-stone-800 pb-1 mb-3 flex items-center gap-1.5">
               <HeartHandshake className="w-4 h-4" /> PENGALAMAN KEGIATAN & VOLUNTEER
             </h2>
             <div className="text-xs sm:text-sm">
@@ -210,7 +209,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 5. PROYEK & INISIATIF TEKNOLOGI */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#5865F2] border-b-2 border-[#5865F2]/30 pb-1 mb-3 flex items-center gap-1.5">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-900 border-b border-stone-800 pb-1 mb-3 flex items-center gap-1.5">
               <Code2 className="w-4 h-4" /> PROYEK & INISIATIF TEKNOLOGI
             </h2>
             <div className="space-y-3.5 text-xs sm:text-sm">
@@ -227,7 +226,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
                   href="https://panganara-ai-delta.vercel.app/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#5865F2] hover:underline mt-0.5"
+                  className="inline-flex items-center gap-1 text-[11px] font-mono text-stone-800 hover:underline mt-0.5"
                 >
                   <span>Demo: https://panganara-ai-delta.vercel.app/</span>
                   <ExternalLink className="w-3 h-3" />
@@ -246,7 +245,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
                   href="https://biogas-ten.vercel.app/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#5865F2] hover:underline mt-0.5"
+                  className="inline-flex items-center gap-1 text-[11px] font-mono text-stone-800 hover:underline mt-0.5"
                 >
                   <span>Demo: https://biogas-ten.vercel.app/</span>
                   <ExternalLink className="w-3 h-3" />
@@ -268,12 +267,12 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 6. PENCAPAIAN */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-amber-700 border-b-2 border-amber-500/30 pb-1 mb-3 flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-amber-600" /> PENCAPAIAN
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-amber-900 border-b border-amber-400 pb-1 mb-3 flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-amber-700" /> PENCAPAIAN
             </h2>
             <div className="space-y-2 text-xs sm:text-sm">
               <div className="flex items-start gap-2">
-                <span className="text-amber-600 font-bold">🥇</span>
+                <span className="text-amber-700 font-bold">🥇</span>
                 <div>
                   <span className="font-bold text-stone-900">Juara 1 - Kilat National Essay Competition (KNEC) 2026</span>
                   <p className="text-xs text-stone-600">Subtema Ketahanan Pangan dan Energi | Jul 2026</p>
@@ -281,7 +280,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <div className="flex items-start gap-2">
-                <span className="text-stone-500 font-bold">🏅</span>
+                <span className="text-stone-600 font-bold">🏅</span>
                 <div>
                   <span className="font-bold text-stone-900">Top 10 Besar Terbaik - Lomba Esai Online Nasional (LEON) 2026</span>
                   <p className="text-xs text-stone-600">Subtema Aplikasi & Rekayasa Teknologi | Jul 2026</p>
@@ -292,7 +291,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
           {/* 7. KEAHLIAN */}
           <div>
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-[#5865F2] border-b-2 border-[#5865F2]/30 pb-1 mb-2.5 flex items-center gap-1.5">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-900 border-b border-stone-800 pb-1 mb-2.5 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4" /> KEAHLIAN
             </h2>
             <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 text-xs sm:text-sm text-stone-700 leading-relaxed font-mono">
@@ -307,7 +306,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           <span>{PERSONAL_INFO.name} • Curriculum Vitae</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-stone-800 text-white font-medium hover:bg-stone-900 transition-colors"
+            className="px-4 py-1.5 rounded-xl bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors"
           >
             Tutup
           </button>

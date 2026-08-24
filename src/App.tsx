@@ -115,45 +115,45 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FDF9F3] text-[#2A2A3C] relative selection:bg-[#6C7CE0]/20 selection:text-[#5868CA]">
+    <div className="min-h-screen flex flex-col bg-[#FBF9F5] text-stone-900 relative selection:bg-stone-900 selection:text-white">
       
       {/* 1. Dynamic Scroll Reading Progress Bar (Top) */}
       <div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#6C7CE0] via-[#8E7FE8] to-[#B48CE0] z-50 transition-all duration-75 origin-left"
+        className="fixed top-0 left-0 right-0 h-0.5 bg-stone-900 z-50 transition-all duration-75 origin-left"
         style={{ width: `${scrollProgress}%` }}
         aria-hidden="true"
       />
 
-      {/* 2. Tactile Subtle Paper Grain Overlay (Removes generic AI flat look) */}
+      {/* 2. Tactile Subtle Paper Grain Overlay */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.022] -z-10 mix-blend-multiply"
+        className="fixed inset-0 pointer-events-none opacity-[0.02] -z-10 mix-blend-multiply"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
         }}
         aria-hidden="true"
       />
 
-      {/* Top Navbar */}
+      {/* Navbar */}
       <Navbar 
         activeSection={activeSection} 
         onNavigate={handleNavigate}
-        onOpenCv={() => setIsCvModalOpen(true)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+        onOpenCv={() => setIsCvModalOpen(true)}
       />
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* 1. Hero Section */}
+        {/* 1. Hero */}
         <Hero 
           onNavigate={handleNavigate} 
           onOpenProject={handleOpenProject} 
           onOpenCv={() => setIsCvModalOpen(true)}
         />
 
-        {/* 2. Tentang Saya */}
+        {/* 2. Tentang / About */}
         <About />
 
-        {/* 3. Proyek */}
+        {/* 3. Proyek Unggulan */}
         <Projects onOpenProject={handleOpenProject} />
 
         {/* 4. Keahlian Teknis */}
@@ -173,21 +173,21 @@ export default function App() {
       <aside aria-label="Aksi Cepat" className="fixed bottom-6 right-6 z-40 hidden md:flex items-center gap-2">
         <button
           onClick={() => setIsCvModalOpen(true)}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-white text-stone-700 border border-stone-200/90 shadow-md hover:shadow-lg hover:border-[#6C7CE0] hover:text-[#6C7CE0] transition-all duration-200 active:scale-95"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold bg-white text-stone-800 border border-stone-300 shadow-md hover:shadow-lg hover:border-stone-500 transition-all duration-200 active:scale-95"
           title="Buka Ringkasan CV"
         >
-          <FileText className="w-3.5 h-3.5 text-[#6C7CE0]" />
+          <FileText className="w-3.5 h-3.5 text-stone-600" />
           <span>Resume</span>
         </button>
 
         <button
           onClick={() => setIsCommandPaletteOpen(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-[#2A2A3C] text-white shadow-lg hover:shadow-xl hover:bg-stone-800 transition-all duration-200 active:scale-95 group"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-stone-900 text-white shadow-lg hover:shadow-xl hover:bg-stone-800 transition-all duration-200 active:scale-95 group"
           title="Menu Aksi Cepat (Ctrl + K)"
         >
-          <Command className="w-3.5 h-3.5 text-[#6C7CE0] group-hover:scale-110 transition-transform" />
+          <Command className="w-3.5 h-3.5 text-stone-400 group-hover:scale-110 transition-transform" />
           <span>Quick Actions</span>
-          <kbd className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/20 text-stone-200 ml-0.5">
+          <kbd className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-stone-800 text-stone-300 ml-0.5">
             ⌘K
           </kbd>
         </button>
