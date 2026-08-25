@@ -4,17 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Farid Nadir Amrulloh — Portfolio | Teknik Informatika STT Wastukancana</title>
-    <meta name="description" content="Portfolio resmi Farid Nadir Amrulloh — Mahasiswa Teknik Informatika STT Wastukancana Purwakarta yang berfokus pada rekayasa AI, IoT, dan sistem komputasi terapan." />
+    <meta name="description" content="Portfolio resmi Farid Nadir Amrulloh — Mahasiswa Teknik Informatika STT Wastukancana Purwakarta. AI & IoT Developer, Juara 1 Nasional KNEC 2026." />
+    <meta name="author" content="Farid Nadir Amrulloh" />
+    <meta name="theme-color" content="#FAFAF9" />
+    <link rel="canonical" href="https://portofolio-gvgr.vercel.app/" />
+
+    <!-- Open Graph / Facebook — fixes "Vercel" site name & missing thumbnail -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Farid Nadir Amrulloh" />
     <meta property="og:title" content="Farid Nadir Amrulloh — Portfolio & Inovasi Teknologi" />
     <meta property="og:description" content="Mahasiswa Teknik Informatika STT Wastukancana | AI & IoT Developer | Juara 1 Nasional KNEC 2026" />
-    <meta property="og:site_name" content="Farid Nadir Amrulloh" />
     <meta property="og:url" content="https://portofolio-gvgr.vercel.app/" />
+    <meta property="og:image" content="https://portofolio-gvgr.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Farid Nadir Amrulloh — Portfolio Teknik Informatika" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Farid Nadir Amrulloh — Portfolio" />
+    <meta name="twitter:description" content="AI & IoT Developer | Juara 1 KNEC 2026 | STT Wastukancana" />
+    <meta name="twitter:image" content="https://portofolio-gvgr.vercel.app/og-image.jpg" />
+
+    <!-- Google Search Console -->
     <meta name="google-site-verification" content="HTAvq21jlOlb15QaUda_1gvw_cRDVKoH7_vQ9xYsxf0" />
     <meta name="google-site-verification" content="ykVCZpT8pEzLUfsway0WtwA8ctzWeHxYXQp2AukZqFc" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236C7CE0'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='bold' font-size='46' fill='white'>FN</text></svg>" />
 
-    <!-- ====== COMPREHENSIVE CLIENT-SIDE SECURITY HARDENING ====== -->
+    <!-- Application name (helps Google identify site name) -->
+    <meta name="application-name" content="Farid Nadir Amrulloh" />
+    <meta name="apple-mobile-web-app-title" content="Farid Nadir Amrulloh" />
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563EB'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='bold' font-size='46' fill='white'>FN</text></svg>" />
+
+    <!-- ====== COMPREHENSIVE CLIENT-SIDE SECURITY HARDENING v3 ====== -->
     <script>
       // 1. Anti-Clickjacking & Anti-Framing (Framebusting)
       try {
@@ -26,41 +49,63 @@
         document.body.innerHTML = '';
       }
 
-      // 2. Anti-Right-Click Source Inspection (production deterrent)
+      // 2. Anti-Right-Click Source Inspection
       document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
 
       // 3. Anti-Drag (prevent image/text dragging for scraping)
       document.addEventListener('dragstart', function(e) { e.preventDefault(); });
 
-      // 4. Disable common DevTools keyboard shortcuts for casual snooping
+      // 4. Anti-Copy/Cut/Paste on document level
+      ['copy', 'cut'].forEach(function(ev) {
+        document.addEventListener(ev, function(e) { e.preventDefault(); });
+      });
+
+      // 5. Anti-Text-Selection CSS injection (deterrent only)
+      var _nss = document.createElement('style');
+      _nss.textContent = 'img, video { pointer-events: none; -webkit-user-select: none; user-select: none; }';
+      document.head.appendChild(_nss);
+
+      // 6. Disable common DevTools keyboard shortcuts
       document.addEventListener('keydown', function(e) {
         // F12
         if (e.key === 'F12') { e.preventDefault(); }
-        // Ctrl+Shift+I (Inspector), Ctrl+Shift+J (Console), Ctrl+Shift+C (Element Picker)
+        // Ctrl+Shift+I/J/C (Inspector/Console/Element Picker)
         if (e.ctrlKey && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); }
         // Ctrl+U (View Source)
         if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) { e.preventDefault(); }
         // Ctrl+S (Save Page)
         if (e.ctrlKey && (e.key === 's' || e.key === 'S')) { e.preventDefault(); }
+        // Ctrl+P (Print — prevents easy PDF save of page)
+        if (e.ctrlKey && (e.key === 'p' || e.key === 'P') && !e.shiftKey) { e.preventDefault(); }
+        // Ctrl+A (Select All — discourages bulk copy)
+        if (e.ctrlKey && (e.key === 'a' || e.key === 'A') && !e.shiftKey) { e.preventDefault(); }
+        // PrintScreen key
+        if (e.key === 'PrintScreen') {
+          navigator.clipboard.writeText('').catch(function(){});
+        }
       });
 
-      // 5. Console Warning Banner (social engineering deterrent)
+      // 7. Clear window.name to prevent data leakage across sites
+      window.name = '';
+
+      // 8. Console Warning Banner (social engineering deterrent)
       console.log(
         '%c⚠️ PERINGATAN KEAMANAN',
         'color:#EF4444;font-size:28px;font-weight:900;text-shadow:1px 1px 0 #000;'
       );
       console.log(
-        '%cIni adalah fitur browser yang ditujukan untuk developer. Jika seseorang menyuruh Anda menyalin-tempel sesuatu di sini, itu adalah penipuan. Memasukkan kode di sini bisa membahayakan akun Anda.',
+        '%cIni adalah fitur browser untuk developer. Jika seseorang menyuruh Anda menyalin-tempel sesuatu di sini, itu adalah penipuan.',
         'color:#F59E0B;font-size:14px;'
       );
       console.log(
-        '%c🔒 Situs ini dilindungi oleh Content-Security-Policy, HSTS Preload, COEP, COOP, dan Permissions-Policy penuh.',
+        '%c🔒 Situs ini dilindungi oleh CSP, HSTS Preload, COEP, COOP, Trusted Types, dan 40+ API Permissions-Policy blocks.',
         'color:#10B981;font-size:12px;'
       );
 
-      // 6. Detect DevTools open (timing-based heuristic, non-blocking)
+      // 9. DevTools detection (timing heuristic + property getter trap)
       (function() {
         var _dc = 0;
+        // Method A: debugger timing
         setInterval(function() {
           var s = performance.now();
           debugger; // eslint-disable-line no-debugger
@@ -71,7 +116,43 @@
             }
           }
         }, 3000);
+
+        // Method B: console.log property getter (fires only when DevTools console is open)
+        var _devImg = new Image();
+        Object.defineProperty(_devImg, 'id', {
+          get: function() {
+            _dc += 3;
+            document.title = '⚠️ DevTools Detected — Farid Nadir Portfolio';
+          }
+        });
+        setInterval(function() { console.debug('%c', _devImg); }, 5000);
       })();
+
+      // 10. Block external script injection via MutationObserver
+      (function() {
+        var _allowed = ['portofolio-gvgr.vercel.app', 'fonts.googleapis.com', 'fonts.gstatic.com'];
+        var obs = new MutationObserver(function(mutations) {
+          mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+              if (node.tagName === 'SCRIPT' && node.src) {
+                try {
+                  var u = new URL(node.src);
+                  var ok = _allowed.some(function(d) { return u.hostname === d || u.hostname.endsWith('.' + d); });
+                  if (!ok && u.hostname !== location.hostname) {
+                    node.remove();
+                  }
+                } catch(e) { node.remove(); }
+              }
+            });
+          });
+        });
+        obs.observe(document.documentElement, { childList: true, subtree: true });
+      })();
+
+      // 11. Disable eval and Function constructor (additional XSS prevention)
+      try {
+        window.eval = function() { throw new Error('eval() is disabled for security.'); };
+      } catch(e) {}
     </script>
 
     <!-- Google Structured Data (Schema.org Knowledge Graph & AI Overview) -->

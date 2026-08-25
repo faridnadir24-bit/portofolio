@@ -3,7 +3,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
   return (
-    <section id="tentang" className="py-24 border-t border-neutral-100">
+    <section id="tentang" className="py-24 section-alt">
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start text-left">

@@ -3,7 +3,7 @@ import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 export const Skills: React.FC = () => {
   return (
-    <section id="keahlian" className="py-24 border-t border-neutral-100">
+    <section id="keahlian" className="py-24 section-alt">
       <div className="max-w-5xl mx-auto px-5 sm:px-8 text-left">
 
         <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight mb-4">
