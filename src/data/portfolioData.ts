@@ -18,7 +18,7 @@ export const PERSONAL_INFO = Object.freeze({
   tagline: 'Membangun solusi perangkat lunak berbasis AI, IoT, dan analisis data cerdas dengan integritas, disiplin, dan dampak nyata bagi masyarakat.',
   bio: 'Mahasiswa Teknik Informatika di STT Wastukancana yang aktif dalam organisasi, kegiatan sosial, dan pengembangan solusi berbasis teknologi. Memiliki pengalaman kepemimpinan sejak SMA hingga perguruan tinggi serta pengalaman mengembangkan prototype website dan AI untuk kompetisi. Tertarik pada inovasi teknologi, kepemimpinan, kolaborasi, dan pengembangan solusi yang bermanfaat bagi masyarakat.',
   status: 'Terbuka untuk Kolaborasi Riset & Proyek Teknologi',
-  profilePhotoUrl: '/farid-nadir-hd.jpg',
+  profilePhotoUrl: '/farid-nadir-formal.jpg',
 });
 
 export const PROJECTS: Project[] = [

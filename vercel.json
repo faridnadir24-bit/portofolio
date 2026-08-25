@@ -52,7 +52,7 @@
       ]
     },
     {
-      "source": "/(farid-nadir.jpg|farid-nadir-original.jpg)",
+      "source": "/(farid-nadir.jpg|farid-nadir-original.jpg|farid-nadir-formal.jpg)",
       "headers": [
         {
           "key": "Cache-Control",
