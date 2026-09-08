@@ -77,6 +77,10 @@ export const About: React.FC = () => {
                   <p className="font-semibold text-neutral-900">Juara 1 KNEC 2026</p>
                   <p className="text-sm text-neutral-500">Ketahanan Pangan & Energi</p>
                 </div>
+                <div className="pl-4 border-l-2 border-amber-500">
+                  <p className="font-semibold text-neutral-900">Juara 5 MEA 2026</p>
+                  <p className="text-sm text-neutral-500">Nasional Mahasiswa (AVO-BIO 2.0)</p>
+                </div>
                 <div className="pl-4 border-l-2 border-amber-300">
                   <p className="font-semibold text-neutral-900">Top 10 LEON 2026</p>
                   <p className="text-sm text-neutral-500">Rekayasa Teknologi</p>
