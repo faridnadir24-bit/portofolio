@@ -52,7 +52,7 @@
       ]
     },
     {
-      "source": "/(farid-nadir.jpg|farid-nadir-original.jpg|farid-nadir-formal.jpg)",
+      "source": "/(farid-nadir.jpg|farid-nadir-formal.jpg)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -61,6 +61,19 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/(favicon(.*)|apple-touch-icon.png|site.webmanifest)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
         },
         {
           "key": "Access-Control-Allow-Origin",

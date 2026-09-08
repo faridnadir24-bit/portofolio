@@ -3,16 +3,32 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://portofolio-gvgr.vercel.app/</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://portofolio-gvgr.vercel.app/og-image.jpg</image:loc>
-      <image:title>Farid Nadir Amrulloh Portfolio</image:title>
+      <image:title>Farid Nadir Amrulloh — Portfolio</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/farid-nadir.jpg</image:loc>
+      <image:loc>https://portofolio-gvgr.vercel.app/farid-nadir-formal.jpg</image:loc>
       <image:title>Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://portofolio-gvgr.vercel.app/certificates/knec-2026.png</image:loc>
+      <image:title>Piagam Juara 1 Nasional KNEC 2026 — Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://portofolio-gvgr.vercel.app/certificates/mea-2026.png</image:loc>
+      <image:title>SK Penetapan Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://portofolio-gvgr.vercel.app/certificates/leon-2026.png</image:loc>
+      <image:title>Piagam Top 10 Nasional LEON 2026 — Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://portofolio-gvgr.vercel.app/certificates/pasundan-run-2026.png</image:loc>
+      <image:title>Sertifikat Panitia Pasundan Run 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
   </url>
 </urlset>
