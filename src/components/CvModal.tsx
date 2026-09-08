@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Printer, ExternalLink } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { getSecureEmail, getSecureWhatsAppDisplay, getSecureWhatsAppNumber } from '../utils/security';
 
 interface CvModalProps {
   isOpen: boolean;
@@ -8,6 +9,18 @@ interface CvModalProps {
 }
 
 export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState('');
+  const [waDisp, setWaDisp] = useState('');
+  const [waNum, setWaNum] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      setEmail(getSecureEmail());
+      setWaDisp(getSecureWhatsAppDisplay());
+      setWaNum(getSecureWhatsAppNumber());
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
@@ -43,9 +56,9 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
             <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500 mt-3 pt-3 border-t border-neutral-100">
               <span>Purwakarta, Indonesia</span>
               <span>·</span>
-              <a href={`tel:${PERSONAL_INFO.whatsappNumber}`} className="hover:text-neutral-900">081902716562</a>
+              <a href={`tel:${waNum}`} className="hover:text-neutral-900">{waDisp || '081902716562'}</a>
               <span>·</span>
-              <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:text-neutral-900">{PERSONAL_INFO.email}</a>
+              <a href={`mailto:${email}`} className="hover:text-neutral-900">{email || 'faridnadir24@gmail.com'}</a>
               <span>·</span>
               <a href={PERSONAL_INFO.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-neutral-900 underline">LinkedIn</a>
               <span>·</span>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
+import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 
 interface ProjectsProps {
   onOpenProject: (projectId: string) => void;
@@ -8,6 +9,7 @@ interface ProjectsProps {
 
 export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
   const [filterCategory, setFilterCategory] = useState<string>('all');
+  const { ref, isVisible } = useScrollReveal<HTMLElement>();
 
   const filteredProjects = filterCategory === 'all'
     ? PROJECTS
@@ -21,11 +23,16 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
   ];
 
   return (
-    <section id="proyek" className="py-24 border-t border-neutral-100">
-      <div className="max-w-5xl mx-auto px-5 sm:px-8">
+    <section
+      id="proyek"
+      ref={ref}
+      className={`py-24 reveal-section ${isVisible ? 'in-view' : ''}`}
+    >
+      <div className="section-divider" />
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 pt-24">
 
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 text-left">
-          <div>
+          <div className={`reveal-item ${isVisible ? 'in-view' : ''}`} style={{ transitionDelay: '100ms' }}>
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
               Proyek
             </h2>
@@ -34,14 +41,17 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
             </p>
           </div>
 
-          <div className="flex gap-1">
+          <div
+            className={`flex gap-1 reveal-item ${isVisible ? 'in-view' : ''}`}
+            style={{ transitionDelay: '200ms' }}
+          >
             {filters.map((f) => (
               <button
                 key={f.id}
                 onClick={() => setFilterCategory(f.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-sm transition-colors ${
+                className={`px-3.5 py-1.5 rounded-lg text-sm transition-all duration-300 ${
                   filterCategory === f.id
-                    ? 'bg-neutral-900 text-white font-medium'
+                    ? 'bg-neutral-900 text-white font-medium shadow-sm'
                     : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100'
                 }`}
               >
@@ -51,16 +61,17 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
           </div>
         </div>
 
-        {/* Project list — clean stacked cards, not uniform bento */}
+        {/* Project list */}
         <div className="space-y-4">
-          {filteredProjects.map((project) => {
+          {filteredProjects.map((project, index) => {
             const isChampion = project.awardBadge?.isChampion;
 
             return (
               <div
                 key={project.id}
                 onClick={() => onOpenProject(project.id)}
-                className="card p-6 sm:p-7 cursor-pointer group text-left"
+                className={`card-gradient-border p-6 sm:p-7 cursor-pointer group text-left reveal-item ${isVisible ? 'in-view' : ''}`}
+                style={{ transitionDelay: getStaggerDelay(index + 2, 80) }}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                   <div className="space-y-2 flex-1 min-w-0">

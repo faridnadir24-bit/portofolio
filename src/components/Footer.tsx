@@ -16,6 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     { id: 'proyek', label: 'Proyek' },
     { id: 'keahlian', label: 'Keahlian' },
     { id: 'pengalaman', label: 'Pengalaman' },
+    { id: 'pencapaian', label: 'Pencapaian' },
     { id: 'kontak', label: 'Kontak' },
   ];
 

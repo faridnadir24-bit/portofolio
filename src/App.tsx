@@ -11,6 +11,7 @@ import { Projects } from './components/Projects';
 import { ProjectModal } from './components/ProjectModal';
 import { Skills } from './components/Skills';
 import { Experience } from './components/Experience';
+import { Achievements } from './components/Achievements';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
@@ -38,7 +39,7 @@ export default function App() {
 
   // Handle URL hash changes for deep linking
   useEffect(() => {
-    const ALLOWED_SECTION_IDS = new Set(['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'kontak']);
+    const ALLOWED_SECTION_IDS = new Set(['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'pencapaian', 'kontak']);
 
     const handleHashChange = () => {
       const rawHash = window.location.hash.replace('#', '');
@@ -64,7 +65,7 @@ export default function App() {
 
   // Active section spy
   useEffect(() => {
-    const sections = ['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'kontak'];
+    const sections = ['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'pencapaian', 'kontak'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 180;
@@ -126,6 +127,7 @@ export default function App() {
         <Projects onOpenProject={handleOpenProject} />
         <Skills />
         <Experience />
+        <Achievements />
         <Contact />
       </main>
 

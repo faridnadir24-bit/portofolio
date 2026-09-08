@@ -29,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'proyek', label: 'Proyek' },
     { id: 'keahlian', label: 'Keahlian' },
     { id: 'pengalaman', label: 'Pengalaman' },
+    { id: 'pencapaian', label: 'Pencapaian' },
     { id: 'kontak', label: 'Kontak' },
   ];
 
@@ -50,19 +51,25 @@ export const Navbar: React.FC<NavbarProps> = ({
           Farid Nadir
         </button>
 
-        {/* Desktop Nav — simple text links */}
+        {/* Desktop Nav — with active underline indicator */}
         <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={() => handleLinkClick(link.id)}
-              className={`text-sm transition-colors ${
+              className={`relative text-sm transition-colors pb-0.5 ${
                 activeSection === link.id
                   ? 'text-neutral-900 font-semibold'
                   : 'text-neutral-500 hover:text-neutral-900'
               }`}
             >
               {link.label}
+              {/* Active underline indicator */}
+              <span
+                className={`absolute -bottom-1 left-0 h-[2px] bg-blue-600 rounded-full transition-all duration-300 ${
+                  activeSection === link.id ? 'w-full' : 'w-0'
+                }`}
+              />
             </button>
           ))}
         </nav>

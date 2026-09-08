@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, FileText, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface HeroProps {
   onNavigate: (id: string) => void;
@@ -9,8 +10,14 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv }) => {
+  const { ref, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.05 });
+
   return (
-    <section id="hero" className="relative pt-36 pb-24 md:pt-44 md:pb-32 hero-gradient">
+    <section
+      id="hero"
+      ref={ref}
+      className={`relative pt-36 pb-24 md:pt-44 md:pb-32 hero-gradient reveal-section ${isVisible ? 'in-view' : ''}`}
+    >
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
 
         {/* Two-column: text left, photo right */}
@@ -18,12 +25,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
 
           {/* Left: Copy */}
           <div className="space-y-7 text-left">
-            <div className="flex items-center gap-2 text-sm text-neutral-500">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>Terbuka untuk kolaborasi</span>
+            <div
+              className={`flex items-center gap-2.5 text-sm reveal-item ${isVisible ? 'in-view' : ''}`}
+              style={{ transitionDelay: '100ms' }}
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-neutral-500 font-medium">Terbuka untuk kolaborasi</span>
             </div>
 
-            <div>
+            <div className={`reveal-item ${isVisible ? 'in-view' : ''}`} style={{ transitionDelay: '200ms' }}>
               <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.05]">
                 Farid Nadir<br/>Amrulloh
                 <span className="text-blue-600">.</span>
@@ -34,13 +47,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
             </div>
 
             {/* Achievement line */}
-            <div className="flex items-center gap-3 text-sm">
+            <div
+              className={`flex items-center gap-3 text-sm reveal-item ${isVisible ? 'in-view' : ''}`}
+              style={{ transitionDelay: '300ms' }}
+            >
               <span className="font-medium text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-100">🏆 Juara 1 KNEC 2026</span>
               <span className="text-neutral-400">Purwakarta, Indonesia</span>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div
+              className={`flex flex-wrap items-center gap-3 pt-1 reveal-item ${isVisible ? 'in-view' : ''}`}
+              style={{ transitionDelay: '400ms' }}
+            >
               <button
                 onClick={() => onNavigate('proyek')}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 text-white hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/10 transition-all active:scale-[0.98]"
@@ -67,9 +86,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
             </div>
           </div>
 
-          {/* Right: Photo with zoom hover */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-sm">
+          {/* Right: Photo with float + zoom hover */}
+          <div
+            className={`flex justify-center lg:justify-end reveal-item ${isVisible ? 'in-view' : ''}`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            <div className="relative w-full max-w-sm photo-float">
               <div className="aspect-[3/4] rounded-2xl photo-zoom bg-neutral-100 shadow-xl shadow-neutral-200/50">
                 <img
                   src={PERSONAL_INFO.profilePhotoUrl}
@@ -92,7 +114,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
         {/* Featured project */}
         <div
           onClick={() => onOpenProject('avo-bio')}
-          className="mt-20 card p-6 sm:p-8 cursor-pointer group"
+          className={`mt-20 card-gradient-border p-6 sm:p-8 cursor-pointer group reveal-item ${isVisible ? 'in-view' : ''}`}
+          style={{ transitionDelay: '500ms' }}
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1.5">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, FileText, Mail, ArrowRight, X, ExternalLink, Check } from 'lucide-react';
-import { PERSONAL_INFO, PROJECTS } from '../data/portfolioData';
+import { PROJECTS } from '../data/portfolioData';
+import { getSecureEmail } from '../utils/security';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -15,12 +16,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 }) => {
   const [search, setSearch] = useState('');
   const [copiedText, setCopiedText] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>('');
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
-    if (isOpen) window.addEventListener('keydown', handleKeyDown);
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      setEmail(getSecureEmail());
+    }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
@@ -93,7 +98,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             </button>
 
             <button
-              onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
+              onClick={() => handleCopy(email || getSecureEmail(), 'email')}
               className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-neutral-50 text-sm transition-colors group"
             >
               <div className="flex items-center gap-2.5">
@@ -103,7 +108,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
               {copiedText === 'email' ? (
                 <span className="text-xs text-emerald-600 flex items-center gap-1"><Check className="w-3 h-3" /> Disalin</span>
               ) : (
-                <span className="text-xs text-neutral-400">{PERSONAL_INFO.email}</span>
+                <span className="text-xs text-neutral-400">{email || 'faridnadir24@...'}</span>
               )}
             </button>
 
