@@ -18,10 +18,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
       ref={ref}
       className={`relative pt-36 pb-20 md:pt-44 md:pb-28 hero-gradient reveal-section overflow-hidden ${isVisible ? 'in-view' : ''}`}
     >
-      {/* Subtle ambient lighting behind hero */}
+      {/* Layered mesh gradient ambient background */}
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-400/10 rounded-full blur-3xl pointer-events-none -z-10"
+        className="absolute inset-0 pointer-events-none -z-10"
         aria-hidden="true"
+        style={{
+          backgroundImage: [
+            'radial-gradient(at 100% 0%, rgba(37,99,235,0.08) 0px, transparent 50%)',
+            'radial-gradient(at 0% 100%, rgba(16,185,129,0.05) 0px, transparent 50%)',
+          ].join(', '),
+        }}
       />
 
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
@@ -113,6 +119,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
                   loading="eager"
                 />
               </div>
+              {/* Glass achievement badge */}
+              <div className="absolute bottom-4 -left-4 backdrop-blur-md bg-white/80 border border-white/40 shadow-xl rounded-xl px-3 py-1.5 flex items-center gap-1.5 text-sm font-semibold text-neutral-800">
+                <span>🏆</span>
+                <span>Juara 1 Nasional</span>
+              </div>
               <div className="mt-3 flex items-center justify-between text-xs text-neutral-400">
                 <span>Purwakarta, 2026</span>
                 <span className="flex items-center gap-1.5">
@@ -145,11 +156,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
             </div>
 
             <div className="flex items-center gap-6 text-sm shrink-0">
-              <div className="text-center hidden sm:block">
+              <div className="text-center">
                 <p className="text-2xl font-bold text-neutral-900 font-mono">99.4%</p>
                 <p className="text-xs text-neutral-400 mt-0.5">Uptime</p>
               </div>
-              <div className="text-center hidden sm:block">
+              <div className="text-center">
                 <p className="text-2xl font-bold text-emerald-600 font-mono">+34%</p>
                 <p className="text-xs text-neutral-400 mt-0.5">Efisiensi</p>
               </div>

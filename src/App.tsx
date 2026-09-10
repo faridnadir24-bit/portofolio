@@ -87,6 +87,21 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Body scroll lock when any modal is open
+  const isAnyModalOpen = !!selectedProject || isCommandPaletteOpen || isCvModalOpen;
+  useEffect(() => {
+    const scrollY = window.scrollY;
+    if (isAnyModalOpen) {
+      document.body.style.top = `-${scrollY}px`;
+      document.body.classList.add('body-scroll-locked');
+    } else {
+      const top = document.body.style.top;
+      document.body.classList.remove('body-scroll-locked');
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(top || '0') * -1);
+    }
+  }, [isAnyModalOpen]);
+
   const handleNavigate = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -110,6 +125,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAF9] text-neutral-900">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:text-sm focus:font-medium"
+      >
+        Lewati ke konten utama
+      </a>
+
       <ScrollProgressBar />
 
       <Navbar
@@ -119,7 +141,7 @@ export default function App() {
         onOpenCv={() => setIsCvModalOpen(true)}
       />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <Hero
           onNavigate={handleNavigate}
           onOpenProject={handleOpenProject}

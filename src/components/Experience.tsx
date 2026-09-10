@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trophy, Users, GraduationCap } from 'lucide-react';
 import { TIMELINE } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 
@@ -6,6 +7,24 @@ const ROLE_DOT_COLORS: Record<string, string> = {
   education: 'text-blue-500',
   organization: 'text-emerald-500',
   achievement: 'text-amber-500',
+};
+
+const ROLE_BORDER_COLORS: Record<string, string> = {
+  education: 'border-blue-300',
+  organization: 'border-emerald-300',
+  achievement: 'border-amber-300',
+};
+
+const ROLE_BG_COLORS: Record<string, string> = {
+  education: 'bg-blue-50',
+  organization: 'bg-emerald-50',
+  achievement: 'bg-amber-50',
+};
+
+const ROLE_ICONS: Record<string, React.FC<{ className?: string }>> = {
+  achievement: Trophy,
+  organization: Users,
+  education: GraduationCap,
 };
 
 export const Experience: React.FC = () => {
@@ -31,13 +50,16 @@ export const Experience: React.FC = () => {
 
         {/* Timeline with vertical line */}
         <div className="relative">
-          {/* Vertical connector line */}
-          <div className="absolute left-[5px] top-3 bottom-0 w-px bg-gradient-to-b from-neutral-300 via-neutral-200 to-transparent hidden sm:block" />
+          {/* Vertical connector line — visible on all screens */}
+          <div className="absolute left-3 sm:left-[5px] top-3 bottom-0 w-px bg-gradient-to-b from-neutral-300 via-neutral-200 to-transparent" />
 
           <div className="space-y-0">
             {TIMELINE.map((item, index) => {
               const isAchievement = item.roleType === 'achievement';
               const dotColor = ROLE_DOT_COLORS[item.roleType] || 'text-neutral-400';
+              const borderColor = ROLE_BORDER_COLORS[item.roleType] || 'border-neutral-300';
+              const bgColor = ROLE_BG_COLORS[item.roleType] || 'bg-neutral-50';
+              const IconComponent = ROLE_ICONS[item.roleType];
 
               return (
                 <div
@@ -47,9 +69,15 @@ export const Experience: React.FC = () => {
                   } ${isAchievement ? 'bg-amber-50/40 -mx-4 px-4 rounded-xl border-amber-100' : ''}`}
                   style={{ transitionDelay: getStaggerDelay(index + 1, 60) }}
                 >
-                  {/* Timeline dot */}
-                  <div className={`hidden sm:flex items-start pt-1.5 ${dotColor}`}>
-                    <div className="timeline-dot" />
+                  {/* Timeline dot — always visible */}
+                  <div className={`flex items-start pt-1.5 ${dotColor}`}>
+                    <div className={`w-6 h-6 rounded-full border-2 ${borderColor} ${bgColor} flex items-center justify-center shrink-0`}>
+                      {IconComponent ? (
+                        <IconComponent className="w-3 h-3" />
+                      ) : (
+                        <div className="w-2 h-2 rounded-full bg-current" />
+                      )}
+                    </div>
                   </div>
 
                   {/* Content */}

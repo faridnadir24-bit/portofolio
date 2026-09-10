@@ -65,12 +65,13 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
         <div className="space-y-4">
           {filteredProjects.map((project, index) => {
             const isChampion = project.awardBadge?.isChampion;
+            const isFeatured = index === 0 || index === 1;
 
             return (
               <div
                 key={project.id}
                 onClick={() => onOpenProject(project.id)}
-                className={`card-gradient-border p-6 sm:p-7 cursor-pointer group text-left reveal-item ${isVisible ? 'in-view' : ''}`}
+                className={`card-gradient-border p-6 sm:p-7 cursor-pointer group text-left reveal-item ${isVisible ? 'in-view' : ''} ${isFeatured ? 'border-l-4 border-l-blue-500' : ''}`}
                 style={{ transitionDelay: getStaggerDelay(index + 2, 80) }}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
@@ -95,13 +96,27 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                       {project.description}
                     </p>
 
-                    {/* Tech stack — inline text, not pills */}
-                    <p className="text-xs text-neutral-400 pt-1">
-                      {project.techStack.join(' · ')}
-                    </p>
+                    {/* Tech stack — styled inline chips */}
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {project.techStack.map((tech) => (
+                        <span key={tech} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded-md bg-neutral-100 text-neutral-600 border border-neutral-200/60">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Metrics — mobile only (horizontal bar below description) */}
+                    <div className="flex items-center gap-5 pt-2 sm:hidden">
+                      {project.metrics.slice(0, 2).map((m, idx) => (
+                        <div key={idx} className="text-left">
+                          <p className="text-lg font-bold text-neutral-900 font-mono">{m.value}</p>
+                          <p className="text-[11px] text-neutral-400">{m.label}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Right side: metrics + arrow */}
+                  {/* Right side: metrics (desktop) + arrow */}
                   <div className="flex items-center gap-5 sm:gap-6 shrink-0">
                     {project.metrics.slice(0, 2).map((m, idx) => (
                       <div key={idx} className="text-right hidden sm:block">

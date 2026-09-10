@@ -2,9 +2,9 @@ import React from 'react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 
-const LEVEL_COLORS: Record<string, string> = {
-  'Mahir': 'bg-blue-500',
-  'Menengah': 'bg-amber-400',
+const LEVEL_BADGES: Record<string, { label: string; className: string }> = {
+  'Mahir': { label: 'Produksi', className: 'text-blue-700 bg-blue-50 border border-blue-200' },
+  'Menengah': { label: 'Eksplorasi', className: 'text-amber-700 bg-amber-50 border border-amber-200' },
 };
 
 export const Skills: React.FC = () => {
@@ -35,35 +35,41 @@ export const Skills: React.FC = () => {
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-                {category.skills.map((skill, sIdx) => (
-                  <div
-                    key={sIdx}
-                    className="group p-4 rounded-xl border border-transparent hover:border-neutral-200 hover:bg-white hover:shadow-sm transition-all duration-300"
-                  >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <h4 className="font-semibold text-neutral-900 text-sm group-hover:text-blue-600 transition-colors">
-                        {skill.name}
-                      </h4>
-                      <div className="flex items-center gap-1.5">
-                        <span className={`skill-level-dot ${LEVEL_COLORS[skill.level] || 'bg-neutral-300'}`} />
-                        <span className="text-xs text-neutral-400">{skill.level}</span>
+                {category.skills.map((skill, sIdx) => {
+                  const badge = LEVEL_BADGES[skill.level];
+                  return (
+                    <div
+                      key={sIdx}
+                      className="group p-4 rounded-xl border border-transparent hover:border-neutral-200 hover:bg-white hover:shadow-sm transition-all duration-300"
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <h4 className="font-semibold text-neutral-900 text-sm group-hover:text-blue-600 transition-colors">
+                          {skill.name}
+                        </h4>
+                        {badge ? (
+                          <span className={`text-[10px] font-medium px-2 py-0.5 rounded-md ${badge.className}`}>
+                            {badge.label}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-neutral-400">{skill.level}</span>
+                        )}
+                      </div>
+                      <p className="text-sm text-neutral-500 leading-relaxed mb-2">
+                        {skill.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {skill.tags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="text-[11px] text-neutral-500 bg-neutral-50 px-2 py-0.5 rounded-md border border-neutral-200 hover:border-neutral-300 hover:text-neutral-600 transition-colors"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    <p className="text-sm text-neutral-500 leading-relaxed mb-2">
-                      {skill.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {skill.tags.map((tag, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="text-[11px] text-neutral-400 bg-neutral-50 px-2 py-0.5 rounded-md border border-neutral-100 hover:border-neutral-200 hover:text-neutral-500 transition-colors"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

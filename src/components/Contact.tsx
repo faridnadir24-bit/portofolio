@@ -77,7 +77,9 @@ export const Contact: React.FC = () => {
     setTimeout(() => setIsCopiedEmail(false), 2500);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitFeedback(null);
     setIsSuccess(false);
@@ -95,7 +97,7 @@ export const Contact: React.FC = () => {
       message: formData.message,
     });
 
-    // 1. Bot Trapped -> Silent Blackhole (Bot thinks it succeeded, but we do nothing)
+    // 1. Bot Trapped -> Silent Blackhole
     if (check.isBotSilentDrop) {
       setSubmitFeedback('Pesan Anda telah berhasil diproses.');
       setIsSuccess(true);
@@ -109,9 +111,9 @@ export const Contact: React.FC = () => {
       return;
     }
 
-    // 3. Legitimate human submission
+    // 3. Legitimate human submission via Web3Forms
+    setIsSubmitting(true);
     recordSubmission();
-    setRateLimitCooldown(45);
 
     const cleanName = sanitizeText(formData.name);
     const cleanEmail = sanitizeText(formData.email);
@@ -119,17 +121,46 @@ export const Contact: React.FC = () => {
     const cleanMessage = sanitizeText(formData.message);
     const targetEmail = getSecureEmail();
 
-    const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(
-      cleanSubject || 'Pesan dari Portofolio'
-    )}&body=${encodeURIComponent(
-      `Halo Farid Nadir,\n\nNama: ${cleanName}\nEmail: ${cleanEmail}\n\nPesan:\n${cleanMessage}`
-    )}`;
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_KEY',
+          name: cleanName,
+          email: cleanEmail,
+          subject: cleanSubject || 'Pesan dari Portofolio',
+          message: cleanMessage,
+          to: targetEmail,
+          from_name: 'Portofolio Farid Nadir',
+        }),
+      });
 
-    setIsSuccess(true);
-    setSubmitFeedback('Membuka email client Anda...');
-    setTimeout(() => {
-      window.location.href = mailtoUrl;
-    }, 600);
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSuccess(true);
+        setSubmitFeedback('✅ Pesan berhasil terkirim! Terima kasih telah menghubungi.');
+        setRateLimitCooldown(45);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch {
+      // Fallback to mailto if API fails
+      const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(
+        cleanSubject || 'Pesan dari Portofolio'
+      )}&body=${encodeURIComponent(
+        `Halo Farid Nadir,\n\nNama: ${cleanName}\nEmail: ${cleanEmail}\n\nPesan:\n${cleanMessage}`
+      )}`;
+      setIsSuccess(true);
+      setSubmitFeedback('Membuka email client sebagai alternatif...');
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 600);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -344,15 +375,27 @@ export const Contact: React.FC = () => {
 
             <button
               type="submit"
-              disabled={rateLimitCooldown > 0}
+              disabled={rateLimitCooldown > 0 || isSubmitting}
               className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all ${
-                rateLimitCooldown > 0
+                rateLimitCooldown > 0 || isSubmitting
                   ? 'bg-neutral-400 cursor-not-allowed'
                   : 'bg-neutral-900 hover:bg-neutral-800 active:scale-[0.98]'
               }`}
             >
-              <Send className="w-4 h-4" />
-              <span>{rateLimitCooldown > 0 ? `Tunggu (${rateLimitCooldown}s)` : 'Kirim Pesan'}</span>
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                  <span>Mengirim...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4" />
+                  <span>{rateLimitCooldown > 0 ? `Tunggu (${rateLimitCooldown}s)` : 'Kirim Pesan'}</span>
+                </>
+              )}
             </button>
           </form>
 
