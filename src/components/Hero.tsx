@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, FileText, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
@@ -16,8 +16,14 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
     <section
       id="hero"
       ref={ref}
-      className={`relative pt-36 pb-24 md:pt-44 md:pb-32 hero-gradient reveal-section ${isVisible ? 'in-view' : ''}`}
+      className={`relative pt-36 pb-20 md:pt-44 md:pb-28 hero-gradient reveal-section overflow-hidden ${isVisible ? 'in-view' : ''}`}
     >
+      {/* Subtle ambient lighting behind hero */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-400/10 rounded-full blur-3xl pointer-events-none -z-10"
+        aria-hidden="true"
+      />
+
       <div className="max-w-5xl mx-auto px-5 sm:px-8">
 
         {/* Two-column: text left, photo right */}
@@ -150,6 +156,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
               <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
             </div>
           </div>
+        </div>
+
+        {/* Scroll down indicator */}
+        <div className="mt-14 flex justify-center">
+          <button
+            onClick={() => onNavigate('tentang')}
+            className="group flex flex-col items-center gap-1.5 text-xs font-medium text-neutral-400 hover:text-neutral-900 transition-colors p-2"
+            title="Gulir ke bagian Tentang"
+          >
+            <span>Jelajahi Profil</span>
+            <ChevronDown className="w-4 h-4 animate-bounce text-neutral-400 group-hover:text-blue-600 transition-colors" />
+          </button>
         </div>
 
       </div>

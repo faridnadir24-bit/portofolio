@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, FileText, ArrowUpRight } from 'lucide-react';
+import { Menu, X, FileText, ArrowUpRight, Search } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -75,7 +75,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={onOpenCommandPalette}
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-neutral-500 bg-neutral-100 hover:bg-neutral-200/80 rounded-lg border border-neutral-200/60 transition-colors"
+            title="Buka menu cepat (Ctrl+K)"
+          >
+            <Search className="w-3.5 h-3.5 text-neutral-400" />
+            <kbd className="font-mono text-[10px] bg-white px-1.5 py-0.5 rounded border border-neutral-200 text-neutral-500 shadow-2xs">Ctrl K</kbd>
+          </button>
+
           <button
             onClick={onOpenCv}
             className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-neutral-600 border border-neutral-300 rounded-lg hover:border-neutral-400 hover:bg-neutral-50 transition-colors"

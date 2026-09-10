@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Award, X, ZoomIn, FileText, Download, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { Award, X, ZoomIn, FileText, Download, ChevronLeft, ChevronRight, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 
 interface Certificate {
@@ -40,7 +40,7 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Juara 5 Nasional',
     credentialNo: 'No. 13. 327 /FRC/MEA/VIII/2026',
-    image: '/certificates/mea-2026.png',
+    image: '/certificates/piagam-resmi-mea-2026.png',
     pdfUrl: '/certificates/sk-penetapan-juara-mea-2026.pdf',
     isChampion: true,
     category: 'competition',
@@ -77,6 +77,7 @@ export const Achievements: React.FC = () => {
   const { ref, isVisible } = useScrollReveal<HTMLElement>();
   const [activeTab, setActiveTab] = useState<'all' | 'competition' | 'organization'>('all');
   const [selectedCertIndex, setSelectedCertIndex] = useState<number | null>(null);
+  const [lightboxMode, setLightboxMode] = useState<'piagam' | 'sk'>('piagam');
 
   const filteredCerts = activeTab === 'all'
     ? CERTIFICATES
@@ -86,11 +87,13 @@ export const Achievements: React.FC = () => {
 
   const handleNextCert = useCallback(() => {
     if (selectedCertIndex === null) return;
+    setLightboxMode('piagam');
     setSelectedCertIndex((prev) => (prev! + 1) % filteredCerts.length);
   }, [selectedCertIndex, filteredCerts.length]);
 
   const handlePrevCert = useCallback(() => {
     if (selectedCertIndex === null) return;
+    setLightboxMode('piagam');
     setSelectedCertIndex((prev) => (prev! - 1 + filteredCerts.length) % filteredCerts.length);
   }, [selectedCertIndex, filteredCerts.length]);
 
@@ -132,7 +135,7 @@ export const Achievements: React.FC = () => {
                 Pencapaian & Sertifikat
               </h2>
               <p className="text-base text-neutral-500 max-w-lg">
-                Piagam resmi kompetisi ilmiah nasional serta sertifikasi kepanitiaan dan kepemimpinan organisasi.
+                Piagam penghargaan resmi kompetisi ilmiah nasional serta sertifikasi kepanitiaan dan kepemimpinan organisasi.
               </p>
             </div>
 
@@ -172,7 +175,10 @@ export const Achievements: React.FC = () => {
                 key={cert.id}
                 className={`reveal-item ${isVisible ? 'in-view' : ''} group cursor-pointer`}
                 style={{ transitionDelay: getStaggerDelay(index + 1, 90) }}
-                onClick={() => setSelectedCertIndex(index)}
+                onClick={() => {
+                  setSelectedCertIndex(index);
+                  setLightboxMode('piagam');
+                }}
               >
                 <div className="card-gradient-border overflow-hidden h-full flex flex-col justify-between bg-white hover:shadow-xl transition-all duration-300">
                   <div>
@@ -185,6 +191,12 @@ export const Achievements: React.FC = () => {
                           className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
+
+                        {/* Top-left Verified Badge */}
+                        <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-neutral-800 text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-sm border border-neutral-200/90 flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3 h-3 text-blue-600" />
+                          <span>Piagam Resmi</span>
+                        </div>
 
                         {/* Hover overlay with zoom hint */}
                         <div className="absolute inset-0 bg-neutral-950/0 group-hover:bg-neutral-950/20 transition-colors duration-300 flex items-center justify-center">
@@ -241,7 +253,7 @@ export const Achievements: React.FC = () => {
         </div>
       </section>
 
-      {/* Lightbox Modal with Gallery Carousel Navigation */}
+      {/* Lightbox Modal with Gallery Carousel Navigation & View Mode Switcher */}
       {selectedCert && (
         <div
           className="lightbox-overlay"
@@ -285,23 +297,87 @@ export const Achievements: React.FC = () => {
             className="relative max-w-4xl w-full flex flex-col items-center max-h-[92vh] overflow-y-auto bg-neutral-950/95 rounded-2xl p-4 sm:p-6 border border-neutral-800 shadow-2xl mx-12 sm:mx-16"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header with counter */}
-            <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-neutral-800/80 text-xs text-neutral-400">
-              <span className="font-mono bg-neutral-800 px-2 py-0.5 rounded text-neutral-300">
-                {selectedCertIndex! + 1} dari {filteredCerts.length} Piagam
-              </span>
-              <span className="hidden sm:inline text-neutral-500">
-                Gunakan tombol panah keyboard ← / → untuk navigasi
-              </span>
+            {/* Header with counter & View Mode Switcher */}
+            <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 mb-3 border-b border-neutral-800/80 text-xs text-neutral-400">
+              <div className="flex items-center gap-2">
+                <span className="font-mono bg-neutral-800 px-2.5 py-1 rounded text-neutral-300 font-medium">
+                  {selectedCertIndex! + 1} dari {filteredCerts.length} Dokumen
+                </span>
+                <span className="hidden md:inline text-neutral-500">
+                  (Navigasi dengan panah keyboard ← / →)
+                </span>
+              </div>
+
+              {/* View Mode Toggle when PDF is present */}
+              {selectedCert.pdfUrl && (
+                <div className="flex items-center bg-neutral-900 border border-neutral-700/80 rounded-xl p-1 gap-1">
+                  <button
+                    onClick={() => setLightboxMode('piagam')}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                      lightboxMode === 'piagam'
+                        ? 'bg-blue-600 text-white shadow-xs'
+                        : 'text-neutral-400 hover:text-white'
+                    }`}
+                  >
+                    🏆 Piagam Penghargaan
+                  </button>
+                  <button
+                    onClick={() => setLightboxMode('sk')}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
+                      lightboxMode === 'sk'
+                        ? 'bg-neutral-800 text-amber-300 shadow-xs border border-neutral-700'
+                        : 'text-neutral-400 hover:text-white'
+                    }`}
+                  >
+                    📄 Berkas SK (PDF)
+                  </button>
+                </div>
+              )}
             </div>
 
-            {/* Image display */}
+            {/* Display Area */}
             <div className="w-full flex justify-center mb-4">
-              <img
-                src={selectedCert.image}
-                alt={selectedCert.title}
-                className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
-              />
+              {lightboxMode === 'piagam' ? (
+                <div className="relative group/zoom flex flex-col items-center">
+                  <img
+                    src={selectedCert.image}
+                    alt={selectedCert.title}
+                    className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                  />
+                  <span className="mt-2 text-[11px] text-neutral-400">
+                    Piagam Penghargaan Resmi Terbit &middot; Klik 'Tab Baru' untuk resolusi penuh
+                  </span>
+                </div>
+              ) : (
+                <div className="w-full h-[58vh] bg-neutral-900 rounded-xl border border-neutral-800 flex flex-col items-center justify-center p-8 text-center space-y-4">
+                  <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+                    <FileText className="w-8 h-8" />
+                  </div>
+                  <div className="space-y-1.5 max-w-md">
+                    <h5 className="text-white font-bold text-base">Surat Keputusan (SK) Penetapan Juara Resmi</h5>
+                    <p className="text-xs text-neutral-400 leading-relaxed">
+                      Dokumen resmi 7 halaman penetapan pemenang Lomba Esai Merdeka Essay Award (MEA) 2026 Tingkat Mahasiswa Se-Indonesia oleh PT Forcemi Cendekia Indonesia.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3 pt-2">
+                    <a
+                      href={selectedCert.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span>Buka Berkas SK (PDF)</span>
+                    </a>
+                    <button
+                      onClick={() => setLightboxMode('piagam')}
+                      className="px-4 py-2.5 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 transition-colors"
+                    >
+                      Kembali ke Piagam
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Lightbox Information Bar */}
@@ -336,23 +412,12 @@ export const Achievements: React.FC = () => {
 
               {/* Action buttons */}
               <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto flex-wrap">
-                {selectedCert.pdfUrl && (
-                  <a
-                    href={selectedCert.pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-colors"
-                  >
-                    <FileText className="w-3.5 h-3.5" />
-                    <span>Lihat SK (PDF)</span>
-                  </a>
-                )}
                 <a
                   href={selectedCert.image}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 hover:text-white transition-colors"
-                  title="Buka Gambar Resolusi Penuh"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-colors"
+                  title="Buka Gambar Piagam Resolusi Penuh"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>Tab Baru</span>
@@ -360,7 +425,7 @@ export const Achievements: React.FC = () => {
                 <a
                   href={selectedCert.image}
                   download
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 hover:text-white transition-colors"
                   title="Unduh Piagam"
                 >
                   <Download className="w-3.5 h-3.5" />
