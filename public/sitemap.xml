@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://portofolio-gvgr.vercel.app/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -19,8 +19,12 @@
       <image:title>Piagam Juara 1 Nasional KNEC 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://portofolio-gvgr.vercel.app/certificates/piagam-resmi-mea-2026.png</image:loc>
+      <image:title>Piagam Resmi Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://portofolio-gvgr.vercel.app/certificates/mea-2026.png</image:loc>
-      <image:title>SK Penetapan Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
+      <image:title>Dokumen SK Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
       <image:loc>https://portofolio-gvgr.vercel.app/certificates/leon-2026.png</image:loc>
