@@ -1,6 +1,7 @@
 import React from 'react';
+import { GraduationCap, Award, Users } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export const About: React.FC = () => {
   const { ref, isVisible } = useScrollReveal<HTMLElement>();
@@ -45,23 +46,26 @@ export const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: structured info */}
-          <div className="lg:col-span-2 space-y-8">
+          {/* Right: structured info with modern micro-cards */}
+          <div className="lg:col-span-2 space-y-7">
 
             {/* Education */}
             <div
               className={`reveal-item ${isVisible ? 'in-view' : ''}`}
               style={{ transitionDelay: '200ms' }}
             >
-              <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-4">Pendidikan</h3>
-              <div className="space-y-4">
-                <div className="pl-4 border-l-2 border-blue-500">
-                  <p className="font-semibold text-neutral-900">STT Wastukancana</p>
-                  <p className="text-sm text-neutral-500">S1 Teknik Informatika &middot; 2025 – Sekarang</p>
+              <div className="flex items-center gap-2 mb-3">
+                <GraduationCap className="w-4 h-4 text-blue-600" />
+                <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">Pendidikan</h3>
+              </div>
+              <div className="space-y-2.5">
+                <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-blue-300 transition-colors">
+                  <p className="font-semibold text-neutral-900 text-sm">STT Wastukancana</p>
+                  <p className="text-xs text-neutral-500 mt-0.5">S1 Teknik Informatika &middot; 2025 – Sekarang</p>
                 </div>
-                <div className="pl-4 border-l-2 border-neutral-200">
-                  <p className="font-semibold text-neutral-900">SMAN 1 Bungursari</p>
-                  <p className="text-sm text-neutral-500">IPA &middot; Lulus 2025</p>
+                <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-neutral-300 transition-colors">
+                  <p className="font-semibold text-neutral-900 text-sm">SMAN 1 Bungursari</p>
+                  <p className="text-xs text-neutral-500 mt-0.5">IPA &middot; Lulus 2025</p>
                 </div>
               </div>
             </div>
@@ -71,19 +75,31 @@ export const About: React.FC = () => {
               className={`reveal-item ${isVisible ? 'in-view' : ''}`}
               style={{ transitionDelay: '300ms' }}
             >
-              <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-4">Pencapaian</h3>
-              <div className="space-y-3">
-                <div className="pl-4 border-l-2 border-amber-400">
-                  <p className="font-semibold text-neutral-900">Juara 1 KNEC 2026</p>
-                  <p className="text-sm text-neutral-500">Ketahanan Pangan & Energi</p>
+              <div className="flex items-center gap-2 mb-3">
+                <Award className="w-4 h-4 text-amber-500" />
+                <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">Pencapaian</h3>
+              </div>
+              <div className="space-y-2.5">
+                <div className="p-3.5 rounded-xl bg-amber-50/60 border border-amber-200/70 shadow-2xs">
+                  <div className="flex items-center justify-between">
+                    <p className="font-semibold text-neutral-900 text-sm">Juara 1 KNEC 2026</p>
+                    <span className="text-[10px] font-semibold bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded">Nasional</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 mt-0.5">Ketahanan Pangan & Energi</p>
                 </div>
-                <div className="pl-4 border-l-2 border-amber-500">
-                  <p className="font-semibold text-neutral-900">Juara 5 MEA 2026</p>
-                  <p className="text-sm text-neutral-500">Nasional Mahasiswa (AVO-BIO 2.0)</p>
+                <div className="p-3.5 rounded-xl bg-blue-50/50 border border-blue-200/70 shadow-2xs">
+                  <div className="flex items-center justify-between">
+                    <p className="font-semibold text-neutral-900 text-sm">Juara 5 MEA 2026</p>
+                    <span className="text-[10px] font-semibold bg-blue-200/70 text-blue-900 px-2 py-0.5 rounded">Nasional</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 mt-0.5">Merdeka Essay Award (AVO-BIO 2.0)</p>
                 </div>
-                <div className="pl-4 border-l-2 border-amber-300">
-                  <p className="font-semibold text-neutral-900">Top 10 LEON 2026</p>
-                  <p className="text-sm text-neutral-500">Rekayasa Teknologi</p>
+                <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-amber-300 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <p className="font-semibold text-neutral-900 text-sm">Top 10 LEON 2026</p>
+                    <span className="text-[10px] font-medium bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded">Nasional</span>
+                  </div>
+                  <p className="text-xs text-neutral-500 mt-0.5">Rekayasa Teknologi</p>
                 </div>
               </div>
             </div>
@@ -93,15 +109,18 @@ export const About: React.FC = () => {
               className={`reveal-item ${isVisible ? 'in-view' : ''}`}
               style={{ transitionDelay: '400ms' }}
             >
-              <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-4">Organisasi</h3>
-              <div className="space-y-3">
-                <div className="pl-4 border-l-2 border-emerald-400">
-                  <p className="font-semibold text-neutral-900">GMNI Wastukancana</p>
-                  <p className="text-sm text-neutral-500">Wakil Ketua Bidang Sosial Politik</p>
+              <div className="flex items-center gap-2 mb-3">
+                <Users className="w-4 h-4 text-emerald-600" />
+                <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">Organisasi</h3>
+              </div>
+              <div className="space-y-2.5">
+                <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-emerald-300 transition-colors">
+                  <p className="font-semibold text-neutral-900 text-sm">GMNI Wastukancana</p>
+                  <p className="text-xs text-neutral-500 mt-0.5">Wakil Ketua Bidang Sosial Politik</p>
                 </div>
-                <div className="pl-4 border-l-2 border-emerald-300">
-                  <p className="font-semibold text-neutral-900">NOVO Club</p>
-                  <p className="text-sm text-neutral-500">Pengembangan diri & networking</p>
+                <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-emerald-300 transition-colors">
+                  <p className="font-semibold text-neutral-900 text-sm">NOVO Club</p>
+                  <p className="text-xs text-neutral-500 mt-0.5">Pengembangan diri & networking</p>
                 </div>
               </div>
             </div>

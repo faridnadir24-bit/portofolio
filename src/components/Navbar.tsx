@@ -111,31 +111,38 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu backdrop & drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-neutral-100 px-5 py-4 space-y-1">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleLinkClick(link.id)}
-              className={`block w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                activeSection === link.id
-                  ? 'text-neutral-900 font-semibold bg-neutral-50'
-                  : 'text-neutral-600 hover:bg-neutral-50'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
-          <div className="pt-3 mt-2 border-t border-neutral-100 flex gap-2">
-            <button onClick={() => { setMobileMenuOpen(false); onOpenCv(); }}
-              className="flex-1 py-2.5 text-xs font-medium text-center border border-neutral-300 rounded-lg hover:bg-neutral-50"
-            >Lihat CV</button>
-            <button onClick={() => handleLinkClick('kontak')}
-              className="flex-1 py-2.5 text-xs font-semibold text-center bg-neutral-900 text-white rounded-lg"
-            >Kontak</button>
+        <>
+          <div
+            className="md:hidden fixed inset-0 top-16 bg-black/20 backdrop-blur-xs z-40 animate-fadeIn"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="md:hidden relative z-50 bg-white/95 backdrop-blur-xl border-t border-neutral-100 px-5 py-4 space-y-1 shadow-xl transition-all duration-300">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => handleLinkClick(link.id)}
+                className={`block w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                  activeSection === link.id
+                    ? 'text-blue-600 font-semibold bg-blue-50/80'
+                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
+            <div className="pt-3 mt-2 border-t border-neutral-100 flex gap-2">
+              <button onClick={() => { setMobileMenuOpen(false); onOpenCv(); }}
+                className="flex-1 py-2.5 text-xs font-medium text-center border border-neutral-300 rounded-xl hover:bg-neutral-50 text-neutral-700 transition-colors"
+              >Lihat CV</button>
+              <button onClick={() => handleLinkClick('kontak')}
+                className="flex-1 py-2.5 text-xs font-semibold text-center bg-neutral-900 text-white rounded-xl hover:bg-neutral-800 transition-colors"
+              >Kontak</button>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
