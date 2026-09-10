@@ -13,6 +13,7 @@ import { Skills } from './components/Skills';
 import { Experience } from './components/Experience';
 import { Achievements } from './components/Achievements';
 import { Contact } from './components/Contact';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { Footer } from './components/Footer';
 import { CommandPalette } from './components/CommandPalette';
 import { CvModal } from './components/CvModal';
@@ -109,6 +110,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAF9] text-neutral-900">
+      <ScrollProgressBar />
 
       <Navbar
         activeSection={activeSection}

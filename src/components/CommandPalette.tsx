@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, FileText, Mail, ArrowRight, X, ExternalLink, Check } from 'lucide-react';
+import { Search, FileText, Mail, ArrowRight, X, ExternalLink, Check, Award } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { getSecureEmail } from '../utils/security';
 
@@ -46,6 +46,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     { id: 'proyek', name: 'Proyek' },
     { id: 'keahlian', name: 'Keahlian' },
     { id: 'pengalaman', name: 'Pengalaman' },
+    { id: 'pencapaian', name: 'Pencapaian & Sertifikat' },
     { id: 'kontak', name: 'Kontak' },
   ];
 
@@ -110,6 +111,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
               ) : (
                 <span className="text-xs text-neutral-400">{email || 'faridnadir24@...'}</span>
               )}
+            </button>
+
+            <button
+              onClick={() => { onClose(); onNavigate('pencapaian'); }}
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-neutral-50 text-sm transition-colors group"
+            >
+              <div className="flex items-center gap-2.5">
+                <Award className="w-4 h-4 text-amber-500" />
+                <span className="text-neutral-700 group-hover:text-neutral-900">Lihat Piagam & Sertifikat (4)</span>
+              </div>
+              <ArrowRight className="w-3.5 h-3.5 text-neutral-300 group-hover:text-neutral-500" />
             </button>
 
             <a

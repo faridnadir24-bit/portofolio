@@ -222,28 +222,28 @@
 }
 
 /* ============================================
-   CERTIFICATE LIGHTBOX
+   CERTIFICATE LIGHTBOX & GALLERY
    ============================================ */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
-  z-index: 60;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
+  z-index: 70;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  cursor: zoom-out;
-  animation: lightboxFadeIn 0.3s ease-out;
+  padding: 1rem;
+  animation: lightboxFadeIn 0.25s ease-out;
 }
 
 .lightbox-image {
   max-width: 90vw;
   max-height: 85vh;
   border-radius: 12px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-  animation: lightboxScaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  animation: lightboxScaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes lightboxFadeIn {
@@ -252,7 +252,7 @@
 }
 
 @keyframes lightboxScaleIn {
-  from { opacity: 0; transform: scale(0.9); }
+  from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
 

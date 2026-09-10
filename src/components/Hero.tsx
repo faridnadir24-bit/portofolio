@@ -48,11 +48,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
 
             {/* Achievement line */}
             <div
-              className={`flex items-center gap-3 text-sm reveal-item ${isVisible ? 'in-view' : ''}`}
+              className={`flex flex-wrap items-center gap-2 text-sm reveal-item ${isVisible ? 'in-view' : ''}`}
               style={{ transitionDelay: '300ms' }}
             >
-              <span className="font-medium text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-100">🏆 Juara 1 KNEC 2026</span>
-              <span className="text-neutral-400">Purwakarta, Indonesia</span>
+              <span className="font-semibold text-amber-800 bg-amber-50/90 px-3 py-1 rounded-lg border border-amber-200/80 shadow-2xs flex items-center gap-1.5">
+                <span>🏆</span>
+                <span>Juara 1 KNEC 2026</span>
+              </span>
+              <span className="font-semibold text-blue-800 bg-blue-50/90 px-3 py-1 rounded-lg border border-blue-200/80 shadow-2xs flex items-center gap-1.5">
+                <span>🥇</span>
+                <span>Juara 5 MEA 2026</span>
+              </span>
+              <span className="text-neutral-400 text-xs hidden sm:inline">&middot; STT Wastukancana</span>
             </div>
 
             {/* CTAs */}
@@ -119,12 +126,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1.5">
-              <p className="text-xs font-medium text-blue-600 uppercase tracking-wide">Proyek Unggulan</p>
+              <div className="flex items-center gap-2">
+                <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Proyek Unggulan</p>
+                <span className="text-[10px] font-semibold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-200">2x Juara Nasional</span>
+              </div>
               <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 group-hover:text-blue-600 transition-colors">
-                AVO-BIO
+                AVO-BIO (v1 & 2.0)
               </h3>
               <p className="text-sm text-neutral-500 max-w-xl">
-                Sistem monitoring biogas real-time berbasis IoT dan AI prediktif — Juara 1 Nasional KNEC 2026.
+                Sistem telemetri biogas cerdas berbasis IoT & AI prediktif — Juara 1 Nasional KNEC 2026 & Juara 5 Merdeka Essay Award 2026.
               </p>
             </div>
 
