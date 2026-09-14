@@ -48,7 +48,24 @@
       ]
     },
     {
-      "source": "/(farid-nadir.jpg|farid-nadir-formal.jpg)",
+      "source": "/farid-nadir.jpg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/farid-nadir-formal.jpg",
       "headers": [
         {
           "key": "Cache-Control",
@@ -78,7 +95,33 @@
       ]
     },
     {
-      "source": "/(favicon(.*)|apple-touch-icon.png|site.webmanifest)",
+      "source": "/favicon(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/site.webmanifest",
       "headers": [
         {
           "key": "Cache-Control",
