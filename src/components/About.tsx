@@ -119,8 +119,11 @@ export const About: React.FC = () => {
                   <p className="text-xs text-neutral-500 mt-0.5">Wakil Ketua Bidang Sosial Politik</p>
                 </div>
                 <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-emerald-300 transition-colors">
-                  <p className="font-semibold text-neutral-900 text-sm">NOVO Club</p>
-                  <p className="text-xs text-neutral-500 mt-0.5">Pengembangan diri & networking</p>
+                  <div className="flex items-center justify-between">
+                    <p className="font-semibold text-neutral-900 text-sm">NOVO Club Batch 4</p>
+                    <span className="text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-2 py-0.5 rounded">Completed</span>
+                  </div>
+                  <p className="text-xs text-neutral-500 mt-0.5">ParagonCorp &middot; Group Project Completion</p>
                 </div>
               </div>
             </div>

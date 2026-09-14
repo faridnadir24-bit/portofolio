@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://portofolio-gvgr.vercel.app/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -23,12 +23,12 @@
       <image:title>Piagam Resmi Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/mea-2026.png</image:loc>
-      <image:title>Dokumen SK Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
-    </image:image>
-    <image:image>
       <image:loc>https://portofolio-gvgr.vercel.app/certificates/leon-2026.png</image:loc>
       <image:title>Piagam Top 10 Nasional LEON 2026 — Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://portofolio-gvgr.vercel.app/certificates/novo-club-batch-4.png</image:loc>
+      <image:title>Certificate of Completion Novo Club Batch 4 ParagonCorp — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
       <image:loc>https://portofolio-gvgr.vercel.app/certificates/pasundan-run-2026.png</image:loc>

@@ -97,7 +97,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
                 { org: 'GMNI, DPK Wastukancana', role: 'Wakil Ketua Bidang Sosial Politik', period: '2026 – Sekarang', desc: 'Terlibat dalam pengembangan kegiatan dan diskusi sosial-politik serta koordinasi internal organisasi.' },
                 { org: 'MPK SMAN 1 Bungursari', role: 'Ketua Komisi A Bidang Agama', period: '2024 – 2025', desc: 'Memimpin koordinasi bidang dan bekerja bersama anggota untuk menjalankan program organisasi.' },
                 { org: 'PMR SMAN 1 Bungursari', role: 'Ketua Regu Pertolongan Pertama', period: '2024 – 2025', desc: 'Mengkoordinasikan anggota regu dan mendukung kesiapan kegiatan pertolongan pertama serta UKS.' },
-                { org: 'NOVO Club', role: 'Peserta/Kontributor', period: '2026', desc: 'Mengikuti kegiatan pengembangan diri dan jejaring di luar lingkungan perkuliahan.' },
+                { org: 'NOVO Club Batch 4 (ParagonCorp)', role: 'Group Project Completion', period: '2026', desc: 'Menyelesaikan Group Project inovatif dan program kepemimpinan kolaboratif tingkat nasional.' },
               ].map((item, idx) => (
                 <div key={idx}>
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">

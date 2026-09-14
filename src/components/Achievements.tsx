@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Award, X, ZoomIn, FileText, Download, ChevronLeft, ChevronRight, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { Award, X, ZoomIn, Download, ChevronLeft, ChevronRight, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 
 interface Certificate {
@@ -12,7 +12,6 @@ interface Certificate {
   achievement: string;
   credentialNo?: string;
   image: string;
-  pdfUrl?: string;
   isChampion: boolean;
   category: 'competition' | 'organization';
 }
@@ -41,7 +40,6 @@ const CERTIFICATES: Certificate[] = [
     achievement: 'Juara 5 Nasional',
     credentialNo: 'No. 13. 327 /FRC/MEA/VIII/2026',
     image: '/certificates/piagam-resmi-mea-2026.png',
-    pdfUrl: '/certificates/sk-penetapan-juara-mea-2026.pdf',
     isChampion: true,
     category: 'competition',
   },
@@ -57,6 +55,19 @@ const CERTIFICATES: Certificate[] = [
     image: '/certificates/leon-2026.png',
     isChampion: false,
     category: 'competition',
+  },
+  {
+    id: 'novo-club-2026',
+    title: 'Completion — Novo Club Batch 4',
+    event: 'Group Project Novo Club Batch 4',
+    subtheme: 'Leadership, Innovation & Collaborative Group Project',
+    organizer: 'ParagonCorp & Globerse (PT Paragon Technology and Innovation)',
+    year: '2026',
+    achievement: 'Certificate of Completion',
+    credentialNo: 'Novo Club Batch 4 Completion',
+    image: '/certificates/novo-club-batch-4.png',
+    isChampion: false,
+    category: 'organization',
   },
   {
     id: 'pasundan-run-2026',
@@ -77,7 +88,6 @@ export const Achievements: React.FC = () => {
   const { ref, isVisible } = useScrollReveal<HTMLElement>();
   const [activeTab, setActiveTab] = useState<'all' | 'competition' | 'organization'>('all');
   const [selectedCertIndex, setSelectedCertIndex] = useState<number | null>(null);
-  const [lightboxMode, setLightboxMode] = useState<'piagam' | 'sk'>('piagam');
 
   const filteredCerts = activeTab === 'all'
     ? CERTIFICATES
@@ -87,13 +97,11 @@ export const Achievements: React.FC = () => {
 
   const handleNextCert = useCallback(() => {
     if (selectedCertIndex === null) return;
-    setLightboxMode('piagam');
     setSelectedCertIndex((prev) => (prev! + 1) % filteredCerts.length);
   }, [selectedCertIndex, filteredCerts.length]);
 
   const handlePrevCert = useCallback(() => {
     if (selectedCertIndex === null) return;
-    setLightboxMode('piagam');
     setSelectedCertIndex((prev) => (prev! - 1 + filteredCerts.length) % filteredCerts.length);
   }, [selectedCertIndex, filteredCerts.length]);
 
@@ -177,7 +185,6 @@ export const Achievements: React.FC = () => {
                 style={{ transitionDelay: getStaggerDelay(index + 1, 90) }}
                 onClick={() => {
                   setSelectedCertIndex(index);
-                  setLightboxMode('piagam');
                 }}
               >
                 <div className="card-gradient-border overflow-hidden h-full flex flex-col justify-between bg-white hover:shadow-xl transition-all duration-300">
@@ -297,87 +304,30 @@ export const Achievements: React.FC = () => {
             className="relative max-w-4xl w-full flex flex-col items-center max-h-[92vh] overflow-y-auto bg-neutral-950/95 rounded-2xl p-4 sm:p-6 border border-neutral-800 shadow-2xl mx-12 sm:mx-16"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header with counter & View Mode Switcher */}
-            <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 mb-3 border-b border-neutral-800/80 text-xs text-neutral-400">
+            {/* Header with counter */}
+            <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-neutral-800/80 text-xs text-neutral-400">
               <div className="flex items-center gap-2">
                 <span className="font-mono bg-neutral-800 px-2.5 py-1 rounded text-neutral-300 font-medium">
-                  {selectedCertIndex! + 1} dari {filteredCerts.length} Dokumen
+                  {selectedCertIndex! + 1} dari {filteredCerts.length} Sertifikat & Piagam
                 </span>
                 <span className="hidden md:inline text-neutral-500">
                   (Navigasi dengan panah keyboard ← / →)
                 </span>
               </div>
-
-              {/* View Mode Toggle when PDF is present */}
-              {selectedCert.pdfUrl && (
-                <div className="flex items-center bg-neutral-900 border border-neutral-700/80 rounded-xl p-1 gap-1">
-                  <button
-                    onClick={() => setLightboxMode('piagam')}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                      lightboxMode === 'piagam'
-                        ? 'bg-blue-600 text-white shadow-xs'
-                        : 'text-neutral-400 hover:text-white'
-                    }`}
-                  >
-                    🏆 Piagam Penghargaan
-                  </button>
-                  <button
-                    onClick={() => setLightboxMode('sk')}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
-                      lightboxMode === 'sk'
-                        ? 'bg-neutral-800 text-amber-300 shadow-xs border border-neutral-700'
-                        : 'text-neutral-400 hover:text-white'
-                    }`}
-                  >
-                    📄 Berkas SK (PDF)
-                  </button>
-                </div>
-              )}
             </div>
 
             {/* Display Area */}
             <div className="w-full flex justify-center mb-4">
-              {lightboxMode === 'piagam' ? (
-                <div className="relative group/zoom flex flex-col items-center">
-                  <img
-                    src={selectedCert.image}
-                    alt={selectedCert.title}
-                    className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
-                  />
-                  <span className="mt-2 text-[11px] text-neutral-400">
-                    Piagam Penghargaan Resmi Terbit &middot; Klik 'Tab Baru' untuk resolusi penuh
-                  </span>
-                </div>
-              ) : (
-                <div className="w-full h-[58vh] bg-neutral-900 rounded-xl border border-neutral-800 flex flex-col items-center justify-center p-8 text-center space-y-4">
-                  <div className="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                    <FileText className="w-8 h-8" />
-                  </div>
-                  <div className="space-y-1.5 max-w-md">
-                    <h5 className="text-white font-bold text-base">Surat Keputusan (SK) Penetapan Juara Resmi</h5>
-                    <p className="text-xs text-neutral-400 leading-relaxed">
-                      Dokumen resmi 7 halaman penetapan pemenang Lomba Esai Merdeka Essay Award (MEA) 2026 Tingkat Mahasiswa Se-Indonesia oleh PT Forcemi Cendekia Indonesia.
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-3 pt-2">
-                    <a
-                      href={selectedCert.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Buka Berkas SK (PDF)</span>
-                    </a>
-                    <button
-                      onClick={() => setLightboxMode('piagam')}
-                      className="px-4 py-2.5 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 transition-colors"
-                    >
-                      Kembali ke Piagam
-                    </button>
-                  </div>
-                </div>
-              )}
+              <div className="relative group/zoom flex flex-col items-center w-full">
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                  className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                />
+                <span className="mt-2 text-[11px] text-neutral-400">
+                  Piagam / Sertifikat Resmi Terbit &middot; Klik 'Tab Baru' untuk resolusi penuh
+                </span>
+              </div>
             </div>
 
             {/* Lightbox Information Bar */}

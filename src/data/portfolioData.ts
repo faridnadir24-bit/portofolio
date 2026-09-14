@@ -390,16 +390,16 @@ export const TIMELINE: TimelineItem[] = [
   {
     id: 'novo-club',
     period: '2026',
-    title: 'Peserta / Kontributor Kegiatan Eksternal',
-    organization: 'NOVO Club',
+    title: 'Group Project Completion — Novo Club Batch 4',
+    organization: 'ParagonCorp & Globerse (NOVO Club)',
     roleType: 'organization',
     location: 'Purwakarta, Jawa Barat',
-    description: 'Mengikuti kegiatan pengembangan diri, kepemimpinan pemuda, dan perluasan jejaring kolaboratif di luar lingkungan perkuliahan.',
+    description: 'Menyelesaikan Group Project kolaboratif dalam Novo Club Batch 4 yang diselenggarakan oleh PT Paragon Technology and Innovation dan Globerse.',
     highlights: [
-      'Aktif dalam program pengembangan soft skill kepemimpinan, komunikasi publik, dan kolaborasi pemuda.',
-      'Membangun jejaring mahasiswa lintas disiplin untuk inisiatif sosial kemasyarakatan.',
+      'Memegang Certificate of Completion resmi atas penyelesaian Group Project Novo Club Batch 4.',
+      'Mengembangkan inovasi dan kepemimpinan pemuda serta jejaring kolaboratif mahasiswa tingkat nasional.',
     ],
-    badge: 'Pengembangan Diri',
+    badge: 'Certificate of Completion',
   },
   {
     id: 'pasundan-run-2026',
