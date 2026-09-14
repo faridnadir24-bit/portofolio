@@ -24,17 +24,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     {
       label: 'GitHub',
       icon: Github,
-      href: 'https://github.com/faridnadir',
+      href: PERSONAL_INFO.githubUrl,
     },
     {
       label: 'LinkedIn',
       icon: Linkedin,
-      href: 'https://linkedin.com/in/faridnadir',
+      href: PERSONAL_INFO.linkedinUrl,
     },
     {
       label: 'WhatsApp',
       icon: MessageCircle,
-      href: 'https://wa.me/6281234567890',
+      href: PERSONAL_INFO.whatsappUrl,
     },
   ];
 
