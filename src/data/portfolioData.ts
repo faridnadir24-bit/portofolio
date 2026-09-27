@@ -416,6 +416,20 @@ export const TIMELINE: TimelineItem[] = [
     badge: 'Sertifikat Panitia',
   },
   {
+    id: 'top-25-sei-2026',
+    period: 'September 2026',
+    title: 'Top 25 Finalis — SDGs Canvas & Essay Indonesia 2026',
+    organization: 'Aksa Inovasi x Pusat Bisnis Nasional (Pusbisnas)',
+    roleType: 'achievement',
+    location: 'Tingkat Nasional',
+    description: 'Terpilih sebagai Top 25 Finalis Nasional kategori Esai dalam kompetisi SDGs Canvas & Essay Indonesia yang melibatkan 455 tim dan 1.175 delegasi inovator muda di seluruh Indonesia.',
+    highlights: [
+      'Gagasan solutif dan inovatif untuk pencapaian Sustainable Development Goals (SDGs).',
+      'Memegang Sertifikat Penghargaan Resmi No. SEI/2026/AWARD/066 yang divalidasi digital oleh Dewan Juri.',
+    ],
+    badge: 'Top 25 Finalis Nasional',
+  },
+  {
     id: 'juara-mea-2026',
     period: 'Agustus 2026',
     title: 'Juara 5 — Merdeka Essay Award (MEA) 2026',

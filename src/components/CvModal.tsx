@@ -167,8 +167,16 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
                 <p className="text-xs text-neutral-500">Subtema Ketahanan Pangan dan Energi · Juli 2026</p>
               </div>
               <div>
+                <p className="font-semibold text-neutral-900">Juara 5 — Merdeka Essay Award (MEA) 2026</p>
+                <p className="text-xs text-neutral-500">Kategori Mahasiswa Tingkat Nasional (AVO-BIO 2.0) · Agustus 2026</p>
+              </div>
+              <div>
                 <p className="font-semibold text-neutral-900">Top 10 Besar — Lomba Esai Online Nasional (LEON) 2026</p>
                 <p className="text-xs text-neutral-500">Subtema Aplikasi & Rekayasa Teknologi · Juli 2026</p>
+              </div>
+              <div>
+                <p className="font-semibold text-neutral-900">Top 25 Finalis — SDGs Canvas &amp; Essay Indonesia (SEI) 2026</p>
+                <p className="text-xs text-neutral-500">Top 25 dari 455 Tim &middot; Aksa Inovasi x Pusbisnas · September 2026</p>
               </div>
             </div>
           </div>

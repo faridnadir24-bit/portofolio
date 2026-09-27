@@ -46,7 +46,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const allActions: ActionItem[] = [
     { type: 'cv', label: 'Buka CV' },
     { type: 'copy_email', label: 'Salin email' },
-    { type: 'pencapaian', label: 'Lihat Piagam & Sertifikat (5)' },
+    { type: 'pencapaian', label: 'Lihat Piagam & Sertifikat (6)' },
     ...filteredProjects.map(p => ({ type: 'project' as const, id: p.id, title: p.title })),
     ...filteredSections.map(s => ({ type: 'section' as const, id: s.id, name: s.name })),
   ];
@@ -186,7 +186,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                 >
                   <div className="flex items-center gap-2.5">
                     <Award className="w-4 h-4 text-amber-500" />
-                    <span className="group-hover:text-neutral-900">Lihat Piagam & Sertifikat (5)</span>
+                    <span className="group-hover:text-neutral-900">Lihat Piagam & Sertifikat (6)</span>
                   </div>
                   <ArrowRight className="w-3.5 h-3.5 text-neutral-300 group-hover:text-neutral-500" />
                 </button>

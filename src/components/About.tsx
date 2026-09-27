@@ -101,6 +101,13 @@ export const About: React.FC = () => {
                   </div>
                   <p className="text-xs text-neutral-500 mt-0.5">Rekayasa Teknologi</p>
                 </div>
+                <div className="p-3.5 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-blue-300 transition-colors">
+                  <div className="flex items-center justify-between">
+                    <p className="font-semibold text-neutral-900 text-sm">Top 25 SDGs Canvas 2026</p>
+                    <span className="text-[10px] font-medium bg-neutral-100 text-neutral-600 px-2 py-0.5 rounded">Nasional</span>
+                  </div>
+                  <p className="text-xs text-neutral-500 mt-0.5">Top 25 dari 455 Tim &middot; Aksa Inovasi x Pusbisnas</p>
+                </div>
               </div>
             </div>
 
