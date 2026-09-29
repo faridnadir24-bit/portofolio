@@ -21,7 +21,7 @@ export const PERSONAL_INFO = Object.freeze({
   profilePhotoUrl: '/farid-nadir-formal.jpg',
 });
 
-export const PROJECTS: Project[] = [
+export const PROJECTS: Project[] = Object.freeze([
   {
     id: 'avo-bio',
     title: 'AVO-BIO',
@@ -199,9 +199,9 @@ export const PROJECTS: Project[] = [
     },
     interactiveType: 'pos-checkout',
   },
-];
+]) as unknown as Project[];
 
-export const SKILL_CATEGORIES: SkillCategory[] = [
+export const SKILL_CATEGORIES: SkillCategory[] = Object.freeze([
   {
     id: 'web-frontend',
     title: 'Frontend & UI Engineering',
@@ -314,9 +314,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       },
     ],
   },
-];
+]) as unknown as SkillCategory[];
 
-export const TIMELINE: TimelineItem[] = [
+export const TIMELINE: TimelineItem[] = Object.freeze([
   {
     id: 'wastukancana',
     period: '2025 – Sekarang',
@@ -471,4 +471,4 @@ export const TIMELINE: TimelineItem[] = [
     ],
     badge: 'Top 10 Nasional',
   },
-];
+]) as unknown as TimelineItem[];

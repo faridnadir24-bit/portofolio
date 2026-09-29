@@ -19,7 +19,7 @@ import { CommandPalette } from './components/CommandPalette';
 import { CvModal } from './components/CvModal';
 import { PROJECTS } from './data/portfolioData';
 import { Project } from './types';
-import { initConsoleSecurityBanner } from './utils/security';
+import { initConsoleSecurityBanner, initDomSecurityGuard } from './utils/security';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('hero');
@@ -27,9 +27,10 @@ export default function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
   const [isCvModalOpen, setIsCvModalOpen] = useState<boolean>(false);
 
-  // Initialize console security warning banner for developers/inspectors
+  // Initialize security protections: console developer warning and runtime DOM guard
   useEffect(() => {
     initConsoleSecurityBanner();
+    initDomSecurityGuard();
   }, []);
 
   // Global Keyboard Shortcuts (Ctrl+K / Cmd+K)

@@ -66,6 +66,46 @@ export const recordSubmission = (): void => {
 };
 
 /**
+ * Deteksi environment automated headless (Puppeteer, Selenium, Playwright scraper)
+ */
+export const isAutomatedEnvironment = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  try {
+    // 1. Standar navigator.webdriver flag
+    if (navigator.webdriver) return true;
+
+    // 2. User-Agent headless signatures
+    const ua = navigator.userAgent.toLowerCase();
+    if (
+      ua.includes('headlesschrome') ||
+      ua.includes('phantomjs') ||
+      ua.includes('selenium') ||
+      ua.includes('puppeteer') ||
+      ua.includes('playwright')
+    ) {
+      return true;
+    }
+
+    // 3. Document hidden automation properties
+    const docWithAutomation = document as unknown as {
+      $cdc_asdjflasutopfhvcZLmcfl_?: unknown;
+      __webdriver_evaluate?: unknown;
+      __selenium_evaluate?: unknown;
+    };
+    if (
+      docWithAutomation.$cdc_asdjflasutopfhvcZLmcfl_ ||
+      docWithAutomation.__webdriver_evaluate ||
+      docWithAutomation.__selenium_evaluate
+    ) {
+      return true;
+    }
+  } catch {
+    // Fail-safe
+  }
+  return false;
+};
+
+/**
  * Validasi form multi-layer anti-bot
  */
 export const validateFormSubmission = (options: {
@@ -80,6 +120,11 @@ export const validateFormSubmission = (options: {
   message: string;
 }): AntiSpamCheckResult => {
   const { honeypot1, honeypot2, honeypot3, formLoadTime, hasUserInteracted, name, email, message } = options;
+
+  // 0. Headless Automation & Scraper Bot Detection
+  if (isAutomatedEnvironment()) {
+    return { isValid: false, isBotSilentDrop: true };
+  }
 
   // 1. Check Multi-Honeypots: Jika ada yang terisi, ini 100% bot!
   // Kami gunakan teknik "Silent Blackhole" agar bot mengira berhasil dan tidak mencoba teknik brute force lain.
@@ -115,7 +160,16 @@ export const validateFormSubmission = (options: {
     };
   }
 
-  // 5. Input Sanitization & Length Validation
+  // 5. Anti-Injection Deep Inspection (SQLi / XSS payload detection)
+  if (detectHarmfulPayload(name) || detectHarmfulPayload(subject) || detectHarmfulPayload(message)) {
+    return {
+      isValid: false,
+      isBotSilentDrop: false,
+      errorMessage: 'Pesan terdeteksi mengandung format kode atau karakter berbahaya (XSS/SQLi).',
+    };
+  }
+
+  // 6. Input Sanitization & Length Validation
   const cleanName = sanitizeText(name);
   const cleanEmail = sanitizeText(email);
   const cleanMessage = sanitizeText(message);
@@ -145,6 +199,43 @@ export const validateFormSubmission = (options: {
   }
 
   return { isValid: true, isBotSilentDrop: false };
+};
+
+/**
+ * Deep Inspection untuk pola SQL Injection dan XSS
+ */
+export const detectHarmfulPayload = (text: string): boolean => {
+  if (!text) return false;
+  const lower = text.toLowerCase();
+  
+  // XSS attack patterns
+  const xssPatterns = [
+    /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/i,
+    /javascript\s*:/i,
+    /data\s*:\s*text\/html/i,
+    /vbscript\s*:/i,
+    /on(?:error|load|click|mouseover|focus|blur|submit)\s*=/i,
+    /<iframe\b/i,
+    /<svg\b[^>]*onload/i,
+    /<img\b[^>]*onerror/i,
+  ];
+
+  for (const pattern of xssPatterns) {
+    if (pattern.test(text)) return true;
+  }
+
+  // SQL Injection keywords pattern
+  const sqliPatterns = [
+    /\b(union\s+select|select\s+.*\s+from|insert\s+into|drop\s+table|delete\s+from)\b/i,
+    /(\bor\s+1\s*=\s*1\b|\band\s+1\s*=\s*1\b)/i,
+    /--\s*$/m,
+  ];
+
+  for (const pattern of sqliPatterns) {
+    if (pattern.test(lower)) return true;
+  }
+
+  return false;
 };
 
 export const sanitizeText = (text: string): string => {
@@ -195,4 +286,52 @@ export const initConsoleSecurityBanner = (): void => {
     '%c🚀 Portofolio Resmi: Farid Nadir Amrulloh — https://portofolio-gvgr.vercel.app\nTertarik kolaborasi teknologi atau riset? Hubungi langsung via formulir kontak atau faridnadir24@gmail.com',
     'color:#3B82F6;font-size:12px;font-style:italic;'
   );
+};
+
+/**
+ * Runtime DOM Anti-Tamper Guard
+ * Memantau DOM terhadap injeksi script atau iframe mencurigakan dari ekstensi browser tidak dikenal atau malware.
+ */
+export const initDomSecurityGuard = (): void => {
+  if (typeof window === 'undefined' || typeof MutationObserver === 'undefined') return;
+
+  const globalWin = window as unknown as { __FN_DOM_GUARD_ACTIVE__?: boolean };
+  if (globalWin.__FN_DOM_GUARD_ACTIVE__) return;
+  globalWin.__FN_DOM_GUARD_ACTIVE__ = true;
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      for (const node of Array.from(mutation.addedNodes)) {
+        if (node instanceof HTMLElement) {
+          // Deteksi dan netralkan script pihak ketiga asing yang diinjeksi
+          if (node.tagName === 'SCRIPT') {
+            const src = node.getAttribute('src');
+            if (
+              src &&
+              !src.startsWith('/') &&
+              !src.startsWith(window.location.origin) &&
+              !src.includes('vercel') &&
+              !src.includes('google')
+            ) {
+              node.remove();
+              console.warn('[Security Guard] Foreign script injection neutralized:', src);
+            }
+          }
+          // Deteksi dan netralkan iframe asing yang diinjeksi
+          if (node.tagName === 'IFRAME') {
+            const src = node.getAttribute('src');
+            if (src && !src.startsWith(window.location.origin)) {
+              node.remove();
+              console.warn('[Security Guard] Unauthorized iframe injection neutralized:', src);
+            }
+          }
+        }
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+  });
 };
