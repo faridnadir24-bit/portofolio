@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowRight, FileText, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useMagneticHover } from '../hooks/useMagneticHover';
+import { useParallax } from '../hooks/useParallax';
 
 interface HeroProps {
   onNavigate: (id: string) => void;
@@ -11,6 +13,9 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv }) => {
   const { ref, isVisible } = useScrollReveal<HTMLElement>({ threshold: 0.05 });
+  const magneticPrimary = useMagneticHover(3);
+  const magneticSecondary = useMagneticHover(2);
+  const parallaxRef = useParallax(0.06);
 
   return (
     <section
@@ -48,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
               <span className="text-neutral-500 font-medium">Terbuka untuk kolaborasi</span>
             </div>
 
-            <div className={`reveal-item ${isVisible ? 'in-view' : ''}`} style={{ transitionDelay: '200ms' }}>
+            <div className={`reveal-clip ${isVisible ? 'in-view' : ''}`} style={{ transitionDelay: '200ms' }}>
               <h1 className="text-[2.75rem] sm:text-6xl md:text-7xl font-extrabold tracking-tight text-neutral-900 leading-[1.05]">
                 Farid Nadir<br/>Amrulloh
                 <span className="text-blue-600">.</span>
@@ -80,16 +85,22 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
               style={{ transitionDelay: '400ms' }}
             >
               <button
+                ref={magneticPrimary.ref as React.RefObject<HTMLButtonElement>}
+                onMouseMove={magneticPrimary.onMouseMove}
+                onMouseLeave={magneticPrimary.onMouseLeave}
                 onClick={() => onNavigate('proyek')}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 text-white hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/10 transition-all active:scale-[0.98]"
+                className="magnetic-hover inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-neutral-900 text-white hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/10 transition-all active:scale-[0.98]"
               >
                 <span>Lihat Proyek</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
+                ref={magneticSecondary.ref as React.RefObject<HTMLButtonElement>}
+                onMouseMove={magneticSecondary.onMouseMove}
+                onMouseLeave={magneticSecondary.onMouseLeave}
                 onClick={onOpenCv}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium text-neutral-700 border border-neutral-300 hover:border-neutral-400 hover:bg-white hover:shadow-sm transition-all"
+                className="magnetic-hover inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium text-neutral-700 border border-neutral-300 hover:border-neutral-400 hover:bg-white hover:shadow-sm transition-all"
               >
                 <FileText className="w-4 h-4 text-neutral-400" />
                 <span>Resume</span>
@@ -105,12 +116,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
             </div>
           </div>
 
-          {/* Right: Photo with float + zoom hover */}
+          {/* Right: Photo with parallax + float + zoom hover */}
           <div
             className={`flex justify-center lg:justify-end reveal-item ${isVisible ? 'in-view' : ''}`}
             style={{ transitionDelay: '300ms' }}
           >
-            <div className="relative w-full max-w-sm photo-float">
+            <div ref={parallaxRef} className="relative w-full max-w-sm photo-float">
               <div className="aspect-[3/4] rounded-2xl photo-zoom bg-neutral-100 shadow-xl shadow-neutral-200/50">
                 <img
                   src={PERSONAL_INFO.profilePhotoUrl}

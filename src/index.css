@@ -11,8 +11,8 @@
     --accent: #2563EB;
     --accent-soft: #EFF6FF;
 
-    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fragment Mono', monospace;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   }
 
   body {
@@ -22,6 +22,19 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle noise/grain texture — editorial print feel */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
   }
 
   code, kbd, samp, pre, .font-mono {
@@ -50,16 +63,17 @@
 
 /* ============================================
    SCROLL REVEAL ANIMATION SYSTEM
+   Premium clip-path + translate hybrid reveal
    ============================================ */
 
 /* Base: elements start invisible and shifted down */
 .reveal-section,
 .reveal-item {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(20px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Triggered: smooth entrance */
@@ -69,13 +83,29 @@
   transform: translateY(0);
 }
 
+/* Clip-reveal variant — text rises from behind invisible mask */
+.reveal-clip {
+  opacity: 0;
+  clip-path: inset(100% 0 0 0);
+  transform: translateY(12px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-clip.in-view {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: translateY(0);
+}
+
 /* Slide from left variant */
 .reveal-left {
   opacity: 0;
   transform: translateX(-32px);
   transition:
-    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal-left.in-view {
   opacity: 1;
@@ -85,10 +115,10 @@
 /* Scale-in variant */
 .reveal-scale {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.96);
   transition:
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal-scale.in-view {
   opacity: 1;
@@ -96,41 +126,49 @@
 }
 
 /* ============================================
-   CARD SYSTEM — Enhanced with gradient border
+   CARD SYSTEM — Refined hover micro-interactions
    ============================================ */
 .card {
   background: white;
   border: 1px solid #E5E5E5;
   border-radius: 16px;
-  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s ease;
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.5s ease;
 }
 
 .card:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04);
-  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.03);
+  transform: translateY(-2px);
   border-color: #D4D4D4;
 }
 
-/* Gradient border card on hover */
+/* Gradient border card on hover — subtle blue aura */
 .card-gradient-border {
   position: relative;
   background: white;
   border-radius: 16px;
   border: 1px solid #E5E5E5;
-  transition: border-color 0.3s ease, box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.4s ease,
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-gradient-border:hover {
   border-color: transparent;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.07), 0 0 0 1px rgba(37,99,235,0.2);
-  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.06), 0 0 0 1px rgba(37,99,235,0.15);
+  transform: translateY(-2px);
 }
 
 /* ============================================
    LINK & INTERACTIVE EFFECTS
    ============================================ */
+
+/* Magnetic hover — buttons slightly attract toward cursor */
+.magnetic-hover {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
 
 /* Smooth text underline animation */
 .link-underline {
@@ -144,21 +182,21 @@
   width: 0;
   height: 1px;
   background: currentColor;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .link-underline:hover::after {
   width: 100%;
 }
 
-/* Photo hover zoom */
+/* Photo hover zoom — refined timing */
 .photo-zoom {
   overflow: hidden;
 }
 .photo-zoom img {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .photo-zoom:hover img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 /* Gentle floating animation for profile photo */
