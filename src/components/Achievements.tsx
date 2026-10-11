@@ -12,7 +12,7 @@ interface Certificate {
   achievement: string;
   credentialNo?: string;
   image: string;
-  originalImage: string;
+  webpImage: string;
   isChampion: boolean;
   category: 'competition' | 'organization';
 }
@@ -27,8 +27,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Juara 1 Nasional',
     credentialNo: 'No. 017/Ket-Ene/KNEC/SOBI/VII/2026',
-    image: '/certificates/knec-2026.webp',
-    originalImage: '/certificates/knec-2026.png',
+    image: '/certificates/knec-2026.png',
+    webpImage: '/certificates/knec-2026.webp',
     isChampion: true,
     category: 'competition',
   },
@@ -41,8 +41,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Juara 5 Nasional',
     credentialNo: 'No. 13. 327 /FRC/MEA/VIII/2026',
-    image: '/certificates/piagam-resmi-mea-2026.webp',
-    originalImage: '/certificates/piagam-resmi-mea-2026.png',
+    image: '/certificates/piagam-resmi-mea-2026.png',
+    webpImage: '/certificates/piagam-resmi-mea-2026.webp',
     isChampion: true,
     category: 'competition',
   },
@@ -55,8 +55,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Top 10 Nasional',
     credentialNo: 'No. 13. 972 /FRC/LEON/VII/2026',
-    image: '/certificates/leon-2026.webp',
-    originalImage: '/certificates/leon-2026.png',
+    image: '/certificates/leon-2026.png',
+    webpImage: '/certificates/leon-2026.webp',
     isChampion: false,
     category: 'competition',
   },
@@ -69,8 +69,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Top 25 Finalis',
     credentialNo: 'No. SEI/2026/AWARD/066',
-    image: '/certificates/top-25-sei-2026.webp',
-    originalImage: '/certificates/top-25-sei-2026.png',
+    image: '/certificates/top-25-sei-2026.png',
+    webpImage: '/certificates/top-25-sei-2026.webp',
     isChampion: false,
     category: 'competition',
   },
@@ -83,8 +83,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Certificate of Completion',
     credentialNo: 'Novo Club Batch 4 Completion',
-    image: '/certificates/novo-club-batch-4.webp',
-    originalImage: '/certificates/novo-club-batch-4.png',
+    image: '/certificates/novo-club-batch-4.png',
+    webpImage: '/certificates/novo-club-batch-4.webp',
     isChampion: false,
     category: 'organization',
   },
@@ -97,8 +97,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Sertifikat Panitia',
     credentialNo: 'Sert. 11/PADUKA-UNPAS/08/2026',
-    image: '/certificates/pasundan-run-2026.webp',
-    originalImage: '/certificates/pasundan-run-2026.png',
+    image: '/certificates/pasundan-run-2026.png',
+    webpImage: '/certificates/pasundan-run-2026.webp',
     isChampion: false,
     category: 'organization',
   },
@@ -212,15 +212,18 @@ export const Achievements: React.FC = () => {
                     {/* Certificate Thumbnail with framed paper effect */}
                     <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 border-b border-neutral-100 p-2.5">
                       <div className="w-full h-full rounded-lg overflow-hidden border border-neutral-200/80 shadow-xs relative bg-white">
-                        <img
-                          src={cert.image}
-                          alt={`Sertifikat ${cert.title}`}
-                          width={600}
-                          height={450}
-                          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        <picture className="w-full h-full block">
+                          <source srcSet={cert.webpImage} type="image/webp" />
+                          <img
+                            src={cert.image}
+                            alt={`Sertifikat ${cert.title}`}
+                            width={600}
+                            height={450}
+                            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </picture>
 
                         {/* Top-left Verified Badge */}
                         <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-neutral-800 text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-sm border border-neutral-200/90 flex items-center gap-1.5">
@@ -342,12 +345,15 @@ export const Achievements: React.FC = () => {
             {/* Display Area */}
             <div className="w-full flex justify-center mb-4">
               <div className="relative group/zoom flex flex-col items-center w-full">
-                <img
-                  src={selectedCert.image}
-                  alt={selectedCert.title}
-                  className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
-                  decoding="async"
-                />
+                <picture className="max-w-full max-h-[64vh] flex items-center justify-center">
+                  <source srcSet={selectedCert.webpImage} type="image/webp" />
+                  <img
+                    src={selectedCert.image}
+                    alt={selectedCert.title}
+                    className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                    decoding="async"
+                  />
+                </picture>
                 <span className="mt-2 text-[11px] text-neutral-400">
                   Piagam / Sertifikat Resmi Terbit &middot; Klik 'Tab Baru' untuk resolusi penuh
                 </span>
@@ -387,7 +393,7 @@ export const Achievements: React.FC = () => {
               {/* Action buttons */}
               <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto flex-wrap">
                 <a
-                  href={selectedCert.originalImage || selectedCert.image}
+                  href={selectedCert.image}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-colors"
@@ -397,7 +403,7 @@ export const Achievements: React.FC = () => {
                   <span>Tab Baru</span>
                 </a>
                 <a
-                  href={selectedCert.originalImage || selectedCert.image}
+                  href={selectedCert.image}
                   download
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 hover:text-white transition-colors"
                   title="Unduh Piagam"
