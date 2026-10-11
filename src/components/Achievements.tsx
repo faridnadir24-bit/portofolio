@@ -12,6 +12,7 @@ interface Certificate {
   achievement: string;
   credentialNo?: string;
   image: string;
+  originalImage: string;
   isChampion: boolean;
   category: 'competition' | 'organization';
 }
@@ -26,7 +27,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Juara 1 Nasional',
     credentialNo: 'No. 017/Ket-Ene/KNEC/SOBI/VII/2026',
-    image: '/certificates/knec-2026.png',
+    image: '/certificates/knec-2026.webp',
+    originalImage: '/certificates/knec-2026.png',
     isChampion: true,
     category: 'competition',
   },
@@ -39,7 +41,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Juara 5 Nasional',
     credentialNo: 'No. 13. 327 /FRC/MEA/VIII/2026',
-    image: '/certificates/piagam-resmi-mea-2026.png',
+    image: '/certificates/piagam-resmi-mea-2026.webp',
+    originalImage: '/certificates/piagam-resmi-mea-2026.png',
     isChampion: true,
     category: 'competition',
   },
@@ -52,7 +55,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Top 10 Nasional',
     credentialNo: 'No. 13. 972 /FRC/LEON/VII/2026',
-    image: '/certificates/leon-2026.png',
+    image: '/certificates/leon-2026.webp',
+    originalImage: '/certificates/leon-2026.png',
     isChampion: false,
     category: 'competition',
   },
@@ -65,7 +69,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Top 25 Finalis',
     credentialNo: 'No. SEI/2026/AWARD/066',
-    image: '/certificates/top-25-sei-2026.png',
+    image: '/certificates/top-25-sei-2026.webp',
+    originalImage: '/certificates/top-25-sei-2026.png',
     isChampion: false,
     category: 'competition',
   },
@@ -78,7 +83,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Certificate of Completion',
     credentialNo: 'Novo Club Batch 4 Completion',
-    image: '/certificates/novo-club-batch-4.png',
+    image: '/certificates/novo-club-batch-4.webp',
+    originalImage: '/certificates/novo-club-batch-4.png',
     isChampion: false,
     category: 'organization',
   },
@@ -91,7 +97,8 @@ const CERTIFICATES: Certificate[] = [
     year: '2026',
     achievement: 'Sertifikat Panitia',
     credentialNo: 'Sert. 11/PADUKA-UNPAS/08/2026',
-    image: '/certificates/pasundan-run-2026.png',
+    image: '/certificates/pasundan-run-2026.webp',
+    originalImage: '/certificates/pasundan-run-2026.png',
     isChampion: false,
     category: 'organization',
   },
@@ -208,8 +215,11 @@ export const Achievements: React.FC = () => {
                         <img
                           src={cert.image}
                           alt={`Sertifikat ${cert.title}`}
+                          width={600}
+                          height={450}
                           className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
+                          decoding="async"
                         />
 
                         {/* Top-left Verified Badge */}
@@ -336,6 +346,7 @@ export const Achievements: React.FC = () => {
                   src={selectedCert.image}
                   alt={selectedCert.title}
                   className="max-w-full max-h-[64vh] object-contain rounded-xl shadow-2xl border border-white/10"
+                  decoding="async"
                 />
                 <span className="mt-2 text-[11px] text-neutral-400">
                   Piagam / Sertifikat Resmi Terbit &middot; Klik 'Tab Baru' untuk resolusi penuh
@@ -376,7 +387,7 @@ export const Achievements: React.FC = () => {
               {/* Action buttons */}
               <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto flex-wrap">
                 <a
-                  href={selectedCert.image}
+                  href={selectedCert.originalImage || selectedCert.image}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-colors"
@@ -386,7 +397,7 @@ export const Achievements: React.FC = () => {
                   <span>Tab Baru</span>
                 </a>
                 <a
-                  href={selectedCert.image}
+                  href={selectedCert.originalImage || selectedCert.image}
                   download
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium text-neutral-300 bg-neutral-800 hover:bg-neutral-700 hover:text-white transition-colors"
                   title="Unduh Piagam"
