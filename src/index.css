@@ -357,3 +357,48 @@
   width: 100%;
 }
 
+/* ============================================
+   PRINT MEDIA STYLES (ATS Resume / PDF Export)
+   ============================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
+  /* Remove background noise/grain texture on print */
+  body::after {
+    display: none !important;
+  }
+
+  /* Reset scroll-locked body for print so pages flow naturally */
+  body.body-scroll-locked {
+    position: static !important;
+    top: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    height: auto !important;
+  }
+
+  /* Hide main site navigation, content, and footer during modal print */
+  body.body-scroll-locked nav,
+  body.body-scroll-locked main,
+  body.body-scroll-locked footer,
+  body.body-scroll-locked #main-content,
+  body.body-scroll-locked [role="progressbar"] {
+    display: none !important;
+  }
+
+  /* Clean print styling for ATS canvas */
+  .cv-document-canvas {
+    color: #111827 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+
