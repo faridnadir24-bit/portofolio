@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { 
   GraduationCap, 
   Award, 
   Users, 
-  Clock, 
   MapPin, 
   Cpu, 
   Trophy, 
   Activity, 
   Sparkles,
-  ArrowUpRight 
+  Compass,
+  CheckCircle2
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
@@ -18,26 +18,6 @@ import { AnimatedCounter } from './AnimatedCounter';
 
 export const About: React.FC = () => {
   const { ref, isVisible } = useScrollReveal<HTMLElement>();
-  const [wibTime, setWibTime] = useState<string>('');
-
-  // Live real-time clock in WIB (Asia/Jakarta, GMT+7)
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeString = new Intl.DateTimeFormat('id-ID', {
-        timeZone: 'Asia/Jakarta',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-      }).format(now);
-      setWibTime(timeString.replace(/\./g, ':'));
-    };
-
-    updateTime();
-    const timer = setInterval(updateTime, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   return (
     <section id="tentang" ref={ref} className={`py-24 section-alt reveal-section ${isVisible ? 'in-view' : ''}`}>
@@ -99,15 +79,15 @@ export const About: React.FC = () => {
             </div>
           </SpotlightCard>
 
-          {/* Bento Box 2: Location & Live Time Clock (1 column) */}
+          {/* Bento Box 2: Location & Collaboration Availability (1 column) */}
           <SpotlightCard
             className={`bento-card p-7 flex flex-col justify-between reveal-item ${isVisible ? 'in-view' : ''}`}
             style={{ transitionDelay: '250ms' }}
           >
-            <div className="space-y-5">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                  02 // Zona Waktu & Lokasi
+                  02 // Kolaborasi & Wilayah
                 </span>
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -115,36 +95,37 @@ export const About: React.FC = () => {
                 </span>
               </div>
 
-              {/* Live WIB Clock */}
-              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/70 text-left">
-                <div className="flex items-center gap-1.5 text-xs text-neutral-400 font-mono mb-1">
-                  <Clock className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Waktu Indonesia Barat (WIB)</span>
-                </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-900 font-mono tracking-tight">
-                  {wibTime || '12:00:00'}
-                </div>
-                <div className="text-[11px] text-neutral-500 mt-1">
-                  GMT+7 &middot; Purwakarta, Indonesia
-                </div>
-              </div>
-
-              {/* Status info */}
-              <div className="space-y-2 text-xs">
-                <div className="flex items-center gap-2 text-neutral-700">
-                  <MapPin className="w-4 h-4 text-neutral-400 shrink-0" />
+              {/* Status info card */}
+              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/70 text-left space-y-2.5">
+                <div className="flex items-center gap-2 text-neutral-700 text-xs font-medium">
+                  <MapPin className="w-4 h-4 text-blue-600 shrink-0" />
                   <span>Purwakarta, Jawa Barat, ID</span>
                 </div>
-                <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50/80 p-2.5 rounded-lg border border-emerald-200/60 font-medium">
-                  <Activity className="w-3.5 h-3.5 shrink-0" />
-                  <span>Tersedia untuk Proyek &amp; Riset</span>
+                <div className="inline-flex items-center gap-2 text-emerald-800 bg-emerald-50 px-2.5 py-1.5 rounded-lg border border-emerald-200/70 text-xs font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>Terbuka untuk Magang &amp; Riset</span>
+                </div>
+                <p className="text-xs text-neutral-500 leading-relaxed pt-0.5">
+                  Siap berkolaborasi dalam proyek software engineering, telemetri sensor IoT, dan komputasi terapan.
+                </p>
+              </div>
+
+              {/* Core Principles */}
+              <div className="space-y-2 pt-1 text-xs">
+                <div className="flex items-center gap-2 text-neutral-700">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                  <span>Pendekatan data-driven &amp; terukur</span>
+                </div>
+                <div className="flex items-center gap-2 text-neutral-700">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>Kepemimpinan &amp; komunikasi tim solid</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-400 font-mono">
-              <span>Status Kerja</span>
-              <span className="text-neutral-900 font-medium">Aktif Berkarya</span>
+              <span>Status Kesiapan</span>
+              <span className="text-neutral-900 font-semibold">Siap Berkontribusi</span>
             </div>
           </SpotlightCard>
 
