@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
+import { SpotlightCard } from './SpotlightCard';
 
 interface ProjectsProps {
   onOpenProject: (projectId: string) => void;
@@ -16,10 +17,10 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
     : PROJECTS.filter(p => p.category === filterCategory);
 
   const filters = [
-    { id: 'all', label: 'Semua' },
+    { id: 'all', label: 'Semua Proyek' },
     { id: 'ai-iot', label: 'IoT & AI' },
-    { id: 'data-dashboard', label: 'Prediksi' },
-    { id: 'web-fullstack', label: 'Full-Stack' },
+    { id: 'data-dashboard', label: 'Prediksi & Analitik' },
+    { id: 'web-fullstack', label: 'Full-Stack Web' },
   ];
 
   return (
@@ -31,97 +32,109 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
       <div className="section-divider" />
       <div className="max-w-5xl mx-auto px-5 sm:px-8 pt-24">
 
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 text-left">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 text-left">
           <div className={`reveal-item ${isVisible ? 'in-view' : ''}`} style={{ transitionDelay: '100ms' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-2 w-2 rounded-full bg-blue-600"></span>
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 font-mono">
+                Karya Unggulan
+              </span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
-              Proyek
+              Proyek Rekayasa
             </h2>
             <p className="text-base text-neutral-500 mt-2 max-w-lg">
-              Sistem perangkat lunak dan komputasi terapan yang dirancang untuk performa tinggi dan dampak nyata.
+              Sistem perangkat lunak dan komputasi terapan yang dirancang untuk keandalan tinggi dan pembuktian dampak nyata.
             </p>
           </div>
 
+          {/* Sliding Pill Filter Container */}
           <div
-            className={`flex gap-1 reveal-item ${isVisible ? 'in-view' : ''}`}
+            className={`p-1 bg-neutral-100/90 rounded-xl border border-neutral-200/80 inline-flex flex-wrap items-center gap-1 reveal-item ${isVisible ? 'in-view' : ''}`}
             style={{ transitionDelay: '200ms' }}
           >
-            {filters.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => setFilterCategory(f.id)}
-                className={`px-3.5 py-1.5 rounded-lg text-sm transition-all duration-300 ${
-                  filterCategory === f.id
-                    ? 'bg-neutral-900 text-white font-medium shadow-sm'
-                    : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100'
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
+            {filters.map((f) => {
+              const isActive = filterCategory === f.id;
+              return (
+                <button
+                  key={f.id}
+                  onClick={() => setFilterCategory(f.id)}
+                  className={`relative px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? 'bg-neutral-900 text-white shadow-xs'
+                      : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-200/60'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Project list */}
+        {/* Project list with SpotlightCards */}
         <div className="space-y-4">
           {filteredProjects.map((project, index) => {
             const isChampion = project.awardBadge?.isChampion;
             const isFeatured = index === 0 || index === 1;
 
             return (
-              <div
+              <SpotlightCard
                 key={project.id}
                 onClick={() => onOpenProject(project.id)}
-                className={`card-gradient-border p-6 sm:p-7 cursor-pointer group text-left reveal-item ${isVisible ? 'in-view' : ''} ${isFeatured ? 'border-l-4 border-l-blue-500' : ''}`}
+                className={`card-gradient-border p-6 sm:p-7 cursor-pointer group text-left reveal-item ${isVisible ? 'in-view' : ''} ${isFeatured ? 'border-l-4 border-l-blue-600' : ''}`}
                 style={{ transitionDelay: getStaggerDelay(index + 2, 80) }}
+                spotlightColor="rgba(37, 99, 235, 0.09)"
               >
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                  <div className="space-y-2 flex-1 min-w-0">
-                    <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-5">
+                  <div className="space-y-2.5 flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2.5">
                       <h3 className="text-lg sm:text-xl font-bold text-neutral-900 group-hover:text-blue-600 transition-colors">
                         {project.title}
                       </h3>
                       {isChampion && (
-                        <span className="text-xs font-medium text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200 shrink-0">
-                          Juara 1
+                        <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200 shrink-0 flex items-center gap-1">
+                          <span>🏆</span>
+                          <span>Juara 1</span>
                         </span>
                       )}
                       {project.awardBadge && !isChampion && (
-                        <span className="text-xs font-medium text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded-md shrink-0">
+                        <span className="text-xs font-medium text-blue-800 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/80 shrink-0">
                           {project.awardBadge.text}
                         </span>
                       )}
                     </div>
 
-                    <p className="text-sm text-neutral-500 leading-relaxed line-clamp-2">
+                    <p className="text-sm text-neutral-600 leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
 
-                    {/* Tech stack — styled inline chips */}
-                    <div className="flex flex-wrap gap-1.5 pt-2">
+                    {/* Tech stack inline chips */}
+                    <div className="flex flex-wrap gap-1.5 pt-1.5">
                       {project.techStack.map((tech) => (
-                        <span key={tech} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded-md bg-neutral-100 text-neutral-600 border border-neutral-200/60">
+                        <span key={tech} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded-md bg-neutral-100 text-neutral-700 border border-neutral-200/60">
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    {/* Metrics — mobile only (horizontal bar below description) */}
+                    {/* Metrics — mobile display */}
                     <div className="flex items-center gap-5 pt-2 sm:hidden">
                       {project.metrics.slice(0, 2).map((m, idx) => (
                         <div key={idx} className="text-left">
                           <p className="text-lg font-bold text-neutral-900 font-mono">{m.value}</p>
-                          <p className="text-[11px] text-neutral-400">{m.label}</p>
+                          <p className="text-[11px] text-neutral-500">{m.label}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Right side: metrics (desktop) + arrow */}
-                  <div className="flex items-center gap-5 sm:gap-6 shrink-0">
+                  {/* Right side: metrics (desktop) + link button */}
+                  <div className="flex items-center gap-5 sm:gap-6 shrink-0 self-start sm:self-center">
                     {project.metrics.slice(0, 2).map((m, idx) => (
                       <div key={idx} className="text-right hidden sm:block">
                         <p className="text-lg font-bold text-neutral-900 font-mono">{m.value}</p>
-                        <p className="text-[11px] text-neutral-400">{m.label}</p>
+                        <p className="text-[11px] text-neutral-400 font-medium">{m.label}</p>
                       </div>
                     ))}
 
@@ -132,17 +145,19 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-2 rounded-lg text-neutral-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
-                          title="Live Demo"
+                          className="p-2 rounded-xl text-neutral-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                          title="Buka Demo Proyek"
                         >
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       )}
-                      <ArrowRight className="w-5 h-5 text-neutral-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                      <div className="p-2 rounded-xl text-neutral-400 group-hover:text-blue-600 group-hover:translate-x-1 group-hover:bg-blue-50/50 transition-all">
+                        <ArrowRight className="w-5 h-5" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             );
           })}
         </div>

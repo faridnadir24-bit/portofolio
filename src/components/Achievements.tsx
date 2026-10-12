@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Award, X, ZoomIn, Download, ChevronLeft, ChevronRight, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
+import { SpotlightCard } from './SpotlightCard';
 
 interface Certificate {
   id: string;
@@ -207,7 +208,10 @@ export const Achievements: React.FC = () => {
                   setSelectedCertIndex(index);
                 }}
               >
-                <div className="card-gradient-border overflow-hidden h-full flex flex-col justify-between bg-white hover:shadow-xl transition-all duration-300">
+                <SpotlightCard
+                  className="card-gradient-border overflow-hidden h-full flex flex-col justify-between bg-white hover:shadow-xl transition-all duration-300"
+                  spotlightColor="rgba(245, 158, 11, 0.08)"
+                >
                   <div>
                     {/* Certificate Thumbnail with framed paper effect */}
                     <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 border-b border-neutral-100 p-2.5">
@@ -278,7 +282,7 @@ export const Achievements: React.FC = () => {
                     <span className="truncate max-w-[240px]">{cert.organizer}</span>
                     <span className="shrink-0 font-mono font-medium text-neutral-500">{cert.year}</span>
                   </div>
-                </div>
+                </SpotlightCard>
               </div>
             ))}
           </div>
