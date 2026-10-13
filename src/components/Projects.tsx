@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
+import { ArrowRight, ExternalLink, Award } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 import { SpotlightCard } from './SpotlightCard';
@@ -93,13 +93,13 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                         {project.title}
                       </h3>
                       {isChampion && (
-                        <span className="text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200 shrink-0 flex items-center gap-1">
-                          <span>🏆</span>
-                          <span>Juara 1</span>
+                        <span className="text-xs font-mono font-medium text-amber-900 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200/80 shrink-0 flex items-center gap-1.5">
+                          <Award className="w-3.5 h-3.5 text-amber-600" />
+                          <span>Juara 1 Nasional</span>
                         </span>
                       )}
                       {project.awardBadge && !isChampion && (
-                        <span className="text-xs font-medium text-blue-800 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/80 shrink-0">
+                        <span className="text-xs font-mono font-medium text-neutral-700 bg-neutral-100 px-2.5 py-0.5 rounded-md border border-neutral-200/80 shrink-0">
                           {project.awardBadge.text}
                         </span>
                       )}

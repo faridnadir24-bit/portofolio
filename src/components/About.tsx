@@ -5,11 +5,9 @@ import {
   Users, 
   MapPin, 
   Cpu, 
-  Trophy, 
   Activity, 
-  Sparkles,
-  Compass,
-  CheckCircle2
+  CheckCircle2,
+  Terminal
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
@@ -49,23 +47,23 @@ export const About: React.FC = () => {
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                  01 // Narasi & Filosofi
+                <span className="text-[11px] font-mono font-medium text-neutral-500 uppercase tracking-wider">
+                  01 / Profil &amp; Filosofi
                 </span>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200/60">
+                <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-md bg-neutral-100 text-neutral-700 border border-neutral-200">
                   STT Wastukancana
                 </span>
               </div>
 
               <div className="space-y-3.5 text-neutral-600 text-[15px] leading-relaxed">
                 <p>
-                  Saya mahasiswa Teknik Informatika di <strong className="text-neutral-900 font-semibold">STT Wastukancana Purwakarta</strong>, aktif dalam kegiatan organisasi mahasiswa, riset karya ilmiah, dan pengembangan perangkat lunak modern. Saat ini saya dipercaya mengemban amanah sebagai <strong className="text-neutral-900 font-semibold">Wakil Ketua Bidang Sosial Politik GMNI Wastukancana</strong>.
+                  Saya mahasiswa Teknik Informatika di <strong className="text-neutral-900 font-semibold">STT Wastukancana Purwakarta</strong>, aktif dalam riset terapan, kegiatan organisasi kemahasiswaan, dan rekayasa perangkat lunak modern. Saat ini saya dipercaya sebagai <strong className="text-neutral-900 font-semibold">Wakil Ketua Bidang Sosial Politik GMNI Wastukancana</strong>.
                 </p>
                 <p>
-                  Etos kepemimpinan dan ketahanan kerja saya diasah sejak bangku SMA melalui tanggung jawab legislasi siswa sebagai <span className="text-neutral-800 font-medium">Ketua Komisi A MPK</span> serta manajemen tanggap darurat medis sebagai <span className="text-neutral-800 font-medium">Ketua Regu PMR Wira SMAN 1 Bungursari</span>.
+                  Karakter kerja dan kedisiplinan saya dibentuk sejak SMA melalui tanggung jawab legislasi siswa sebagai <span className="text-neutral-800 font-medium">Ketua Komisi A MPK</span> serta koordinasi tim medis tanggap darurat lapangan sebagai <span className="text-neutral-800 font-medium">Ketua Regu PMR Wira SMAN 1 Bungursari</span>.
                 </p>
                 <p>
-                  Fokus rekayasa saya berakar pada pemecahan masalah riil masyarakat: mulai dari sistem telemetri sensor biogas cerdas hingga platform AI multimodal untuk dokumentasi pangan nusantara.
+                  Fokus pengembangan saya terarah pada sistem yang solutif: mulai dari arsitektur telemetri sensor gas biogas hingga platform multimodal AI untuk konservasi kuliner nusantara.
                 </p>
               </div>
             </div>
@@ -86,8 +84,8 @@ export const About: React.FC = () => {
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                  02 // Kolaborasi & Wilayah
+                <span className="text-[11px] font-mono font-medium text-neutral-500 uppercase tracking-wider">
+                  02 / Wilayah &amp; Ketersediaan
                 </span>
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -96,36 +94,36 @@ export const About: React.FC = () => {
               </div>
 
               {/* Status info card */}
-              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/70 text-left space-y-2.5">
-                <div className="flex items-center gap-2 text-neutral-700 text-xs font-medium">
-                  <MapPin className="w-4 h-4 text-blue-600 shrink-0" />
+              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/80 text-left space-y-2.5">
+                <div className="flex items-center gap-2 text-neutral-700 text-xs font-medium font-mono">
+                  <MapPin className="w-4 h-4 text-neutral-500 shrink-0" />
                   <span>Purwakarta, Jawa Barat, ID</span>
                 </div>
                 <div className="inline-flex items-center gap-2 text-emerald-800 bg-emerald-50 px-2.5 py-1.5 rounded-lg border border-emerald-200/70 text-xs font-semibold">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
                   <span>Terbuka untuk Magang &amp; Riset</span>
                 </div>
                 <p className="text-xs text-neutral-500 leading-relaxed pt-0.5">
-                  Siap berkolaborasi dalam proyek software engineering, telemetri sensor IoT, dan komputasi terapan.
+                  Siap berkontribusi dalam proyek software engineering, telemetri sensor IoT, dan komputasi terapan.
                 </p>
               </div>
 
               {/* Core Principles */}
               <div className="space-y-2 pt-1 text-xs">
                 <div className="flex items-center gap-2 text-neutral-700">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                  <span>Pendekatan data-driven &amp; terukur</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+                  <span>Pendekatan empiris &amp; terukur</span>
                 </div>
                 <div className="flex items-center gap-2 text-neutral-700">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Kepemimpinan &amp; komunikasi tim solid</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+                  <span>Kolaborasi &amp; komunikasi tim solid</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-400 font-mono">
               <span>Status Kesiapan</span>
-              <span className="text-neutral-900 font-semibold">Siap Berkontribusi</span>
+              <span className="text-neutral-900 font-medium">Siap Berkontribusi</span>
             </div>
           </SpotlightCard>
 
@@ -135,72 +133,72 @@ export const About: React.FC = () => {
             style={{ transitionDelay: '350ms' }}
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-[11px] font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                03 // Metrik & Dampak Kompetisi Terukur
+              <span className="text-[11px] font-mono font-medium text-neutral-500 uppercase tracking-wider">
+                03 / Rekam Jejak Terukur
               </span>
-              <span className="text-xs text-neutral-500 flex items-center gap-1 font-mono">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Terverifikasi Piagam Resmi</span>
+              <span className="text-xs text-neutral-500 flex items-center gap-1.5 font-mono">
+                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                <span>Piagam Resmi Terverifikasi</span>
               </span>
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               
               {/* Stat 1 */}
-              <div className="p-4 rounded-xl bg-amber-50/60 border border-amber-200/80 text-left">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-semibold text-amber-800 uppercase font-mono">KNEC 2026</span>
-                  <Trophy className="w-4 h-4 text-amber-600" />
+              <div className="p-4 rounded-xl bg-neutral-50/80 border border-neutral-200/80 text-left">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[11px] font-semibold text-neutral-500 uppercase font-mono">KNEC 2026</span>
+                  <Award className="w-3.5 h-3.5 text-amber-600" />
                 </div>
-                <div className="text-3xl font-extrabold text-neutral-900 tracking-tight">
-                  <span>Juara </span>
+                <div className="text-3xl font-extrabold text-neutral-900 font-mono tracking-tight">
+                  <span className="text-amber-600 font-sans text-xl mr-0.5">#</span>
                   <AnimatedCounter target={1} />
                 </div>
-                <p className="text-xs text-neutral-600 mt-1">
+                <p className="text-xs text-neutral-500 mt-1">
                   Juara 1 Nasional Ketahanan Pangan &amp; Energi
                 </p>
               </div>
 
               {/* Stat 2 */}
-              <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200/80 text-left">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-semibold text-blue-800 uppercase font-mono">MEA 2026</span>
-                  <Award className="w-4 h-4 text-blue-600" />
+              <div className="p-4 rounded-xl bg-neutral-50/80 border border-neutral-200/80 text-left">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[11px] font-semibold text-neutral-500 uppercase font-mono">MEA 2026</span>
+                  <Award className="w-3.5 h-3.5 text-blue-600" />
                 </div>
-                <div className="text-3xl font-extrabold text-neutral-900 tracking-tight">
-                  <span>Juara </span>
+                <div className="text-3xl font-extrabold text-neutral-900 font-mono tracking-tight">
+                  <span className="text-blue-600 font-sans text-xl mr-0.5">#</span>
                   <AnimatedCounter target={5} />
                 </div>
-                <p className="text-xs text-neutral-600 mt-1">
-                  Juara 5 Nasional Merdeka Essay Award (AVO-BIO 2.0)
+                <p className="text-xs text-neutral-500 mt-1">
+                  Juara 5 Nasional Merdeka Essay Award
                 </p>
               </div>
 
               {/* Stat 3 */}
-              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200/80 text-left">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-semibold text-neutral-600 uppercase font-mono">SEI 2026</span>
-                  <Users className="w-4 h-4 text-neutral-500" />
+              <div className="p-4 rounded-xl bg-neutral-50/80 border border-neutral-200/80 text-left">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[11px] font-semibold text-neutral-500 uppercase font-mono">SEI 2026</span>
+                  <Users className="w-3.5 h-3.5 text-neutral-400" />
                 </div>
-                <div className="text-3xl font-extrabold text-neutral-900 tracking-tight">
+                <div className="text-3xl font-extrabold text-neutral-900 font-mono tracking-tight">
                   <AnimatedCounter target={455} />
                 </div>
-                <p className="text-xs text-neutral-600 mt-1">
-                  Top 25 Finalis dari 455 Tim &amp; 1.175 Delegasi
+                <p className="text-xs text-neutral-500 mt-1">
+                  Top 25 Finalis dari 455 Tim Se-Indonesia
                 </p>
               </div>
 
               {/* Stat 4 */}
-              <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200/80 text-left">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-semibold text-emerald-800 uppercase font-mono">IoT Telemetry</span>
-                  <Activity className="w-4 h-4 text-emerald-600" />
+              <div className="p-4 rounded-xl bg-neutral-50/80 border border-neutral-200/80 text-left">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[11px] font-semibold text-neutral-500 uppercase font-mono">AVO-BIO IoT</span>
+                  <Activity className="w-3.5 h-3.5 text-emerald-600" />
                 </div>
-                <div className="text-3xl font-extrabold text-neutral-900 tracking-tight">
+                <div className="text-3xl font-extrabold text-neutral-900 font-mono tracking-tight">
                   <AnimatedCounter target={99.4} decimals={1} suffix="%" />
                 </div>
-                <p className="text-xs text-neutral-600 mt-1">
-                  Uptime Pembacaan Sensor MQTT Real-Time AVO-BIO
+                <p className="text-xs text-neutral-500 mt-1">
+                  Uptime Sensor MQTT Real-Time
                 </p>
               </div>
 
@@ -213,8 +211,8 @@ export const About: React.FC = () => {
             style={{ transitionDelay: '400ms' }}
           >
             <div className="flex items-center justify-between mb-5">
-              <span className="text-[11px] font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                04 // Jalur Akademik &amp; Kepemimpinan
+              <span className="text-[11px] font-mono font-medium text-neutral-500 uppercase tracking-wider">
+                04 / Pendidikan &amp; Organisasi
               </span>
               <GraduationCap className="w-4 h-4 text-neutral-400" />
             </div>
@@ -222,7 +220,7 @@ export const About: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               
               {/* College */}
-              <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-blue-300 transition-colors">
+              <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-neutral-300 transition-colors">
                 <div className="flex items-center gap-2 mb-1">
                   <GraduationCap className="w-4 h-4 text-blue-600" />
                   <span className="text-xs font-bold text-neutral-900">STT Wastukancana</span>
@@ -237,7 +235,7 @@ export const About: React.FC = () => {
               {/* High School */}
               <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-neutral-300 transition-colors">
                 <div className="flex items-center gap-2 mb-1">
-                  <GraduationCap className="w-4 h-4 text-neutral-600" />
+                  <GraduationCap className="w-4 h-4 text-neutral-500" />
                   <span className="text-xs font-bold text-neutral-900">SMAN 1 Bungursari</span>
                 </div>
                 <p className="text-xs text-neutral-700 font-medium">Peminatan MIPA</p>
@@ -248,10 +246,10 @@ export const About: React.FC = () => {
               </div>
 
               {/* GMNI */}
-              <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-blue-300 transition-colors">
+              <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-neutral-300 transition-colors">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-bold text-neutral-900">GMNI DPK Wastukancana</span>
-                  <span className="text-[10px] font-semibold bg-blue-50 text-blue-700 px-2 py-0.5 rounded">Aktif</span>
+                  <span className="text-[10px] font-mono font-medium bg-neutral-100 text-neutral-700 px-2 py-0.5 rounded">Aktif</span>
                 </div>
                 <p className="text-xs text-neutral-700 font-medium">Wakil Ketua Bidang Sosial Politik</p>
                 <p className="text-[11px] text-neutral-400 mt-0.5 font-mono">2026 – Sekarang</p>
@@ -261,10 +259,10 @@ export const About: React.FC = () => {
               </div>
 
               {/* Novo Club */}
-              <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-emerald-300 transition-colors">
+              <div className="p-4 rounded-xl bg-white border border-neutral-200/80 shadow-2xs hover:border-neutral-300 transition-colors">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-bold text-neutral-900">Novo Club Batch 4</span>
-                  <span className="text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">Completed</span>
+                  <span className="text-[10px] font-mono font-medium bg-neutral-100 text-neutral-700 px-2 py-0.5 rounded">Completed</span>
                 </div>
                 <p className="text-xs text-neutral-700 font-medium">ParagonCorp (PT Paragon Technology)</p>
                 <p className="text-[11px] text-neutral-400 mt-0.5 font-mono">2026 &middot; Leadership Program</p>
@@ -283,40 +281,41 @@ export const About: React.FC = () => {
           >
             <div>
               <div className="flex items-center justify-between mb-5">
-                <span className="text-[11px] font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                  05 // Fokus Rekayasa
+                <span className="text-[11px] font-mono font-medium text-neutral-500 uppercase tracking-wider">
+                  05 / Tech Stack
                 </span>
-                <Cpu className="w-4 h-4 text-blue-600" />
+                <Terminal className="w-4 h-4 text-neutral-500" />
               </div>
 
               <p className="text-xs text-neutral-500 mb-4">
-                Kombinasi teknologi yang rutin digunakan dalam implementasi proyek:
+                Teknologi yang digunakan dalam riset dan implementasi sistem:
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5">
                 {[
-                  { name: 'ESP32 & IoT', color: 'bg-emerald-50 text-emerald-800 border-emerald-200/70' },
-                  { name: 'MQTT Protocol', color: 'bg-neutral-100 text-neutral-800 border-neutral-200' },
-                  { name: 'Google Gemini AI', color: 'bg-blue-50 text-blue-800 border-blue-200/70' },
-                  { name: 'React & Vite', color: 'bg-sky-50 text-sky-800 border-sky-200/70' },
-                  { name: 'TypeScript', color: 'bg-indigo-50 text-indigo-800 border-indigo-200/70' },
-                  { name: 'Tailwind CSS', color: 'bg-cyan-50 text-cyan-800 border-cyan-200/70' },
-                  { name: 'Python Analytics', color: 'bg-amber-50 text-amber-800 border-amber-200/70' },
-                  { name: 'Supabase & REST', color: 'bg-emerald-50 text-emerald-800 border-emerald-200/70' },
+                  'ESP32 & IoT',
+                  'MQTT Protocol',
+                  'Gemini Multimodal AI',
+                  'React & Vite',
+                  'TypeScript',
+                  'Tailwind CSS',
+                  'Python Analytics',
+                  'Supabase & SQL',
+                  'Git & GitHub',
                 ].map((tech) => (
                   <span
-                    key={tech.name}
-                    className={`text-xs font-semibold px-2.5 py-1 rounded-lg border ${tech.color} transition-transform hover:scale-105 select-none`}
+                    key={tech}
+                    className="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-neutral-100 text-neutral-800 border border-neutral-200/70 hover:border-neutral-300 transition-colors select-none"
                   >
-                    {tech.name}
+                    {tech}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="pt-5 border-t border-neutral-100 text-xs text-neutral-500 flex items-center justify-between">
-              <span>Pendekatan Rekayasa</span>
-              <span className="font-semibold text-neutral-800">Clean &amp; Accountable</span>
+            <div className="pt-5 border-t border-neutral-100 text-xs text-neutral-500 flex items-center justify-between font-mono">
+              <span>Arsitektur</span>
+              <span className="font-semibold text-neutral-800">Clean &amp; Modular</span>
             </div>
           </SpotlightCard>
 

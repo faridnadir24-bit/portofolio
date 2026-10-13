@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, FileText, ArrowUpRight, ChevronDown, Award } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useMagneticHover } from '../hooks/useMagneticHover';
@@ -68,12 +68,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
               className={`flex flex-wrap items-center gap-2 text-sm reveal-item ${isVisible ? 'in-view' : ''}`}
               style={{ transitionDelay: '300ms' }}
             >
-              <span className="font-semibold text-amber-800 bg-amber-50/90 px-3 py-1 rounded-lg border border-amber-200/80 shadow-2xs flex items-center gap-1.5">
-                <span>🏆</span>
+              <span className="font-mono text-xs font-medium text-neutral-800 bg-neutral-100/90 px-2.5 py-1 rounded-md border border-neutral-200/80 flex items-center gap-1.5 shadow-2xs">
+                <Award className="w-3.5 h-3.5 text-amber-600" />
                 <span>Juara 1 KNEC 2026</span>
               </span>
-              <span className="font-semibold text-blue-800 bg-blue-50/90 px-3 py-1 rounded-lg border border-blue-200/80 shadow-2xs flex items-center gap-1.5">
-                <span>🥇</span>
+              <span className="font-mono text-xs font-medium text-neutral-800 bg-neutral-100/90 px-2.5 py-1 rounded-md border border-neutral-200/80 flex items-center gap-1.5 shadow-2xs">
+                <Award className="w-3.5 h-3.5 text-blue-600" />
                 <span>Juara 5 MEA 2026</span>
               </span>
               <span className="text-neutral-400 text-xs hidden sm:inline">&middot; STT Wastukancana</span>
@@ -131,9 +131,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
                 />
               </div>
               {/* Glass achievement badge */}
-              <div className="absolute bottom-4 -left-4 backdrop-blur-md bg-white/80 border border-white/40 shadow-xl rounded-xl px-3 py-1.5 flex items-center gap-1.5 text-sm font-semibold text-neutral-800">
-                <span>🏆</span>
-                <span>Juara 1 Nasional</span>
+              <div className="absolute bottom-4 -left-4 backdrop-blur-md bg-white/95 border border-neutral-200/80 shadow-lg rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs font-semibold text-neutral-900 font-mono">
+                <Award className="w-4 h-4 text-amber-600" />
+                <span>Juara 1 KNEC 2026</span>
               </div>
               <div className="mt-3 flex items-center justify-between text-xs text-neutral-400">
                 <span>Purwakarta, 2026</span>
@@ -155,8 +155,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
-                <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Proyek Unggulan</p>
-                <span className="text-[10px] font-semibold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full border border-amber-200">2x Juara Nasional</span>
+                <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider font-mono">Proyek Unggulan</p>
+                <span className="text-[11px] font-mono font-medium bg-neutral-100 text-neutral-700 px-2 py-0.5 rounded-md border border-neutral-200">
+                  Penghargaan Nasional
+                </span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 group-hover:text-blue-600 transition-colors">
                 AVO-BIO (v1 & 2.0)

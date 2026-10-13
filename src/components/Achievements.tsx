@@ -156,9 +156,11 @@ export const Achievements: React.FC = () => {
           {/* Header & Filter Tabs */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div className={`reveal-item ${isVisible ? 'in-view' : ''}`}>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200/80 mb-3 shadow-xs">
-                <Award className="w-3.5 h-3.5 text-amber-600" />
-                <span>Legalitas & Rekam Jejak</span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="h-2 w-2 rounded-full bg-blue-600"></span>
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 font-mono">
+                  Rekam Jejak &amp; Piagam
+                </span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight mb-2">
                 Pencapaian & Sertifikat

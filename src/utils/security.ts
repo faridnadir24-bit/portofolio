@@ -271,20 +271,20 @@ export const initConsoleSecurityBanner = (): void => {
   globalWin.__FN_CONSOLE_GUARD_ACTIVE__ = true;
 
   console.log(
-    '%c⚠️ PERINGATAN KEAMANAN / SECURITY WARNING',
-    'color:#EF4444;font-size:24px;font-weight:900;text-shadow:1px 1px 0 #000;padding:6px 0;'
+    '%c[SECURITY NOTICE] BROWSER DEVELOPER CONSOLE',
+    'color:#EF4444;font-size:20px;font-weight:800;font-family:monospace;padding:6px 0;'
   );
   console.log(
-    '%cIni adalah fitur peramban (browser) yang ditujukan khusus untuk pengembang (developer).\nJika seseorang menyuruh Anda menyalin-tempel (copy-paste) kode atau script tertentu di sini, tindakan tersebut adalah penipuan (Self-XSS) yang dapat membahayakan keamanan Anda.',
-    'color:#F59E0B;font-size:13px;line-height:1.5;font-weight:500;'
+    '%cThis console is a browser feature intended strictly for developers.\nPasting untrusted scripts or executing unknown commands here constitutes Self-XSS and may compromise your session.',
+    'color:#D97706;font-size:12px;line-height:1.5;font-family:monospace;font-weight:500;'
   );
   console.log(
-    '%c🔒 Status Sistem: Dilindungi Content-Security-Policy (CSP), HSTS Preload, Anti-Clickjacking, dan Obfuscation Runtime.',
-    'color:#10B981;font-size:12px;font-weight:600;padding:4px 0;'
+    '%c[SYSTEM] Enforced by Content-Security-Policy (CSP), HSTS Preload, and Runtime Integrity Guards.',
+    'color:#059669;font-size:11px;font-family:monospace;font-weight:600;padding:2px 0;'
   );
   console.log(
-    '%c🚀 Portofolio Resmi: Farid Nadir Amrulloh — https://portofolio-gvgr.vercel.app\nTertarik kolaborasi teknologi atau riset? Hubungi langsung via formulir kontak atau faridnadir24@gmail.com',
-    'color:#3B82F6;font-size:12px;font-style:italic;'
+    '%c[CONTACT] Farid Nadir Amrulloh — faridnadir24@gmail.com | https://portofolio-gvgr.vercel.app',
+    'color:#2563EB;font-size:11px;font-family:monospace;'
   );
 };
 

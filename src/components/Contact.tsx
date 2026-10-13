@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Send, ArrowUpRight, Copy, Check, ShieldCheck } from 'lucide-react';
+import { Mail, Send, ArrowUpRight, Copy, Check, ShieldCheck, Clock } from 'lucide-react';
 import { ContactFormData } from '../types';
 import {
   getSecureEmail,
@@ -140,7 +140,7 @@ export const Contact: React.FC = () => {
 
       if (result.success) {
         setIsSuccess(true);
-        setSubmitFeedback('✅ Pesan berhasil terkirim! Terima kasih telah menghubungi.');
+        setSubmitFeedback('Pesan berhasil terkirim. Terima kasih telah menghubungi.');
         setRateLimitCooldown(45);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
@@ -368,8 +368,9 @@ export const Contact: React.FC = () => {
             )}
 
             {rateLimitCooldown > 0 && (
-              <p className="text-xs text-amber-600">
-                ⏳ Cooldown aktif: Tunggu {rateLimitCooldown} detik untuk mengirim pesan berikutnya.
+              <p className="text-xs font-mono text-amber-700 flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 shrink-0" />
+                <span>Cooldown aktif: Tunggu {rateLimitCooldown}s sebelum mengirim pesan berikutnya.</span>
               </p>
             )}
 
