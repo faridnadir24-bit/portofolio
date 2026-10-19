@@ -416,6 +416,20 @@ export const TIMELINE: TimelineItem[] = Object.freeze([
     badge: 'Sertifikat Panitia',
   },
   {
+    id: 'juara-senada-2026',
+    period: 'Oktober 2026',
+    title: 'Juara 3 — Seleksi Esai Nasional & Argumentasi Anak Bangsa (SENADA) 2026',
+    organization: 'Kurasi Insan Cendekia (KIC)',
+    roleType: 'achievement',
+    location: 'Tingkat Nasional',
+    description: 'Meraih predikat Juara 3 Nasional pada ajang SENADA 2026 dengan tema "Artificial Intelligence (AI) dan Masa Depan Generasi Muda: Inovasi, Tantangan, dan Peluang Menuju Indonesia Emas 2045".',
+    highlights: [
+      'Gagasan integrasi Artificial Intelligence (AI) etis dan terapan untuk akselerasi inovasi generasi muda Indonesia.',
+      'Memegang Sertifikat Penghargaan Resmi No. 005/02/P/KIC/SENADA/X/2026 yang disahkan oleh Direktur KIC dan Ketua Pelaksana.',
+    ],
+    badge: 'Juara 3 Nasional',
+  },
+  {
     id: 'top-25-sei-2026',
     period: 'September 2026',
     title: 'Top 25 Finalis — SDGs Canvas & Essay Indonesia 2026',

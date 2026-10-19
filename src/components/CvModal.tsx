@@ -41,7 +41,7 @@ LinkedIn: ${PERSONAL_INFO.linkedinUrl} | GitHub: ${PERSONAL_INFO.githubUrl} | Po
 ============================================================
 RINGKASAN PROFESIONAL
 ============================================================
-Mahasiswa S1 Teknik Informatika di STT Wastukancana Purwakarta dengan fokus pada arsitektur sistem cerdas (AI), telemetri IoT, dan rekayasa full-stack modern. Memiliki rekam jejak prestasi kompetisi karya tulis ilmiah dan rekayasa teknologi tingkat nasional (Juara 1 KNEC 2026, Juara 5 MEA 2026, Top 10 LEON 2026, Top 25 SEI 2026 dari 455 tim). Berpengalaman memimpin organisasi mahasiswa sebagai Wakil Ketua Bidang Sosial Politik GMNI dan menyelesaikan program kepemimpinan kolaboratif nasional Novo Club Batch 4 (ParagonCorp).
+Mahasiswa S1 Teknik Informatika di STT Wastukancana Purwakarta dengan fokus pada arsitektur sistem cerdas (AI), telemetri IoT, dan rekayasa full-stack modern. Memiliki rekam jejak prestasi kompetisi karya tulis ilmiah dan rekayasa teknologi tingkat nasional (Juara 1 KNEC 2026, Juara 3 SENADA 2026, Juara 5 MEA 2026, Top 10 LEON 2026, Top 25 SEI 2026 dari 455 tim). Berpengalaman memimpin organisasi mahasiswa sebagai Wakil Ketua Bidang Sosial Politik GMNI dan menyelesaikan program kepemimpinan kolaboratif nasional Novo Club Batch 4 (ParagonCorp).
 
 ============================================================
 PENDIDIKAN
@@ -61,6 +61,11 @@ Juara 1 Nasional — Kilat National Essay Competition (KNEC)         Juli 2026
 Penyelenggara: Kilat Akademik Nusantara & Komunitas Sobat Bumi UPP
 - Merancang inovasi AVO-BIO: Sistem monitoring biogas real-time berbasis mikrokontroler ESP32 telemetri MQTT dan algoritma analitik prediktif.
 - Meraih Juara 1 Nasional Subtema Ketahanan Pangan dan Energi dengan apresiasi tinggi dari dewan juri terkait kelayakan implementasi.
+
+Juara 3 Nasional — Seleksi Esai Nasional & Argumentasi (SENADA)   Oktober 2026
+Penyelenggara: Kurasi Insan Cendekia (No: 005/02/P/KIC/SENADA/X/2026)
+- Merumuskan karya esai bertema "Artificial Intelligence (AI) dan Masa Depan Generasi Muda".
+- Meraih Juara 3 Nasional bidang AI dan komputasi masa depan generasi muda tingkat nasional.
 
 Juara 5 Nasional — Merdeka Essay Award (MEA) Mahasiswa             Agustus 2026
 Penyelenggara: Forum Cendekia Muda Indonesia (PT Forcemi Cendekia)
@@ -139,17 +144,17 @@ KEAHLIAN TEKNIS & KOMPETENSI
       onClick={onClose}
     >
       <div
-        className="w-full max-w-3xl bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden my-auto max-h-[94vh] flex flex-col text-left print:max-w-none print:shadow-none print:border-none print:rounded-none print:m-0 print:max-h-none print:h-auto"
+        className="w-full max-w-3xl bg-white dark:bg-[#121214] rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden my-auto max-h-[94vh] flex flex-col text-left print:max-w-none print:shadow-none print:border-none print:rounded-none print:m-0 print:max-h-none print:h-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Control Bar (Hidden on print) */}
-        <div className="flex items-center justify-between px-5 py-3.5 border-b border-neutral-100 sticky top-0 z-10 bg-white/95 backdrop-blur-xs print:hidden">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-neutral-100 dark:border-neutral-800 sticky top-0 z-10 bg-white/95 dark:bg-[#121214]/95 backdrop-blur-xs print:hidden">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-neutral-900 tracking-tight flex items-center gap-1.5">
-              <FileText className="w-4 h-4 text-blue-600" />
+            <span className="text-sm font-bold text-neutral-900 dark:text-neutral-100 tracking-tight flex items-center gap-1.5">
+              <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span>Curriculum Vitae</span>
             </span>
-            <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+            <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800">
               ATS-Friendly Single Column
             </span>
           </div>
@@ -157,16 +162,16 @@ KEAHLIAN TEKNIS & KOMPETENSI
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopyAtsText}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 transition-colors"
               title="Salin teks polos terstruktur untuk form lamaran"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Tersalin!' : 'Salin Teks ATS'}</span>
             </button>
 
             <button
               onClick={() => window.print()}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-neutral-900 text-white hover:bg-neutral-800 transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors shadow-xs"
               title="Cetak langsung atau simpan sebagai PDF A4"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -175,7 +180,7 @@ KEAHLIAN TEKNIS & KOMPETENSI
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors ml-1"
+              className="p-1.5 rounded-xl text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors ml-1"
               aria-label="Tutup modal"
             >
               <X className="w-5 h-5" />
@@ -217,7 +222,7 @@ KEAHLIAN TEKNIS & KOMPETENSI
               Ringkasan Profesional
             </h2>
             <p className="text-xs sm:text-[13px] text-neutral-800 leading-relaxed text-justify">
-              Mahasiswa S1 Teknik Informatika di STT Wastukancana Purwakarta dengan fokus kompetensi pada pengembangan sistem kecerdasan buatan (AI), telemetri IoT, dan aplikasi web modern. Memiliki rekam jejak riset dan inovasi yang terbukti dengan raihan berbagai penghargaan kompetisi karya tulis ilmiah dan rekayasa teknologi tingkat nasional (Juara 1 KNEC 2026, Juara 5 MEA 2026, Top 10 LEON 2026, Top 25 Finalis SEI 2026 dari 455 tim). Berpengalaman aktif dalam kepemimpinan organisasi kemahasiswaan serta program inkubasi kepemimpinan Novo Club Batch 4 oleh ParagonCorp.
+              Mahasiswa S1 Teknik Informatika di STT Wastukancana Purwakarta dengan fokus kompetensi pada pengembangan sistem kecerdasan buatan (AI), telemetri IoT, dan aplikasi web modern. Memiliki rekam jejak riset dan inovasi yang terbukti dengan raihan berbagai penghargaan kompetisi karya tulis ilmiah dan rekayasa teknologi tingkat nasional (Juara 1 KNEC 2026, Juara 3 SENADA 2026, Juara 5 MEA 2026, Top 10 LEON 2026, Top 25 Finalis SEI 2026 dari 455 tim). Berpengalaman aktif dalam kepemimpinan organisasi kemahasiswaan serta program inkubasi kepemimpinan Novo Club Batch 4 oleh ParagonCorp.
             </p>
           </div>
 
@@ -276,6 +281,22 @@ KEAHLIAN TEKNIS & KOMPETENSI
                 <ul className="list-disc list-outside ml-4 mt-1 space-y-0.5 text-xs text-neutral-700">
                   <li>Merancang inovasi sistem monitoring biogas cerdas AVO-BIO berbasis sensor gas telemetri MQTT dan pemodelan AI prediktif.</li>
                   <li>Mendapatkan penilaian tertinggi dewan juri untuk relevansi metodologi dan kelayakan implementasi langsung di masyarakat.</li>
+                </ul>
+              </div>
+
+              <div className="break-inside-avoid">
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs sm:text-[13px]">
+                  <span className="font-bold text-neutral-900">
+                    Juara 3 Nasional — Seleksi Esai Nasional &amp; Argumentasi (SENADA) 2026
+                  </span>
+                  <span className="text-neutral-600 font-mono text-xs">Oktober 2026</span>
+                </div>
+                <p className="text-xs text-neutral-700 italic">
+                  Kurasi Insan Cendekia (No: 005/02/P/KIC/SENADA/X/2026) &middot; Tema: AI &amp; Masa Depan Generasi Muda
+                </p>
+                <ul className="list-disc list-outside ml-4 mt-1 space-y-0.5 text-xs text-neutral-700">
+                  <li>Merumuskan karya ilmiah komprehensif terkait peran kecerdasan buatan dalam memacu produktivitas riset dan kepemimpinan generasi muda.</li>
+                  <li>Dianugerahi Juara 3 Nasional dari ratusan partisipan dan delegasi mahasiswa perguruan tinggi seluruh Indonesia.</li>
                 </ul>
               </div>
 
@@ -474,11 +495,11 @@ KEAHLIAN TEKNIS & KOMPETENSI
         </div>
 
         {/* Modal Bottom Footer (Hidden on print) */}
-        <div className="px-5 py-3 bg-neutral-50 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500 print:hidden">
+        <div className="px-5 py-3 bg-neutral-50 dark:bg-[#161618] border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 print:hidden">
           <span className="font-mono">Format A4 Standar ATS &middot; Optimal untuk Scanner HRD</span>
           <button
             onClick={onClose}
-            className="px-3 py-1.5 rounded-lg text-neutral-700 hover:bg-neutral-200 transition-colors font-medium"
+            className="px-3 py-1.5 rounded-lg text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors font-medium"
           >
             Tutup
           </button>

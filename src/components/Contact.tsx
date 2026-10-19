@@ -166,7 +166,7 @@ export const Contact: React.FC = () => {
   return (
     <section
       id="kontak"
-      className="py-24 border-t border-neutral-100"
+      className="py-24 border-t border-neutral-100 dark:border-neutral-800/80"
       onMouseMove={markUserInteraction}
       onTouchStart={markUserInteraction}
       onKeyDown={markUserInteraction}
@@ -174,14 +174,14 @@ export const Contact: React.FC = () => {
       <div className="max-w-5xl mx-auto px-5 sm:px-8 text-left">
 
         <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 mb-3">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/60 mb-3">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Formulir Terproteksi Anti-Spam</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
             Mari terhubung
           </h2>
-          <p className="text-base text-neutral-500 mt-3">
+          <p className="text-base text-neutral-500 dark:text-neutral-400 mt-3">
             Terbuka untuk kolaborasi riset, kompetisi inovasi, dan kesempatan magang teknologi.
           </p>
         </div>
@@ -191,46 +191,46 @@ export const Contact: React.FC = () => {
           {/* Left: direct channels with anti-scraping obfuscation */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-3">Email</h3>
+              <h3 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wide mb-3">Email</h3>
               <div className="flex items-center gap-3">
                 <a
                   href={`mailto:${displayEmail}`}
-                  className="text-base font-semibold text-neutral-900 hover:text-blue-600 transition-colors break-all"
+                  className="text-base font-semibold text-neutral-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors break-all"
                 >
                   {displayEmail}
                 </a>
                 <button
                   onClick={handleCopyEmail}
-                  className="p-1.5 rounded-md text-neutral-400 hover:text-neutral-700 hover:bg-neutral-100 transition-colors"
+                  className="p-1.5 rounded-md text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                   title="Salin Email"
                 >
-                  {isCopiedEmail ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                  {isCopiedEmail ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 </button>
               </div>
-              {isCopiedEmail && <p className="text-xs text-emerald-600 mt-1">Email disalin ke clipboard!</p>}
+              {isCopiedEmail && <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">Email disalin ke clipboard!</p>}
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-3">WhatsApp</h3>
+              <h3 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wide mb-3">WhatsApp</h3>
               <a
                 href={waUrl}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="inline-flex items-center gap-2 text-base font-semibold text-neutral-900 hover:text-blue-600 transition-colors"
+                className="inline-flex items-center gap-2 text-base font-semibold text-neutral-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
                 <span>{displayWa}</span>
-                <ArrowUpRight className="w-4 h-4 text-neutral-400" />
+                <ArrowUpRight className="w-4 h-4 text-neutral-400 dark:text-neutral-500" />
               </a>
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-3">Profil</h3>
+              <h3 className="text-xs font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wide mb-3">Profil</h3>
               <div className="flex gap-4">
                 <a
                   href="https://www.linkedin.com/in/farid-nadir-amrulloh-149290360/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-neutral-600 hover:text-blue-600 transition-colors"
+                  className="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   LinkedIn ↗
                 </a>
@@ -238,7 +238,7 @@ export const Contact: React.FC = () => {
                   href="https://github.com/faridnadir24-bit"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-neutral-600 hover:text-blue-600 transition-colors"
+                  className="text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   GitHub ↗
                 </a>
@@ -291,7 +291,7 @@ export const Contact: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="c-name" className="text-xs font-medium text-neutral-500 block mb-1.5">
+                <label htmlFor="c-name" className="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1.5">
                   Nama
                 </label>
                 <input
@@ -303,12 +303,12 @@ export const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   onFocus={markUserInteraction}
-                  className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
+                  className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white dark:bg-[#161618] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
                   placeholder="Nama Anda"
                 />
               </div>
               <div>
-                <label htmlFor="c-email" className="text-xs font-medium text-neutral-500 block mb-1.5">
+                <label htmlFor="c-email" className="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1.5">
                   Email Anda
                 </label>
                 <input
@@ -320,14 +320,14 @@ export const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   onFocus={markUserInteraction}
-                  className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
+                  className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white dark:bg-[#161618] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
                   placeholder="nama@domain.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="c-subject" className="text-xs font-medium text-neutral-500 block mb-1.5">
+              <label htmlFor="c-subject" className="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1.5">
                 Subjek
               </label>
               <input
@@ -338,13 +338,13 @@ export const Contact: React.FC = () => {
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 onFocus={markUserInteraction}
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white dark:bg-[#161618] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
                 placeholder="Kolaborasi Riset / Pertanyaan Proyek"
               />
             </div>
 
             <div>
-              <label htmlFor="c-message" className="text-xs font-medium text-neutral-500 block mb-1.5">
+              <label htmlFor="c-message" className="text-xs font-medium text-neutral-500 dark:text-neutral-400 block mb-1.5">
                 Pesan
               </label>
               <textarea
@@ -356,19 +356,19 @@ export const Contact: React.FC = () => {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 onFocus={markUserInteraction}
-                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all resize-none"
+                className="w-full px-3.5 py-2.5 text-sm rounded-xl bg-white dark:bg-[#161618] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all resize-none"
                 placeholder="Tuliskan pesan Anda..."
               />
             </div>
 
             {submitFeedback && (
-              <p className={`text-sm ${isSuccess ? 'text-emerald-600 font-medium' : 'text-rose-600'}`}>
+              <p className={`text-sm ${isSuccess ? 'text-emerald-600 dark:text-emerald-400 font-medium' : 'text-rose-600 dark:text-rose-400'}`}>
                 {submitFeedback}
               </p>
             )}
 
             {rateLimitCooldown > 0 && (
-              <p className="text-xs font-mono text-amber-700 flex items-center gap-1.5">
+              <p className="text-xs font-mono text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 shrink-0" />
                 <span>Cooldown aktif: Tunggu {rateLimitCooldown}s sebelum mengirim pesan berikutnya.</span>
               </p>
@@ -377,10 +377,10 @@ export const Contact: React.FC = () => {
             <button
               type="submit"
               disabled={rateLimitCooldown > 0 || isSubmitting}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all ${
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
                 rateLimitCooldown > 0 || isSubmitting
-                  ? 'bg-neutral-400 cursor-not-allowed'
-                  : 'bg-neutral-900 hover:bg-neutral-800 active:scale-[0.98]'
+                  ? 'bg-neutral-300 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-500 cursor-not-allowed'
+                  : 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 active:scale-[0.98] shadow-sm'
               }`}
             >
               {isSubmitting ? (

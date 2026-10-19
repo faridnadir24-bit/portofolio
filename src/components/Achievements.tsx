@@ -34,6 +34,20 @@ const CERTIFICATES: Certificate[] = [
     category: 'competition',
   },
   {
+    id: 'senada-2026',
+    title: 'Juara 3 — SENADA 2026',
+    event: 'Seleksi Esai Nasional dan Argumentasi Anak Bangsa',
+    subtheme: 'Artificial Intelligence (AI) dan Masa Depan Generasi Muda Menuju Indonesia Emas 2045',
+    organizer: 'Kurasi Insan Cendekia (KIC)',
+    year: '2026',
+    achievement: 'Juara 3 Nasional',
+    credentialNo: 'No. 005/02/P/KIC/SENADA/X/2026',
+    image: '/certificates/senada-2026.png',
+    webpImage: '/certificates/senada-2026.webp',
+    isChampion: true,
+    category: 'competition',
+  },
+  {
     id: 'mea-2026',
     title: 'Juara 5 — Merdeka Essay Award (MEA) 2026',
     event: 'Lomba Esai Nasional Mahasiswa (Karya AVO-BIO 2.0)',
@@ -162,10 +176,10 @@ export const Achievements: React.FC = () => {
                   Rekam Jejak &amp; Piagam
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight mb-2">
-                Pencapaian & Sertifikat
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 tracking-tight mb-2">
+                Pencapaian &amp; Sertifikat
               </h2>
-              <p className="text-base text-neutral-500 max-w-lg">
+              <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-lg">
                 Piagam penghargaan resmi kompetisi ilmiah nasional serta sertifikasi kepanitiaan dan kepemimpinan organisasi.
               </p>
             </div>
@@ -184,13 +198,13 @@ export const Achievements: React.FC = () => {
                   }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-300 ${
                     activeTab === tab.id
-                      ? 'bg-neutral-900 text-white shadow-sm'
-                      : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 bg-white/80 border border-neutral-200/80'
+                      ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-sm'
+                      : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 bg-white/80 dark:bg-[#161618] border border-neutral-200/80 dark:border-neutral-800'
                   }`}
                 >
                   <span>{tab.label}</span>
                   <span className={`ml-1.5 px-1.5 py-0.5 rounded-full text-[10px] ${
-                    activeTab === tab.id ? 'bg-neutral-700 text-neutral-200' : 'bg-neutral-100 text-neutral-600'
+                    activeTab === tab.id ? 'bg-neutral-700 dark:bg-neutral-200 text-neutral-200 dark:text-neutral-800' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
                   }`}>
                     {tab.count}
                   </span>
@@ -211,13 +225,13 @@ export const Achievements: React.FC = () => {
                 }}
               >
                 <SpotlightCard
-                  className="card-gradient-border overflow-hidden h-full flex flex-col justify-between bg-white hover:shadow-xl transition-all duration-300"
+                  className="card-gradient-border overflow-hidden h-full flex flex-col justify-between bg-white dark:bg-[#121214] hover:shadow-xl transition-all duration-300"
                   spotlightColor="rgba(245, 158, 11, 0.08)"
                 >
                   <div>
                     {/* Certificate Thumbnail with framed paper effect */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 border-b border-neutral-100 p-2.5">
-                      <div className="w-full h-full rounded-lg overflow-hidden border border-neutral-200/80 shadow-xs relative bg-white">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-800 p-2.5">
+                      <div className="w-full h-full rounded-lg overflow-hidden border border-neutral-200/80 dark:border-neutral-800 shadow-xs relative bg-white dark:bg-neutral-900">
                         <picture className="w-full h-full block">
                           <source srcSet={cert.webpImage} type="image/webp" />
                           <img
@@ -232,15 +246,15 @@ export const Achievements: React.FC = () => {
                         </picture>
 
                         {/* Top-left Verified Badge */}
-                        <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-xs text-neutral-800 text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-sm border border-neutral-200/90 flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3 h-3 text-blue-600" />
+                        <div className="absolute top-2.5 left-2.5 bg-white/95 dark:bg-[#161618]/95 backdrop-blur-xs text-neutral-800 dark:text-neutral-200 text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-sm border border-neutral-200/90 dark:border-neutral-700 flex items-center gap-1.5 font-mono">
+                          <CheckCircle2 className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                           <span>Piagam Resmi</span>
                         </div>
 
                         {/* Hover overlay with zoom hint */}
                         <div className="absolute inset-0 bg-neutral-950/0 group-hover:bg-neutral-950/20 transition-colors duration-300 flex items-center justify-center">
-                          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-90 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-xs shadow-lg flex items-center gap-2 text-xs font-semibold text-neutral-900 border border-neutral-200">
-                            <ZoomIn className="w-3.5 h-3.5 text-blue-600" />
+                          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-90 px-3.5 py-2 rounded-xl bg-white/95 dark:bg-[#161618]/95 backdrop-blur-xs shadow-lg flex items-center gap-2 text-xs font-semibold text-neutral-900 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 font-mono">
+                            <ZoomIn className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                             <span>Buka Piagam</span>
                           </div>
                         </div>
@@ -252,37 +266,37 @@ export const Achievements: React.FC = () => {
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-2">
                           {cert.isChampion && (
-                            <Award className="w-4.5 h-4.5 text-amber-600 shrink-0 mt-0.5" />
+                            <Award className="w-4.5 h-4.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                           )}
-                          <h3 className="font-bold text-neutral-900 text-base group-hover:text-blue-600 transition-colors leading-snug">
+                          <h3 className="font-bold text-neutral-900 dark:text-neutral-100 text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
                             {cert.title}
                           </h3>
                         </div>
                         <span
-                          className={`text-xs font-semibold px-2.5 py-0.5 rounded-md shrink-0 ${
+                          className={`text-xs font-mono font-medium px-2.5 py-0.5 rounded-md shrink-0 ${
                             cert.isChampion
-                              ? 'text-amber-800 bg-amber-50 border border-amber-200'
-                              : 'text-neutral-700 bg-neutral-100 border border-neutral-200'
+                              ? 'text-amber-900 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/50 border border-amber-200/80 dark:border-amber-800/80'
+                              : 'text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700'
                           }`}
                         >
                           {cert.achievement}
                         </span>
                       </div>
 
-                      <p className="text-xs font-medium text-neutral-700">
+                      <p className="text-xs font-medium text-neutral-700 dark:text-neutral-300">
                         {cert.event}
                       </p>
 
-                      <p className="text-xs text-neutral-500 line-clamp-1">
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-1">
                         {cert.subtheme}
                       </p>
                     </div>
                   </div>
 
                   {/* Card Footer */}
-                  <div className="px-5 pb-4 pt-3 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-400">
+                  <div className="px-5 pb-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs text-neutral-400 dark:text-neutral-500">
                     <span className="truncate max-w-[240px]">{cert.organizer}</span>
-                    <span className="shrink-0 font-mono font-medium text-neutral-500">{cert.year}</span>
+                    <span className="shrink-0 font-mono font-medium text-neutral-500 dark:text-neutral-400">{cert.year}</span>
                   </div>
                 </SpotlightCard>
               </div>

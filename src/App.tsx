@@ -20,8 +20,10 @@ import { CvModal } from './components/CvModal';
 import { PROJECTS } from './data/portfolioData';
 import { Project } from './types';
 import { initConsoleSecurityBanner, initDomSecurityGuard } from './utils/security';
+import { useTheme } from './hooks/useTheme';
 
 export default function App() {
+  const { theme, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
@@ -131,7 +133,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAFAF9] text-neutral-900">
+    <div className="min-h-screen flex flex-col bg-[#FAFAF9] dark:bg-[#09090B] text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative selection:bg-blue-600 selection:text-white">
+      {/* Background Engineering Blueprint Grid & CAD Dots */}
+      <div className="blueprint-grid fixed inset-0 pointer-events-none z-0" aria-hidden="true" />
+      <div className="blueprint-dots fixed inset-0 pointer-events-none z-0 opacity-60 dark:opacity-40" aria-hidden="true" />
+
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:text-sm focus:font-medium"
@@ -143,12 +149,14 @@ export default function App() {
 
       <Navbar
         activeSection={activeSection}
+        theme={theme}
+        onToggleTheme={toggleTheme}
         onNavigate={handleNavigate}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
         onOpenCv={() => setIsCvModalOpen(true)}
       />
 
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 relative z-10">
         <Hero
           onNavigate={handleNavigate}
           onOpenProject={handleOpenProject}
@@ -175,6 +183,8 @@ export default function App() {
         onNavigate={handleNavigate}
         onOpenProject={handleOpenProject}
         onOpenCv={() => setIsCvModalOpen(true)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <CvModal
