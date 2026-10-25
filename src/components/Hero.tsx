@@ -53,24 +53,46 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenProject, onOpenCv 
               </p>
             </div>
 
-            {/* Achievement line */}
+            {/* Achievement line with direct links to Certificates */}
             <div
               className={`flex flex-wrap items-center gap-2 text-sm reveal-item ${isVisible ? 'in-view' : ''}`}
               style={{ transitionDelay: '300ms' }}
             >
-              <span className="font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 flex items-center gap-1.5 shadow-2xs">
-                <Award className="w-3.5 h-3.5 text-amber-600 dark:text-amber-500" />
+              <button
+                type="button"
+                onClick={() => onNavigate('pencapaian')}
+                className="group font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-amber-500/10 dark:bg-neutral-900 dark:hover:bg-amber-500/10 px-2.5 py-1 rounded-md border border-neutral-200 hover:border-amber-400/60 dark:border-neutral-800 dark:hover:border-amber-500/60 flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer"
+                title="Lihat Piagam Juara 1 KNEC 2026"
+              >
+                <Award className="w-3.5 h-3.5 text-amber-600 dark:text-amber-500 group-hover:scale-110 transition-transform" />
                 <span>Juara 1 KNEC 2026</span>
-              </span>
-              <span className="font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 flex items-center gap-1.5 shadow-2xs">
-                <Award className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate('pencapaian')}
+                className="group font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-blue-500/10 dark:bg-neutral-900 dark:hover:bg-blue-500/10 px-2.5 py-1 rounded-md border border-neutral-200 hover:border-blue-400/60 dark:border-neutral-800 dark:hover:border-blue-500/60 flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer"
+                title="Lihat Piagam Juara 3 SENADA 2026"
+              >
+                <Award className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
                 <span>Juara 3 SENADA 2026</span>
-              </span>
-              <span className="font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-900 px-2.5 py-1 rounded-md border border-neutral-200 dark:border-neutral-800 flex items-center gap-1.5 shadow-2xs">
-                <Award className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate('pencapaian')}
+                className="group font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 hover:bg-emerald-500/10 dark:bg-neutral-900 dark:hover:bg-emerald-500/10 px-2.5 py-1 rounded-md border border-neutral-200 hover:border-emerald-400/60 dark:border-neutral-800 dark:hover:border-emerald-500/60 flex items-center gap-1.5 shadow-2xs transition-all cursor-pointer"
+                title="Lihat Piagam Juara 5 MEA 2026"
+              >
+                <Award className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform" />
                 <span>Juara 5 MEA 2026</span>
-              </span>
-              <span className="text-neutral-400 dark:text-neutral-500 text-xs hidden sm:inline font-mono">&middot; STT Wastukancana</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigate('pencapaian')}
+                className="text-neutral-500 hover:text-blue-600 dark:text-neutral-400 dark:hover:text-blue-400 text-xs font-mono flex items-center gap-1 transition-colors cursor-pointer pl-1"
+                title="Buka Semua 7 Piagam & Sertifikat Resmi"
+              >
+                <span>&bull; Lihat 7 Sertifikat &rarr;</span>
+              </button>
             </div>
 
             {/* CTAs */}

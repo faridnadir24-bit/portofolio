@@ -160,6 +160,7 @@ export const Achievements: React.FC = () => {
 
   return (
     <>
+      <div id="sertifikat" className="relative -top-24 pointer-events-none" aria-hidden="true" />
       <section
         id="pencapaian"
         ref={ref}

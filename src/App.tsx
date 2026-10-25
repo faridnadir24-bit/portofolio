@@ -49,7 +49,7 @@ export default function App() {
 
   // Handle URL hash changes for deep linking
   useEffect(() => {
-    const ALLOWED_SECTION_IDS = new Set(['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'pencapaian', 'kontak']);
+    const ALLOWED_SECTION_IDS = new Set(['hero', 'tentang', 'proyek', 'keahlian', 'pengalaman', 'pencapaian', 'sertifikat', 'kontak']);
 
     const handleHashChange = () => {
       const rawHash = window.location.hash.replace('#', '');
@@ -59,6 +59,12 @@ export default function App() {
       const matchedProject = PROJECTS.find(p => p.slug === cleanHash || p.id === cleanHash);
       if (matchedProject) {
         setSelectedProject(matchedProject);
+        return;
+      }
+
+      if (cleanHash === 'sertifikat') {
+        const element = document.getElementById('sertifikat') || document.getElementById('pencapaian');
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
         return;
       }
 
