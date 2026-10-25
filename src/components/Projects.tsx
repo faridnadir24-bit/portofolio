@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ExternalLink, Award } from 'lucide-react';
+import { ArrowRight, ExternalLink, Award, Github, Terminal, Sparkles } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { useScrollReveal, getStaggerDelay } from '../hooks/useScrollReveal';
 import { SpotlightCard } from './SpotlightCard';
@@ -17,10 +17,12 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
     : PROJECTS.filter(p => p.category === filterCategory);
 
   const filters = [
-    { id: 'all', label: 'Semua Proyek' },
-    { id: 'ai-iot', label: 'IoT & AI' },
-    { id: 'data-dashboard', label: 'Prediksi & Analitik' },
+    { id: 'all', label: `Semua (${PROJECTS.length})` },
+    { id: 'ai-iot', label: 'IoT & Energi' },
+    { id: 'ai-vision', label: 'AI Vision & NLP' },
+    { id: 'clean-tech', label: 'Clean-Tech & SCADA' },
     { id: 'web-fullstack', label: 'Full-Stack Web' },
+    { id: 'mobile-logistics', label: 'Mobile & Offline' },
   ];
 
   return (
@@ -37,14 +39,14 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
             <div className="flex items-center gap-2 mb-3">
               <span className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500"></span>
               <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 font-mono">
-                Karya Unggulan
+                Karya &amp; Prototipe Nyata
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 tracking-tight">
-              Proyek Rekayasa
+              Prototipe Rekayasa GitHub
             </h2>
             <p className="text-base text-neutral-500 dark:text-neutral-400 mt-2 max-w-lg">
-              Sistem perangkat lunak dan komputasi terapan yang dirancang untuk keandalan tinggi dan pembuktian dampak nyata.
+              Koleksi prototipe perangkat lunak, sistem telemetri IoT, dan model AI yang dikembangkan secara nyata di GitHub untuk pembuktian dampak terapan.
             </p>
           </div>
 
@@ -59,7 +61,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                 <button
                   key={f.id}
                   onClick={() => setFilterCategory(f.id)}
-                  className={`relative px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
+                  className={`relative px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-300 ${
                     isActive
                       ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-xs'
                       : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60'
@@ -76,15 +78,15 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
         <div className="space-y-4">
           {filteredProjects.map((project, index) => {
             const isChampion = project.awardBadge?.isChampion;
-            const isFeatured = index === 0 || index === 1;
+            const isFeatured = index === 0;
 
             return (
               <SpotlightCard
                 key={project.id}
                 onClick={() => onOpenProject(project.id)}
                 className={`card-gradient-border p-6 sm:p-7 cursor-pointer group text-left reveal-item ${isVisible ? 'in-view' : ''} ${isFeatured ? 'border-l-4 border-l-blue-600 dark:border-l-blue-500' : ''}`}
-                style={{ transitionDelay: getStaggerDelay(index + 2, 80) }}
-                spotlightColor="rgba(37, 99, 235, 0.09)"
+                style={{ transitionDelay: getStaggerDelay(index + 2, 70) }}
+                spotlightColor="rgba(37, 99, 235, 0.08)"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-5">
                   <div className="space-y-2.5 flex-1 min-w-0">
@@ -92,27 +94,48 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                       <h3 className="text-lg sm:text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {project.title}
                       </h3>
+
                       {isChampion && (
                         <span className="text-xs font-mono font-medium text-amber-900 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/50 px-2.5 py-0.5 rounded-md border border-amber-200/80 dark:border-amber-800/80 shrink-0 flex items-center gap-1.5">
                           <Award className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                          <span>Juara 1 Nasional</span>
+                          <span>{project.awardBadge?.text}</span>
                         </span>
                       )}
+
                       {project.awardBadge && !isChampion && (
                         <span className="text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 px-2.5 py-0.5 rounded-md border border-neutral-200/80 dark:border-neutral-700 shrink-0">
                           {project.awardBadge.text}
                         </span>
                       )}
+
+                      {/* GitHub Repo Pill */}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white px-2 py-0.5 rounded-md bg-neutral-100/80 dark:bg-neutral-800/80 border border-neutral-200/70 dark:border-neutral-700/80 transition-colors"
+                          title="Buka Repositori di GitHub"
+                        >
+                          <Github className="w-3 h-3" />
+                          <span>{project.githubRepoName || 'GitHub'}</span>
+                        </a>
+                      )}
                     </div>
 
-                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-sans">
+                      {project.tagline}
+                    </p>
+
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed line-clamp-2">
                       {project.description}
                     </p>
 
                     {/* Tech stack inline chips */}
-                    <div className="flex flex-wrap gap-1.5 pt-1.5">
+                    <div className="flex flex-wrap gap-1.5 pt-1">
                       {project.techStack.map((tech) => (
-                        <span key={tech} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-200/60 dark:border-neutral-700">
+                        <span key={tech} className="px-2 py-0.5 text-[11px] font-mono font-medium rounded-md bg-neutral-100/90 dark:bg-neutral-800/90 text-neutral-700 dark:text-neutral-300 border border-neutral-200/60 dark:border-neutral-700">
                           {tech}
                         </span>
                       ))}
@@ -122,14 +145,14 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                     <div className="flex items-center gap-5 pt-2 sm:hidden">
                       {project.metrics.slice(0, 2).map((m, idx) => (
                         <div key={idx} className="text-left">
-                          <p className="text-lg font-bold text-neutral-900 dark:text-neutral-100 font-mono">{m.value}</p>
-                          <p className="text-[11px] text-neutral-500 dark:text-neutral-400 font-mono">{m.label}</p>
+                          <p className="text-base font-bold text-neutral-900 dark:text-neutral-100 font-mono">{m.value}</p>
+                          <p className="text-[10px] text-neutral-500 dark:text-neutral-400 font-mono">{m.label}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Right side: metrics (desktop) + link button */}
+                  {/* Right side: metrics (desktop) + action buttons */}
                   <div className="flex items-center gap-5 sm:gap-6 shrink-0 self-start sm:self-center">
                     {project.metrics.slice(0, 2).map((m, idx) => (
                       <div key={idx} className="text-right hidden sm:block">
@@ -145,10 +168,11 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-2 rounded-xl text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-neutral-800 transition-colors"
-                          title="Buka Demo Proyek"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200/80 dark:border-blue-800 transition-colors"
+                          title="Buka Demo Web Langsung"
                         >
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span className="hidden md:inline">Demo</span>
                         </a>
                       )}
                       <div className="p-2 rounded-xl text-neutral-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 group-hover:bg-blue-50/50 dark:group-hover:bg-neutral-800 transition-all">

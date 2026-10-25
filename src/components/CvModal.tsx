@@ -94,9 +94,10 @@ Teknologi: React, TypeScript, Google Gemini AI API, Tailwind CSS, Supabase
 - Membangun platform digital cerdas untuk pengenalan dan dokumentasi pangan tradisional Indonesia berbasis visi komputer & multimodal LLM.
 - Mengintegrasikan antarmuka interaktif responsif dengan pencarian semantik dan basis data kuliner nusantara.
 
-Sistem Kasir & POS Modern (Point of Sale Prototype)                2025 – 2026
-Teknologi: React, TypeScript, Responsive Web Design, State Management
-- Merancang antarmuka sistem kasir retail cepat dengan pencatatan transaksi otomatis, manajemen katalog, dan kalkulasi margin laba real-time.
+LONTAR-AI — Ancient Manuscript Optical Scanner & AI Translator     2026
+Teknologi: Computer Vision OCR, Aksara Jawa Engine, Web Speech API, Tailwind CSS, Vite
+- Merancang scanner optical viewfinder kamera dengan deteksi bounding box aksara daun lontar kuno.
+- Mengimplementasikan transliterasi fonetis aksara Jawa ke Latin dan sintesis suara audio bahasa Indonesia.
 
 ============================================================
 PENGALAMAN ORGANISASI & KEPEMIMPINAN
@@ -125,10 +126,10 @@ Ketua Regu Pertolongan Pertama
 ============================================================
 KEAHLIAN TEKNIS & KOMPETENSI
 ============================================================
-- Bahasa Pemrograman : TypeScript, JavaScript, Python, HTML5, CSS3, SQL
-- Framework & Web    : React.js, Next.js, Tailwind CSS, Vite, Node.js (Dasar)
-- Hardware & IoT     : Mikrokontroler ESP32, Protokol MQTT, Telemetri Sensor Gas
-- Tools & Cloud      : Git, GitHub, Supabase, Vercel, REST API, Google Gemini API
+- Bahasa Pemrograman : TypeScript, JavaScript, Python, Dart, C++ (Embedded), HTML5, CSS3, SQL
+- Framework & Web    : React.js, Next.js, Flutter 3.24+, Tailwind CSS, Vite, Laravel API
+- Hardware & IoT     : Mikrokontroler ESP32, Protokol MQTT, SCADA v4.2, Telemetri Multi-Sensor
+- Tools & Cloud      : Git, GitHub, Supabase, Vercel, REST API, Google Gemini API, SQLite, IndexedDB
 - Soft Skills        : Kepemimpinan Organisasi, Analisis Kritis, Komunikasi Publik, Manajemen Proyek, Kolaborasi Tim
 `;
 
@@ -390,15 +391,16 @@ KEAHLIAN TEKNIS & KOMPETENSI
               <div className="break-inside-avoid">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs sm:text-[13px]">
                   <span className="font-bold text-neutral-900">
-                    Sistem Kasir &amp; POS Modern (Point of Sale Interface)
+                    LONTAR-AI — Ancient Manuscript Optical Scanner &amp; AI Translator
                   </span>
-                  <span className="text-neutral-600 font-mono text-xs">2025 – 2026</span>
+                  <span className="text-neutral-600 font-mono text-xs">2026</span>
                 </div>
                 <p className="text-xs text-neutral-600 font-mono">
-                  Stack: React, TypeScript, State Management, Responsive Web Design
+                  Stack: Computer Vision OCR, Aksara Jawa Engine, Web Speech API, Tailwind CSS, Vite
                 </p>
                 <ul className="list-disc list-outside ml-4 mt-1 space-y-0.5 text-xs text-neutral-700">
-                  <li>Mengembangkan antarmuka kasir cepat untuk pencatatan transaksi retail terstruktur, manajemen inventaris, dan kalkulasi margin laba otomatis.</li>
+                  <li>Mengembangkan scanner digital optical viewfinder untuk transkripsi otomatis aksara Jawa kuno dari naskah daun lontar (*ron tal*).</li>
+                  <li>Mengintegrasikan transliterasi fonetis Latin serta sintesis suara audio berbasis Web Speech API client-side.</li>
                 </ul>
               </div>
             </div>
@@ -475,16 +477,16 @@ KEAHLIAN TEKNIS & KOMPETENSI
             </h2>
             <div className="text-xs sm:text-[13px] text-neutral-800 space-y-1.5 leading-relaxed">
               <p>
-                <strong className="font-semibold text-neutral-900">Bahasa Pemrograman:</strong> TypeScript, JavaScript, Python, HTML5, CSS3, SQL (Dasar)
+                <strong className="font-semibold text-neutral-900">Bahasa Pemrograman:</strong> TypeScript, JavaScript, Python, Dart, C++ (Embedded), HTML5, CSS3, SQL
               </p>
               <p>
-                <strong className="font-semibold text-neutral-900">Framework &amp; Frontend:</strong> React.js, Next.js, Tailwind CSS, Vite, Node.js (Dasar)
+                <strong className="font-semibold text-neutral-900">Framework &amp; Frontend:</strong> React.js, Next.js, Flutter 3.24+, Tailwind CSS, Vite, Laravel REST API
               </p>
               <p>
-                <strong className="font-semibold text-neutral-900">Hardware &amp; IoT:</strong> Mikrokontroler ESP32, Protokol MQTT, Telemetri Sensor Gas (MQ Series, Sensor Tekanan)
+                <strong className="font-semibold text-neutral-900">Hardware &amp; IoT / SCADA:</strong> Mikrokontroler ESP32, Protokol MQTT, SCADA v4.2, Telemetri Multi-Sensor (Gas, Suhu, Tekanan)
               </p>
               <p>
-                <strong className="font-semibold text-neutral-900">Alat &amp; Platform:</strong> Git, GitHub, Supabase, Vercel, REST API, Google Gemini API
+                <strong className="font-semibold text-neutral-900">Alat, Database &amp; Cloud:</strong> Git, GitHub, Supabase (PostgreSQL), SQLite, IndexedDB, Vercel, Google Gemini Multimodal API
               </p>
               <p>
                 <strong className="font-semibold text-neutral-900">Kompetensi Manajerial:</strong> Kepemimpinan Organisasi, Perumusan Karya Ilmiah, Komunikasi Publik, Manajemen Event, Problem Solving

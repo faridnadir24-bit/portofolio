@@ -314,11 +314,12 @@ export const About: React.FC = () => {
                   {[
                     'ESP32 & IoT',
                     'MQTT Broker',
+                    'Flutter & Dart',
+                    'Industrial SCADA',
                     'Gemini Multimodal AI',
-                    'React & Vite',
+                    'React & Next.js',
                     'TypeScript',
-                    'Tailwind CSS',
-                    'Python Analytics',
+                    'Offline-First IndexedDB',
                     'Supabase & SQL',
                   ].map((tech) => (
                     <span
@@ -337,6 +338,7 @@ export const About: React.FC = () => {
                   <div className="flex items-center gap-1.5">
                     <Github className="w-3.5 h-3.5 text-neutral-700 dark:text-neutral-300" />
                     <span className="text-xs font-mono font-bold text-neutral-900 dark:text-neutral-100">faridnadir24-bit</span>
+                    <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 border border-neutral-200 dark:border-neutral-700">29 repos</span>
                   </div>
                   <a
                     href="https://github.com/faridnadir24-bit"
@@ -344,7 +346,7 @@ export const About: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-[11px] text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-0.5 font-mono"
                   >
-                    <span>Profil</span>
+                    <span>Profil GitHub</span>
                     <ExternalLink className="w-2.5 h-2.5" />
                   </a>
                 </div>

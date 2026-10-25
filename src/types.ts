@@ -8,7 +8,7 @@ export interface Project {
   title: string;
   slug: string;
   tagline: string;
-  category: 'ai-iot' | 'data-dashboard' | 'web-fullstack';
+  category: 'ai-iot' | 'ai-vision' | 'clean-tech' | 'web-fullstack' | 'mobile-logistics';
   categoryLabel: string;
   awardBadge?: {
     text: string;
@@ -24,13 +24,14 @@ export interface Project {
   architectureSummary: string;
   demoLink: string;
   liveDemoUrl?: string;
-  githubPlaceholder?: string;
-  gradient: {
+  githubUrl?: string;
+  githubRepoName?: string;
+  gradient?: {
     from: string;
     to: string;
     accent: string;
   };
-  interactiveType: 'biogas-telemetry' | 'pangan-map' | 'ocean-detection' | 'commodity-forecast' | 'pos-checkout';
+  interactiveType: 'biogas-telemetry' | 'lontar-scanner' | 'vander-scada' | 'pangan-map' | 'sigap-telemetry' | 'obatku-inventory';
 }
 
 export interface SkillCategory {
