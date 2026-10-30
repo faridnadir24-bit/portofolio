@@ -2,40 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://portofolio-gvgr.vercel.app/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <loc>https://faridnadir.is-a.dev/</loc>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/og-image.jpg</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/og-image.jpg</image:loc>
       <image:title>Farid Nadir Amrulloh — Portfolio</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/farid-nadir-formal.jpg</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/farid-nadir-formal.jpg</image:loc>
       <image:title>Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/knec-2026.png</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/certificates/knec-2026.png</image:loc>
       <image:title>Piagam Juara 1 Nasional KNEC 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/piagam-resmi-mea-2026.png</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/certificates/senada-2026.png</image:loc>
+      <image:title>Piagam Juara 3 Nasional SENADA 2026 — Farid Nadir Amrulloh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://faridnadir.is-a.dev/certificates/piagam-resmi-mea-2026.png</image:loc>
       <image:title>Piagam Resmi Juara 5 Nasional MEA 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/leon-2026.png</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/certificates/leon-2026.png</image:loc>
       <image:title>Piagam Top 10 Nasional LEON 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/top-25-sei-2026.png</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/certificates/top-25-sei-2026.png</image:loc>
       <image:title>Sertifikat Top 25 Finalis SDGs Canvas &amp; Essay Indonesia 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/novo-club-batch-4.png</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/certificates/novo-club-batch-4.png</image:loc>
       <image:title>Certificate of Completion Novo Club Batch 4 ParagonCorp — Farid Nadir Amrulloh</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://portofolio-gvgr.vercel.app/certificates/pasundan-run-2026.png</image:loc>
+      <image:loc>https://faridnadir.is-a.dev/certificates/pasundan-run-2026.png</image:loc>
       <image:title>Sertifikat Panitia Pasundan Run 2026 — Farid Nadir Amrulloh</image:title>
     </image:image>
   </url>
